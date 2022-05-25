@@ -7,6 +7,7 @@
 *.cmx
 *.cmxs
 *.cmxa
+*~
 
 _build/
 
@@ -20,3 +21,6 @@ _build/
 
 # Local OPAM switch
 _opam/
+
+mount
+umount
