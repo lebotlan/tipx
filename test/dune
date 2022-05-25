@@ -1,0 +1,10 @@
+(executables
+ (names testparse)
+ (modules testparse)
+ (libraries petrinet)
+ 
+ (preprocess (pps lwt_ppx)))
+
+
+  
+
