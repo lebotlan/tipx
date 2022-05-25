@@ -1,2 +1,2 @@
-# TiPX -- TiPX Is a Petri net eXplorer
+# TiPX - TiPX Is a Petri net eXplorer
 
