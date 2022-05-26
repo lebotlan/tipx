@@ -15,15 +15,43 @@ type token_count = int
  * The array is indexed by places index. *)
 type mark = token_count array
 
+  -> mark abstrait pour pouvoir changer librement de représentation (intarray / sparse)
+    quand sparse, trier dans l'ordre des places ! les algos seront plus efficaces
+
+              "a marking is a mutable buffer to hold a marking."
+
+              voir quand changer la représentation du marking (sparse/dense) ? choix au début ? dynamiquement ?
+
+              type bla = Sparse of .. list | Dense of intarray
+
+  -> un module intarray avec des cases int8 int16 int32 int64 (62 ou 63 en fait)
+
+    fireable : comparer les listes ordonnées ?  appliquer un masque ?
+
+    ajouter une donnée privée à pl et tr pour stocker une représentation interne ?
+
+    stocker aussi sous forme de marking ?  pl_in_m : mark ?  permet de faire des masque ou d'être plus efficace  (éviter une liste => tableau avec données compactes ?)
+
+
+  -> fonction "optimise"  qui clôt un réseau (on n'ajoutera plus de places/transitions ensuite) => alloue les tableaux.
+
+  -> Annoter les fonctions avec @noalloc   pour indiquer qu'elles n'allouent pas de mémoire.
+    
+    
+
 type pl =
   { pl_id: id ;
     pl_name: string ;
+
+    (* Sorted by td_id *)
     pl_in:  (weight * tr_id) list ;
     pl_out: (weight * tr_id) list }
 
 and tr =
   { tr_id:  id ;
     tr_name: string ;
+
+    (* Sorted by pl_id *)
     tr_in:  (weight * pl_id) list ;    
     tr_out: (weight * pl_id) list }
 
