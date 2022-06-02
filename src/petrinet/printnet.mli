@@ -1,9 +1,10 @@
+open Marking
 open Net
 
 (* v : verbosity 
  * net : used to print places/transitions names instead of ids. *)
     
-val mark2s: ?v:int -> ?net:net -> mark -> string
+val marking2s: ?v:int -> ?net:net -> marking -> string
 
 val pl2s: ?v:int -> ?net:net -> pl -> string
 

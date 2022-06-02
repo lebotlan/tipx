@@ -1,25 +1,39 @@
 open Net
+open Marking
+open Trset
+    
+exception Not_fireable of tr * marking
 
-exception Not_fireable of mark * tr
+val is_fireable: tr -> marking -> bool
 
-val fireables: net -> mark -> tr_id list
+val fireables: net -> marking -> trset
 
-(* Keep only fireable transitions *)
-val filter_fireables: net -> mark -> tr_id list -> tr_id list
+
 
 (* fire net m t 
  *   Fire transition t from marking m.
- *   Returns the reached marking.
+ *   Returns the reached marking (returns out if out is given).
  *
- *   ?out: use this array as output. Can be == to m. 
+ *   ?out: use this array as output. out can be m. 
+ *         if unspecified, allocates a new marking.
  *
  *  @raise Not_fireable if t is not fireable at m.
  *)
-val fire: ?(out:mark) -> net -> mark -> tr_id -> mark
+val fire: marking -> ?out:marking -> tr -> marking
 
 
 (* Like fire, with out = m 
  * and assume t is fireable at m (not checked). *)
-val quick_fire: net -> mark -> tr_id -> unit
+val quick_fire: marking -> tr -> unit
 
 
+(* update_fireables n m ts tid 
+ *
+ *  Prerequisites:
+ *    n was in state m0 (not given), whose fireable transitions are ts. 
+ *    tid has been fired.
+ *    the new marking is m 
+ *
+ *  ts is updated, it contains the transitions fireable at m.
+ *)
+val update_fireables: net -> marking -> trset -> tr -> unit

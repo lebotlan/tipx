@@ -1,94 +1,85 @@
+(*  -> TODO : Annoter les fonctions avec @noalloc   pour indiquer qu'elles n'allouent pas de mémoire. *)
 
 (* Unique identifier for places.
- * The identifier is its index in the array (see all_pl below). *)
+ * The identifier is an index in a marking. *)
 type pl_id = int
 
-(* Unique identifier for transitions.
- * The identifier is its index in the array (see all_tr below). *)
+
+(* Unique identifier for transitions. Transitions are ordered from 0 to n-1 *)
 type tr_id = int
 
 type weight = int
 
-type token_count = int
-  
-(* Initial marking.
- * The array is indexed by places index. *)
-type mark = token_count array
+(*** Build a net incrementally ***)
 
-  -> mark abstrait pour pouvoir changer librement de représentation (intarray / sparse)
-    quand sparse, trier dans l'ordre des places ! les algos seront plus efficaces
+(* Places in an incremental net. *)
+type ipl =
+  { ipl_id: pl_id ;
+    ipl_name: string ;
 
-              "a marking is a mutable buffer to hold a marking."
+    ipl_pre:  tr_id list ;
+    ipl_post: tr_id list }
 
-              voir quand changer la représentation du marking (sparse/dense) ? choix au début ? dynamiquement ?
+(* Transitions in an incremental net. *)
+and itr =
+  { itr_id: tr_id ;
+    itr_name: string ;
 
-              type bla = Sparse of .. list | Dense of intarray
-
-  -> un module intarray avec des cases int8 int16 int32 int64 (62 ou 63 en fait)
-
-    fireable : comparer les listes ordonnées ?  appliquer un masque ?
-
-    ajouter une donnée privée à pl et tr pour stocker une représentation interne ?
-
-    stocker aussi sous forme de marking ?  pl_in_m : mark ?  permet de faire des masque ou d'être plus efficace  (éviter une liste => tableau avec données compactes ?)
+    itr_pre:   (weight * pl_id) list ;
+    itr_post:  (weight * pl_id) list }
 
 
-  -> fonction "optimise"  qui clôt un réseau (on n'ajoutera plus de places/transitions ensuite) => alloue les tableaux.
+(* Incremental net (mutable) *)
+type inet
 
-  -> Annoter les fonctions avec @noalloc   pour indiquer qu'elles n'allouent pas de mémoire.
-    
-    
+(* Create empty net *)
+val mk_empty: ?name:string -> unit -> inet
 
+val add_pl: inet -> ipl -> unit
+
+val add_tr: inet -> itr -> unit
+
+
+(*** Immutable net ***)
+
+(* Places *)
 type pl =
-  { pl_id: id ;
+  { pl_id: pl_id ;
     pl_name: string ;
 
-    (* Sorted by td_id *)
-    pl_in:  (weight * tr_id) list ;
-    pl_out: (weight * tr_id) list }
+    pl_pre:  tr list ;
+    pl_post: tr list }
 
+(* Transitions *)
 and tr =
-  { tr_id:  id ;
+  { tr_id:  tr_id ;
     tr_name: string ;
 
     (* Sorted by pl_id *)
-    tr_in:  (weight * pl_id) list ;    
-    tr_out: (weight * pl_id) list }
+    tr_pre:   (weight * pl) list ;
+    tr_post:  (weight * pl) list ;
+    tr_delta: (weight * pl) list }
 
-(* A net is mutable *)
+
 type net
 
 type t = net
-
-
-(*** Read ***)
+  
+val close: inet -> net
 
 (* name can be empty *)
 val get_name: net -> string
 
-val init_mark: net -> mark
-  
 
 (* The id of each place is its index in the array. *)
-  val all_pl: net -> pl array
+     val all_pl: net -> pl array
 
 val get_pl: net -> pl_id -> pl
   
 
-(* The id of each transition is its index in the array. *)
-  val all_tr: net -> tr array
+val all_tr: net -> tr list
 
 val get_tr: net -> tr_id -> tr
   
 
-
-(*** Build ***)
-
-
-(* Create empty net *)
-val mk_empty: ?name:string -> unit -> net
-
-val add_pl: net -> pl -> unit
-
-val add_tr: net -> tr -> unit
 
