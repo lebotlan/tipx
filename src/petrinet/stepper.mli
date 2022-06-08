@@ -15,7 +15,8 @@ val fireables: net -> marking -> trset
  *   Returns the reached marking (returns out if out is given).
  *
  *   ?out: use this array as output. out can be m. 
- *         if unspecified, allocates a new marking.
+ *         if out needs to be reformated (e.g. int8 -> int16), allocates a new marking.
+ *         if out is unspecified, allocates a new marking.
  *
  *  @raise Not_fireable if t is not fireable at m.
  *)
@@ -24,7 +25,7 @@ val fire: marking -> ?out:marking -> tr -> marking
 
 (* Like fire, with out = m 
  * and assume t is fireable at m (not checked). *)
-val quick_fire: marking -> tr -> unit
+val quick_fire: marking -> tr -> marking
 
 
 (* update_fireables n m ts tid 

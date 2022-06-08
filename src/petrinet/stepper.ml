@@ -4,10 +4,10 @@ open Marking
 exception Not_fireable of tr * marking
 
 let rec quick_fire_aux m = function
-  | [] -> ()
+  | [] -> m
   | (w,pl) :: rest ->
-    Marking.add m pl w ;
-    quick_fire_aux m rest
+    let m2 = Marking.add m pl w in
+    quick_fire_aux m2 rest
 
 let quick_fire m tr = quick_fire_aux m tr.tr_delta
 
@@ -19,8 +19,7 @@ let is_fireable tr m = is_fireable_aux m tr.tr_pre
 
 let fire m ?(out=Marking.clone m) tr =
   if not (is_fireable tr m) then raise (Not_fireable (tr,m)) ;
-  quick_fire out tr ;
-  out
+  quick_fire out tr
 
 (* Check for each tr in the list if it is now fireable. Update ts accordingly. *)
 let rec check_tr_now_fireable ts m = function
