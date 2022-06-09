@@ -11,6 +11,7 @@ val create: format -> int -> t
 
 val tos: ?max:int -> t -> string
 
+(* @noalloc *)
 val size: t -> int
 
 val clone: t -> t
@@ -18,6 +19,7 @@ val clone: t -> t
 
 (* Cells are numbered from 0. *)
 
+(* @noalloc *)
 val get: t -> int -> int
 
 
@@ -32,9 +34,13 @@ exception Marking_overflow
  *
  * set tab index value  *)
 
+(* @noalloc most of the time
+ * @alloc if the array needs to be reformated (overflows the current format). *)
 val set: t -> int -> int -> t
 val add: t -> int -> int -> t
 
+
+(* @noalloc *)
 val cmp: t -> t -> int
 
 

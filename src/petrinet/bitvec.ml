@@ -23,7 +23,8 @@ let tos ?(max=40) bv =
 (* Compute the position of the bit in the bytes array: index & mask *)
 let get_index n = n lsr 3
 let get_mask n = 1 lsl (n mod 8)
-  
+
+(* @noalloc *)
 let set bv i =
   let index = get_index i
   and mask = get_mask i in
@@ -31,6 +32,7 @@ let set bv i =
   let vval = Bytes.get_uint8 bv index in  
   Bytes.set_uint8 bv index (vval lor mask)
 
+(* @noalloc *)
 let unset bv i =
   let index = get_index i
   and mask = get_mask i in
@@ -38,6 +40,7 @@ let unset bv i =
   let vval = Bytes.get_uint8 bv index in  
   Bytes.set_uint8 bv index (vval land (lnot mask))
 
+(* @noalloc *)
 let get bv i =
   let index = get_index i
   and mask = get_mask i in
@@ -48,9 +51,11 @@ let get bv i =
 let equal = Bytes.equal
 let cmp = Bytes.compare
 
-(* Find the rightmost bit equal to 1 *)
+(* Find the rightmost bit equal to 1 
+   @noalloc *)
 let rec pick_bit index u8 mask = if u8 land mask = 0 then pick_bit (index+1) u8 (mask lsl 1) else index
 
+(* @noalloc *)
 let rec pick_loop bv start_index index =
   let u8 = Bytes.get_uint8 bv index in
   if u8 = 0 then
@@ -63,6 +68,7 @@ let rec pick_loop bv start_index index =
     (* Hit ! *)
     pick_bit (index * 8) u8 0
 
+(* @noalloc *)
 let pick bv start =
   let index = (start / 8) mod (Bytes.length bv) in
 

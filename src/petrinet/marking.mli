@@ -11,11 +11,16 @@ val init: ?safe:bool -> net -> marking
 
 val clone: t -> t
 
+(* @noalloc *)
 val get: t -> pl -> int
 
-(* add m pl x  returns m, modified,  or a new marking. *)
+(* add m pl x  returns m, modified,  or a new marking.
+ *
+ * @noalloc most of the time.
+ * @alloc if the array needs to be reformated (overflows the current format). See Intarray. *)
 val add: t -> pl -> int -> t
 
+(* @noalloc *)
 val compare: t -> t -> int
 
 

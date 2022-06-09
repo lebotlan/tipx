@@ -21,10 +21,12 @@ let clone = function
   | Dense ar -> Dense (Intarray.clone ar)
   | Bits b -> Bits (Bitvec.clone b)
 
+(* @noalloc *)
 let get m pl = match m with
   | Dense ar -> Intarray.get ar pl.pl_id
   | Bits bv -> Bitvec.get bv pl.pl_id
 
+(* @noalloc most of the time *)
 let add m pl x =
   if x = 0 then m
   else match m with
@@ -40,6 +42,7 @@ let add m pl x =
         | _ -> raise Intarray.Marking_overflow
       end
 
+(* @noalloc *)
 let compare m1 m2 = match m1,m2 with
   | Bits _, Dense _
   | Dense _, Bits _ -> assert false

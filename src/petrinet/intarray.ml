@@ -11,6 +11,7 @@ type t = intarray
 
 let char0 = Char.chr 0
 
+(* @noalloc *)
 let sizeof = function
   | M8 -> 1
   | M16 -> 2
@@ -30,6 +31,7 @@ let clone ar =
     tab = Bytes.copy ar.tab }
 
 
+(* @noalloc *)
 let get ar i =
   match ar.format with
   | M8 -> Bytes.get_uint8 ar.tab i
@@ -43,6 +45,7 @@ let get ar i =
 
 let mask16 = 0xffff
 
+(* @noalloc *)
 let raw_set ar i v =
   assert (v < ar.maxv) ;
   
@@ -55,8 +58,10 @@ let raw_set ar i v =
     Bytes.set_uint16_be ar.tab (i4+2) (v land mask16) ;
     ()
 
+(* @noalloc *)
 let size ar = Bytes.length ar.tab / sizeof ar.format
 
+(* @noalloc *)
 let rec loop_cmp ar1 ar2 i size =
   if i >= size then 0
   else
@@ -66,6 +71,7 @@ let rec loop_cmp ar1 ar2 i size =
     if v1 = v2 then loop_cmp ar1 ar2 (i+1) size
     else Stdlib.compare v1 v2
 
+(* @noalloc *)
 let cmp ar1 ar2 =
   let size1 = size ar1
   and size2 = size ar2 in
@@ -101,11 +107,14 @@ let reformat ar =
   ar2
     
 
+(* @noalloc most of the time
+ * @alloc if the array needs to be reformated (overflows the current format). *)
 let rec set ar i x =
   if x < ar.maxv then (raw_set ar i x ; ar)
   else set (reformat ar) i x
   
 
+(* @noalloc most of the time *)
 let add ar i x = set ar i (x + get ar i)
     
 let rec tos_loop acu ar max size i =
