@@ -9,6 +9,7 @@ type 'a testee =
     clone: 'a -> 'a ;
     cmp: 'a -> 'a -> int ;
     tos: ?max:int -> 'a -> string ;
+    pick: ('a -> int -> int) option ;
     cp: int array -> int -> int ; (* Compute postion in array reference *)
     setv: int list }
 
@@ -42,6 +43,21 @@ let check_equal cp tos it t data aref =
   done ;
   ()
 
+let mypick size cp ar start =
+
+  if get_tab cp ar start <> 0 then start
+  else
+    
+    let rec loop pos =
+      if pos = start then -1
+      else if get_tab cp ar pos <> 0 then pos
+      else loop ((pos + 1) mod size)
+    in
+
+    loop ((start+1) mod size)
+
+  
+
 
 let run_test t =
 
@@ -57,7 +73,7 @@ let run_test t =
 
   for i = 0 to t.iterations do
 
-    (* Check equal, compare *)
+    (* Check equal, compare, pick *)
 
     check_equal t.testee.cp t.testee.tos i t !data aref ;
 
@@ -71,6 +87,19 @@ let run_test t =
         Printf.printf "     cmp2 = %d   comparing  %s   and  %s\n\n" cmp2 (atos !aclone) (atos aref) ;
         assert false
       end ;
+
+    begin match t.testee.pick with
+      | None -> ()
+      | Some pick ->
+        for start = 0 to t.size - 1 do
+          if pick !data start = mypick t.size t.testee.cp aref start then ()
+          else
+            begin
+              Printf.printf "\n\n Pick error !\n%!" ;
+              assert false
+            end
+        done ;
+    end ;
 
 
     (* Clone *)
@@ -105,7 +134,7 @@ let run_test t =
 let testee1 =
   let open Bitvec in
   let set bv i v = (if v = 0 then Bitvec.unset bv i else Bitvec.set bv i) ; bv in  
-  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ] ; tos ; cp = compute_pos }
+  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ] ; tos ; cp = compute_pos ; pick = Some pick }
 
 
 let test_all tst =
@@ -143,7 +172,7 @@ let id _ n = n
 
 let testee_intarray fmt =
   let init n = Intarray.create fmt n in   
-  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ; 2 ; 255 ; 256 ; 1000 ; 65535 ; 65536 ] ; tos ; cp = id }
+  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ; 2 ; 255 ; 256 ; 1000 ; 65535 ; 65536 ] ; tos ; cp = id ; pick = None }
 
 let test_all_intarray () = test_all (testee_intarray M8)
 
@@ -165,17 +194,17 @@ let cmp = compare
 
 let testee_marking_safe =
   let init size = init ~safe:true (mk_net size) in
-  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ] ; tos ; cp = compute_pos }
+  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ] ; tos ; cp = compute_pos ; pick = None }
 
 let testee_marking_non_safe =
   let init size = init ~safe:false (mk_net size) in
-  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ; 2 ; 255 ; 256 ; 1000 ; 65535 ; 65536 ] ; tos ; cp = id }
+  { init ; get ; set ; clone ; cmp ; setv = [ 0 ; 1 ; 2 ; 255 ; 256 ; 1000 ; 65535 ; 65536 ] ; tos ; cp = id ; pick = None }
 
 let test_all_marking () =
   test_all (testee_marking_safe) ;
   test_all (testee_marking_non_safe) ;
   ()
 
-let () = test_all_marking ()
+let () = test_all_bitvec ()
     
 

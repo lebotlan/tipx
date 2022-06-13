@@ -29,23 +29,51 @@ let null_tr =
 
 
 type net =
-  { nb_pl: int }
+  { places: pl array ;
+    transitions: tr array ;
+    name: string }
 
 type t = net
 
-let nb_pl net = net.nb_pl
+let nb_pl net = Array.length net.places
 
-let nb_tr _net = 0
+let nb_tr net = Array.length net.transitions
 
-let all_tr _net = []
+let all_tr net = Array.copy net.transitions
 
-let get_tr _net _tr_id = null_tr
+let get_tr net tr_id = net.transitions.(tr_id)
 
-let get_name _ = ""
+let get_pl net pl_id = net.places.(pl_id)
+
+let get_name net = net.name
 
 
-(* - extarray
+let dummy_place =
+  { pl_id = 0 ;
+    pl_name = "Dummy place" ;
+    pl_pre = [] ;
+    pl_post = [] }
 
- *  - cache all_tr  all_pl  *)
+let mk_dummy_net nb_pl =
+  { places = Array.make nb_pl dummy_place ;
+    transitions = [| |] ;
+    name = "dummy-net" }
 
-let mk_dummy_net nb_pl = { nb_pl }
+
+
+(* Test net *)
+let test_net =
+
+  let rec p0 = { pl_id = 0 ; pl_name = "p0" ; pl_pre = [ t0 ] ; pl_post = [ t0 ; t1 ] }
+  and p1 = { pl_id = 1 ; pl_name = "p1" ; pl_pre = [] ; pl_post = [ t0 ] }
+  and p2 = { pl_id = 2 ; pl_name = "p2" ; pl_pre = [ t0 ; t1 ] ; pl_post = [] }
+            
+  and t0 = { tr_id = 0 ; tr_name = "t0" ; tr_pre = [ (1,p0) ; (1,p1) ] ; tr_post = [ (1,p0) ; (1,p2) ] ; tr_delta = [ (-1,p1) ; (1,p2) ] }
+  and t1 = { tr_id = 1 ; tr_name = "t1" ; tr_pre = [ (1,p0) ] ; tr_post = [ (1,p2) ] ; tr_delta = [ (-1,p0) ; (1,p2) ] }
+  in
+
+  { places      = [| p0 ; p1 ; p2 |] ;
+    transitions = [| t0 ; t1 |] ;
+    name        = "builtin-test-net" }
+  
+             

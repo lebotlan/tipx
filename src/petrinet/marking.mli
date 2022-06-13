@@ -16,6 +16,8 @@ val get: t -> pl -> int
 
 (* add m pl x  returns m, modified,  or a new marking.
  *
+ * Beware, it looks like a pure function, but it is not.
+ *
  * @noalloc most of the time.
  * @alloc if the array needs to be reformated (overflows the current format). See Intarray. *)
 val add: t -> pl -> int -> t

@@ -48,7 +48,7 @@ let update_fireables net m ts tr = update_aux net m ts tr.tr_delta
 let fireables net m =
   
   let ts = Trset.init net in
-  List.iter (fun tr -> if is_fireable tr m then Trset.add ts tr) (Net.all_tr net) ;  
+  Array.iter (fun tr -> if is_fireable tr m then Trset.add ts tr) (Net.all_tr net) ;
   ts
 
 

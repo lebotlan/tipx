@@ -1,0 +1,14 @@
+(library
+ (name parsers)
+ (public_name tipx.parsers)
+ (libraries petrinet angstrom))
+
+
+
+
+
+ 
+
+
+
+

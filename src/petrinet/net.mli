@@ -1,11 +1,8 @@
-(*  -> TODO : Annoter les fonctions avec @noalloc   pour indiquer qu'elles n'allouent pas de mémoire. *)
-
 (* Unique identifier for places.
- * The identifier is an index in a marking. *)
+ * The identifier is an index in a marking, ordered from 0 to nb_pl - 1 *)
 type pl_id = int
 
-
-(* Unique identifier for transitions. Transitions are ordered from 0 to n-1 *)
+(* Unique identifier for transitions. Transitions are ordered from 0 to nb_tr - 1 *)
 type tr_id = int
 
 type weight = int
@@ -65,6 +62,7 @@ and tr =
     tr_delta: (weight * pl) list }
 
 
+(* Dummy transition (used like 'None'). *)
 val null_tr : tr
 
 
@@ -90,10 +88,16 @@ val nb_pl: net -> int
 
 val nb_tr: net -> int
 
-val all_tr: net -> tr list
+(* @alloc a new array *)
+val all_tr: net -> tr array
 
 val get_tr: net -> tr_id -> tr
 
+val get_pl: net -> pl_id -> pl
 
-(* Give number of places. Used for testing. *)
+(* Argument is the number of places. Used for testing markings only (no transition). *)
 val mk_dummy_net: int -> net
+
+
+(* Small test net *)
+val test_net: net

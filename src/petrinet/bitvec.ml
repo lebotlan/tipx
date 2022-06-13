@@ -66,18 +66,23 @@ let rec pick_loop bv start_index index =
 
   else
     (* Hit ! *)
-    pick_bit (index * 8) u8 0
+    pick_bit (index * 8) u8 1
 
 (* @noalloc *)
 let pick bv start =
-  let index = (start / 8) mod (Bytes.length bv) in
+
+  let len = Bytes.length bv in
+  
+  let index = (start / 8) mod len in
 
   (* Mask for the first byte test *)
   let mask = 0xFF lsl (start mod 8) in
 
   let first = (Bytes.get_uint8 bv index) land mask in
-  if first = 0 then pick_loop bv (index+1) (index+1)
+  if first = 0 then
+    let index1 = (index + 1) mod len in
+    pick_loop bv index1 index1
   else
     (* Assumed suboptimal *)
-    pick_bit (index * 8) first 0
+    pick_bit (index * 8) first 1
 
