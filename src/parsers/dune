@@ -1,7 +1,10 @@
 (library
  (name parsers)
  (public_name tipx.parsers)
- (libraries petrinet angstrom))
+ (libraries petrinet angstrom angstrom-lwt-unix lwt_ppx lwtutils bigstring)
+
+ (preprocess (pps lwt_ppx)))
+
 
 
 

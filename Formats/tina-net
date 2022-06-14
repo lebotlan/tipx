@@ -32,7 +32,7 @@ QNAME                   ::= arbitrary name, see Notes below
 .net                    ::= (<trdesc>|<pldesc>|<ntdesc>|<netdesc>)*
 
 netdesc                 ::= 'net' <net>
-trdesc                  ::= 'tr' <transition> {<tinput> '->' <toutput>}
+trdesc                  ::= 'tr' <transition> {<tinput>* '->' <toutput>*}
 pldesc                  ::= 'pl' <place> {(<marking>)}
 ntdesc                  ::= 'nt' <note> ('0'|'1') <annotation>
 
