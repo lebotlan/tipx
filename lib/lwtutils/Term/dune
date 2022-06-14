@@ -1,0 +1,21 @@
+(library
+ (name term)
+ (public_name term)
+ (modules term)
+ (libraries ANSITerminal lwt.unix)
+ (preprocess (pps lwt_ppx)))
+
+(library
+ (name term2)
+ (public_name term2)
+ (modules term2)
+ (libraries lambda-term text common)
+ (preprocess (pps lwt_ppx)))
+
+(library
+ (name stackcl)
+ (public_name stackcl)
+ (modules stackcl)
+ (libraries term2 common.cpslib assoc)
+ (preprocess (pps lwt_ppx)))
+

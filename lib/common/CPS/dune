@@ -1,0 +1,5 @@
+(library
+ (name cpslib)
+ (public_name common.cpslib)
+ (modules cpslib))
+ 

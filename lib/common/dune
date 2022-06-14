@@ -1,0 +1,60 @@
+;;(library
+;;  (name print_tree)
+;;  (public_name print_tree)
+;;  (modules print_tree)
+;;  (libraries text))
+
+;; (library
+;;  (name extArray)
+;;  (public_name extArray)
+;;  (modules extArray))
+
+;; (library
+;;  (name bytehelp)
+;;  (public_name bytehelp)
+;;  (modules bytehelp))
+
+;; (library
+;;  (name bitarray)
+;;  (public_name bitarray)
+;;  (modules bitarray)
+;;  (libraries extArray))
+
+
+(library
+ (name common)
+ (public_name common)
+ (wrapped false)
+ (modules print_tree bytehelp extArray bitarray common cache date2s)
+ (libraries text unix))
+
+(library
+ (name io_helper)
+ (public_name io_helper)
+ (modules io_helper)
+ (libraries biniou))
+
+(library
+ (name signals)
+ (public_name signals)
+ (modules signals)
+ (libraries assoc))
+  
+(library
+ (name shared_vals)
+ (public_name shared_vals)
+ (modules shared_vals)
+ (libraries text))
+
+(library
+ (name myscan)
+ (public_name myscan)
+ (modules myscan)
+ (libraries common))
+ 
+(library
+ (name stats)
+ (public_name common.stats)
+ (modules stats)
+ (libraries common assoc))
+

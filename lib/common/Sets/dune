@@ -1,0 +1,30 @@
+(library
+ (name assoc)
+ (public_name assoc)
+ (modules assoc))
+
+(library
+ (name mapp)
+ (public_name common.mapp)
+ (modules mapp))
+
+(library
+ (name tassoc)
+ (public_name common.tassoc)
+ (modules tassoc)
+ (libraries mapp))
+
+(library
+ (name setp)
+ (public_name setp)
+ (modules setp))
+
+(library
+ (name meset)
+ (public_name meset)
+ (wrapped false)
+ (modules meset memap)
+ (libraries setp lwt))
+
+
+

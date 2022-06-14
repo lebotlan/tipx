@@ -1,0 +1,15 @@
+(executable
+ (name lambda)
+ (libraries lambda-term text)
+ (modules lambda)
+ (preprocess (pps lwt_ppx)))
+
+(executable
+ (name teststack)
+ (libraries stackcl common lwtutils)
+ (modules teststack)
+ (preprocess (pps lwt_ppx)))
+
+(alias
+  (name tests)
+  (deps teststack.exe lambda.exe))

@@ -1,0 +1,27 @@
+(library
+ (name lwtutils)
+ (public_name lwtutils)
+ (wrapped false)
+
+ (modules asynclwt getlogin lock lwtarchive lwtboard lwtdelay lwt_listsort
+          lwtfile lwt_ip lwtlaunch lwtplus lwtvar mylog pipe pipe_timed spipe wv)
+ 
+ (libraries assoc futils common signals
+            lwt lwt_ppx lwt.unix fileutils pcre text term)
+;;	    extunix) ;; extunix necessary for gettid
+  
+ (preprocess (pps lwt_ppx)))
+
+
+(executables
+ (names test_archive)
+ (modules test_archive)
+ (libraries lwtutils shared_vals)
+ (preprocess (pps lwt_ppx)))
+
+(alias
+  (name tests)
+  (deps test_archive.exe))
+
+
+     

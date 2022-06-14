@@ -1,0 +1,5 @@
+<Files>: include
+
+<unionRegexp.*>: package(pcre)
+
+<transcode.*>: package(text)

@@ -1,0 +1,45 @@
+(library
+ (name transcode)
+ (public_name dstring.transcode)
+ (modules transcode)
+ (libraries text lwtutils)
+ (preprocess (pps lwt_ppx)))
+
+(library
+ (name duostring)
+ (public_name dstring.duostring)
+ (modules duostring)
+ (wrapped false)
+ (libraries transcode))
+
+(library
+ (name unionRegexp)
+ (public_name dstring.unionRegexp)
+ (modules unionRegexp)
+ (libraries pcre))
+
+(library
+ (name scompare)
+ (public_name dstring.scompare)
+ (modules scompare)
+ (libraries text))
+
+(library
+ (name pcre_exc)
+ (public_name dstring.pcre_exc)
+ (modules pcre_exc)
+ (libraries pcre))
+
+(library
+ (name distance)
+ (public_name dstring.distance)
+ (modules distance))
+
+(library
+ (name alttext)
+ (public_name dstring.alttext)
+ (modules alttext)
+ (wrapped false)
+ (libraries transcode))
+
+ 
