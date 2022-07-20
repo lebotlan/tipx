@@ -1,4 +1,3 @@
-open Parsers
 open Petrinet
 
 open Net
@@ -66,34 +65,4 @@ let explore_test_net () =
 
 (* let () = explore_test_net () *)
   
-
-let explore_tina_net_file file =
-
-  let%lwt l = Parse.read file in
-
-  Lwt_io.printf " Read : %d places\n\n" (List.length l) ;%lwt
-  
-  Lwt.return_unit
-
-
-let run () =
-  let nargs = Array.length Sys.argv - 1 in
-  
-  if nargs < 1 then
-    begin
-      Lwt_io.printf " Usage : ... bla bla \n"
-    end
-
-  else
-    match Array.to_list Sys.argv with
-    | [] | [_] -> assert false
-    | _ :: file :: _ -> explore_tina_net_file file
-
-
-open Lwtlaunch.Setkeys
-
-let () = noconfig ===> Lwtlaunch.launch ~appname:"Testexploration" ~run ()
-
-
-
 

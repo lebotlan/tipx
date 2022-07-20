@@ -1,2 +1,35 @@
+open Parsers
 
-let () = Printf.printf "Hi there.\n%!"
+let explore_tina_net_file file =
+
+  let%lwt l = Parse.read file in
+
+  Lwt_io.printf " Read : %d places\n\n" (List.length l) ;%lwt
+  
+  Lwt.return_unit
+
+
+let run () =
+  let nargs = Array.length Sys.argv - 1 in
+  
+  if nargs < 1 then
+    begin
+      Lwt_io.printf " Usage : ... bla bla \n"
+    end
+
+  else
+    match Array.to_list Sys.argv with
+    | [] | [_] -> assert false
+    | _ :: file :: _ -> explore_tina_net_file file
+
+
+open Lwtlaunch.Setkeys
+
+let () = noconfig ===> Lwtlaunch.launch ~appname:"Testexploration" ~run ()
+
+
+(* Perf: Family400 best 2,15s 
+                        2,10s   <---- allocate buf and all functions at once
+                        2,00s   <---- peek instead of <|> in tr
+                        1,42s   <---- peek instead of <|> in net_loop + at_end_of_input instead of end_of_input 
+*)

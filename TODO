@@ -5,3 +5,39 @@
   - Si besoin, remplacer les ar.(i)  par des unsafe_get  (option de compilation ?)
   
 
+
+
+
+ * * * * *
+
+ Parser : pour éviter de créer des closures à chaque récursion, il faudrait que la librairie de parseur manipule des fonctions avec argument explicite
+
+  let myparseur (warg:'a parser_state) = ...
+
+ qui permet donc de définir des fonctions récursives prenant d'autres arguments (acu)
+
+ ... sauf que non, on veut combiner avant l'exécution pas pendant.
+
+
+
+ alternative : rajouter un acu implicite dans angstrom, que l'on peut lire (écrire) avec des fonctions particulières.
+
+   ('a,'b) t    acu:'a  return:'b
+
+ mais l'écriture de fonctions mutuellement récursives devient difficile
+
+ let rec parse1 = app ...
+
+ and parse2 = app ... 
+
+
+ c'est interdit...  il faut un constructeur explicite.
+
+ (lazy ?)
+
+
+ let rec parse1 = lazy ...   (... force parse2 ...)
+
+
+ let (!!) = Lazy.force
+
