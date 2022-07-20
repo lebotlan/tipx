@@ -7,7 +7,7 @@ type tr_name = string
 type weight = int
 
 (* Init size of tmp arrays and hashtables used in incremental nets. *)
-let init_size = 50
+let init_size = 1000
 
 type 'a g_itr =
   { itr_name: string ;
@@ -18,7 +18,7 @@ type itr = pl_name g_itr
 
 
 type inet =
-  { i_name: string ;
+  { mutable i_name: string ;
 
     pl_map: (string,pl_id) Hashtbl.t ;
     tr_map: (string,tr_id) Hashtbl.t ;
@@ -26,10 +26,13 @@ type inet =
     mutable pl_count: int ;
     mutable tr_count: int ;
 
+    pl_name_tbl: string ExtArray.t ;
     pl_pre_tbl:  tr_id list ExtArray.t ;
     pl_post_tbl: tr_id list ExtArray.t ;
 
     tr_def: (pl_id g_itr) ExtArray.t ;
+
+    mutable duplicate_transitions: bool ;
   }
 
 let dummy_tr =
@@ -45,12 +48,16 @@ let mk_empty ?(name="") () =
     
     pl_count = 0 ;
     tr_count = 0 ;
-    
+
+    pl_name_tbl = ExtArray.create init_size "" ;
     pl_pre_tbl  = ExtArray.create init_size [] ;
     pl_post_tbl = ExtArray.create init_size [] ;
 
-    tr_def = ExtArray.create init_size dummy_tr }
+    tr_def = ExtArray.create init_size dummy_tr ;
     
+    duplicate_transitions = false }
+
+let set_name inet n = inet.i_name <- n 
 
 let add_pl inet pl_name =
   match Hashtbl.find_opt inet.pl_map pl_name with
@@ -59,6 +66,8 @@ let add_pl inet pl_name =
     let pl_id = inet.pl_count in
     inet.pl_count <- inet.pl_count + 1 ;      
     Hashtbl.add inet.pl_map pl_name pl_id ;
+    
+    ExtArray.set inet.pl_name_tbl pl_id pl_name ;
     pl_id
 
 (* Adds the given transition to its pre/post places. *)
@@ -69,7 +78,9 @@ let rec insert_in_pl_tbl inet tr_id pl_tbl = function
     let pl_id = add_pl inet pl_name in
     let lst = ExtArray.get pl_tbl pl_id in
 
-    if not (List.mem tr_id lst) then ExtArray.set pl_tbl pl_id (tr_id :: lst) ;
+    (* May introduce doublons, that will be removed after sorting.
+     * Checking here if pl_id is in lst is too expansive on big nets. *)
+    ExtArray.set pl_tbl pl_id (tr_id :: lst) ;
     
     insert_in_pl_tbl inet tr_id pl_tbl rest
   
@@ -102,7 +113,7 @@ let add_tr inet itr =
 
   insert_in_pl_tbl inet tr_id inet.pl_post_tbl itr.itr_pre ;
   insert_in_pl_tbl inet tr_id inet.pl_pre_tbl itr.itr_post ;
-
+  
   let prev_itr = ExtArray.get inet.tr_def tr_id in
 
   let new_itr =
@@ -113,6 +124,7 @@ let add_tr inet itr =
     else
       begin
         assert (prev_itr.itr_name = itr.itr_name) ;
+        inet.duplicate_transitions <- true ;
 
         { itr_name = itr.itr_name ;
           itr_pre  = List.fold_left (insert_arc_in_list inet) prev_itr.itr_pre itr.itr_pre ;
@@ -170,8 +182,61 @@ let get_pl net pl_id = net.places.(pl_id)
 
 let get_name net = net.name
 
-let close _ = assert false
+let remove_duplicates inet l =
 
+  if inet.duplicate_transitions then
+    
+    let rec aux acu = function
+      | [] -> List.rev acu
+      | [x] -> aux (x :: acu) []
+      | x :: ((y :: _) as rest) -> if x = y then aux acu rest else aux (x :: acu) rest
+            
+    in
+    aux [] (List.sort Stdlib.compare l)
+
+  else l
+  
+let create_place inet i =
+  { pl_id = i ;
+    pl_name = ExtArray.get inet.pl_name_tbl i ;
+    pl_pre  = remove_duplicates inet (ExtArray.get inet.pl_pre_tbl i) ;
+    pl_post = remove_duplicates inet (ExtArray.get inet.pl_post_tbl i) }
+
+let cmp2 (_,i1) (_,i2) = Stdlib.compare i1 i2
+
+let rec compute_delta acu pre post =
+  match pre,post with
+  | [],[] -> List.rev acu
+               
+  | (w,pl) :: rest1, [] -> compute_delta ((-w,pl) :: acu) rest1 []
+
+  | [], (w,pl) :: rest2 -> compute_delta ((w,pl) :: acu) [] rest2
+
+  | (w1,pl1) :: rest1, (w2,pl2) :: rest2 ->
+
+    if pl1 = pl2 then compute_delta ((w2 - w1, pl1) :: acu) rest1 rest2
+    else if pl1 < pl2 then compute_delta ((-w1, pl1) :: acu) rest1 post
+    else compute_delta ((w2, pl2) :: acu) pre rest2
+
+let create_trans inet i =
+
+  let tr = ExtArray.get inet.tr_def i in
+
+  let tr_pre = List.sort cmp2 tr.itr_pre
+  and tr_post = List.sort cmp2 tr.itr_post in
+  
+  { tr_id = i ;
+    tr_name = tr.itr_name ;
+    tr_pre ;
+    tr_post ;
+    tr_delta = compute_delta [] tr_pre tr_post }
+    
+    
+
+let close inet =
+  { places      = Array.init inet.pl_count (create_place inet) ;
+    transitions = Array.init inet.tr_count (create_trans inet) ;
+    name = inet.i_name }
 
 
 let dummy_place =

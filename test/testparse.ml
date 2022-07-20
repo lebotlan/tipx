@@ -1,10 +1,11 @@
+open Petrinet
 open Parsers
 
 let explore_tina_net_file file =
 
-  let%lwt l = Parse.read file in
+  let%lwt net = Parse.read file in
 
-  Lwt_io.printf " Read : %d places\n\n" (List.length l) ;%lwt
+  Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
   
   Lwt.return_unit
 

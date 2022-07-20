@@ -1,3 +1,4 @@
+open Petrinet
 open Angstrom
 
 type arc = Normal of int (* | Test of int | Inhibitor of int *)
@@ -40,7 +41,11 @@ let marking =
 
 let ignore_comment = skip_while (function '\n' -> false | _ -> true) *> nl
 
-let net () =
+let map_arc (w,nm) =
+  match w with
+  | Normal i -> (i,nm)
+
+let net name =
 
   (* Local buffer *)
   let buf = Buffer.create 200 in
@@ -83,80 +88,92 @@ let net () =
   in
 
   let tinput =
-    let* _name = aname_or_qname in
+    let* name = aname_or_qname in
     
     let* c = peek_char in match c with   
-    | Some '*' -> let* w = advance 1 *> ws *> int <* ws in return (Normal w)
+    | Some '*' -> let* w = advance 1 *> ws *> int <* ws in return (Normal w, name)
     | Some '?' -> assert false (* To be implemented *)
-    | _ -> return (Normal 1)
+    | _ -> return (Normal 1, name)
 
   and toutput =
     let* _name = aname_or_qname in
 
     let* c = peek_char in match c with
-    | Some '*' -> let* w = advance 1 *> ws *> int <* ws in return (Normal w)
-    | _ -> return (Normal 1)
+    | Some '*' -> let* w = advance 1 *> ws *> int <* ws in return (Normal w, name)
+    | _ -> return (Normal 1, name)
 
   in
 
-  let rec net_loop acu =
+  let rec net_loop inet =
     ws *>
     let* eof = at_end_of_input in
 
-    if eof then return acu
+    if eof then return inet
     else
       let* c = peek_char in match c with
-      | Some ('\n' | '\r') -> nl *> net_loop acu
-      | Some '#' -> ignore_comment *> net_loop acu
+      | Some ('\n' | '\r') -> nl *> net_loop inet
+      | Some '#' -> ignore_comment *> net_loop inet
       | _ ->
         begin
           let* id = lowid in match id with
 
-          | "net" -> netname acu
-          | "tr" -> tr acu
-          | "pl" -> pl acu
-          | "nt" -> nt acu
+          | "net" -> netname inet
+          | "tr" -> tr inet
+          | "pl" -> pl inet
+          | "nt" -> nt inet
 
           | _ -> fail ("Unknown keyword " ^ id)
         end
 
   (* 'tr' <transition> {<tinput> '->' <toutput>} *)
-  and tr acu =
-    let* _name = aname_or_qname in
+  and tr inet =
+    let* itr_name = aname_or_qname in
 
     let* c = peek_char in match c with
-    | Some ('\n' | '\r') -> nl *> net_loop acu
-    | Some '#' -> ignore_comment *> net_loop acu
+    | Some ('\n' | '\r') -> nl *> net_loop inet
+    | Some '#' -> ignore_comment *> net_loop inet
     | _ -> 
-      let* _qqchose = map3 (many tinput) arrow (many toutput) ~f:(fun _inp _ _outp -> ()) in
-      net_loop acu
+      let* (inp,outp) = map3 (many tinput) arrow (many toutput) ~f:(fun inp _ outp -> (inp,outp)) in
+
+      let itr_pre = List.rev_map map_arc inp
+      and itr_post = List.rev_map map_arc outp in
+      
+      let _ = Net.add_tr inet { itr_name ; itr_pre ; itr_post } in
+      
+      net_loop inet
 
 
   (* 'net' <net> *)
-  and netname acu =
-    let* _name = aname_or_qname <* nl in
-    net_loop acu
+  and netname inet =
+    let* name = aname_or_qname <* nl in
+    Net.set_name inet name ;
+    
+    net_loop inet
 
   (* 'nt' <note> ('0'|'1') <annotation> *)
-  and nt acu =
+  and nt inet =
     let* _ = aname_or_qname *> (satisfy (function '0' | '1' -> true | _ -> false)) *> aname_or_qname <* nl in
-    net_loop acu
+    net_loop inet
 
   (* 'pl' <place> {(<marking>)} *)
-  and pl acu =
-    let* _name = aname_or_qname in
+  and pl inet =
+    let* name = aname_or_qname in
     let* c = peek_char in
 
-    let* m = match c with
+    let* _m = match c with
       | Some '(' -> advance 1 *> marking <* char ')' <* nl
       | _ -> nl *> return 0
     in
 
-    net_loop (m :: acu)
+    let _ = Net.add_pl inet name in
+
+    net_loop inet
 
   in
 
-  net_loop [] 
+  let init_inet = Net.mk_empty ~name () in
+  
+  net_loop init_inet >>| Net.close
 
 
 (* 

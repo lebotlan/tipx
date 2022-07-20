@@ -32,6 +32,7 @@ val add_pl: inet -> pl_name -> pl_id
 
 val add_tr: inet -> itr -> tr_id
 
+val set_name: inet -> string -> unit
 
 (*** Immutable net ***)
 

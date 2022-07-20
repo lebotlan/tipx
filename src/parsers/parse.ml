@@ -27,6 +27,6 @@ let read_gen path parser =
                 fail_unconsumed path unconsumed
             end)
   
-let read path = read_gen path (Tina.net ())
+let read path = read_gen path (Tina.net path)
   
 
