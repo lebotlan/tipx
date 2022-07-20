@@ -11,7 +11,7 @@ module MSet = Set.Make(Marking)
 let fire_if_fireable net seen m (acu, trset) tr =
   if Stepper.is_fireable tr m then
     let trset = Trset.clone trset in
-    let () = Trset.add trset tr in
+    let () = Trset.add trset tr.tr_id in
       
     let m2 = Stepper.fire m tr in
 
@@ -58,8 +58,8 @@ let explore_test_net () =
   let p0 = get_pl test_net 0
   and p1 = get_pl test_net 1 in
   
-  let m0 = Marking.add m0 p0 1 in
-  let m0 = Marking.add m0 p1 10 in
+  let m0 = Marking.add m0 p0.pl_id 1 in
+  let m0 = Marking.add m0 p1.pl_id 10 in
   
   explore test_net m0
 

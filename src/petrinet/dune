@@ -1,6 +1,10 @@
 (library
  (name petrinet)
- (public_name tipx.petrinet))
+ (public_name tipx.petrinet)
+
+ (libraries common))
+
+
 
  
 

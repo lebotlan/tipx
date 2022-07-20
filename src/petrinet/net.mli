@@ -7,25 +7,19 @@ type tr_id = int
 
 type weight = int
 
-(*
-
 (*** Build a net incrementally ***)
 
-(* Places in an incremental net. *)
-type ipl =
-  { ipl_id: pl_id ;
-    ipl_name: string ;
+type pl_name = string
 
-    ipl_pre:  tr_id list ;
-    ipl_post: tr_id list }
+type tr_name = string
 
 (* Transitions in an incremental net. *)
-and itr =
-  { itr_id: tr_id ;
-    itr_name: string ;
+type 'a g_itr =
+  { itr_name: string ;
+    itr_pre:   (weight * 'a) list ;
+    itr_post:  (weight * 'a) list }
 
-    itr_pre:   (weight * pl_id) list ;
-    itr_post:  (weight * pl_id) list }
+type itr = pl_name g_itr
 
 
 (* Incremental net (mutable) *)
@@ -34,12 +28,10 @@ type inet
 (* Create empty net *)
 val mk_empty: ?name:string -> unit -> inet
 
-val add_pl: inet -> ipl -> unit
+val add_pl: inet -> pl_name -> pl_id
 
-val add_tr: inet -> itr -> unit
+val add_tr: inet -> itr -> tr_id
 
-
-*)
 
 (*** Immutable net ***)
 
@@ -48,8 +40,8 @@ type pl =
   { pl_id: pl_id ;
     pl_name: string ;
 
-    pl_pre:  tr list ;
-    pl_post: tr list }
+    pl_pre:  tr_id list ;
+    pl_post: tr_id list }
 
 (* Transitions *)
 and tr =
@@ -57,9 +49,9 @@ and tr =
     tr_name: string ;
 
     (* Sorted by pl_id *)
-    tr_pre:   (weight * pl) list ;
-    tr_post:  (weight * pl) list ;
-    tr_delta: (weight * pl) list }
+    tr_pre:   (weight * pl_id) list ;
+    tr_post:  (weight * pl_id) list ;
+    tr_delta: (weight * pl_id) list }
 
 
 (* Dummy transition (used like 'None'). *)
@@ -70,9 +62,8 @@ type net
 
 type t = net
 
-(*
 val close: inet -> net
-*)
+
   
 (* name can be empty *)
 val get_name: net -> string
@@ -88,7 +79,7 @@ val nb_pl: net -> int
 
 val nb_tr: net -> int
 
-(* @alloc a new array *)
+(* @alloc a new array (copy) *)
 val all_tr: net -> tr array
 
 val get_tr: net -> tr_id -> tr

@@ -6,9 +6,9 @@ let init net = Bitvec.init (nb_tr net)
 
 let clone = Bitvec.clone
 
-let add    trs tr   = Bitvec.set   trs tr.tr_id
-let remove trs tr   = Bitvec.unset trs tr.tr_id
-let contains trs tr = Bitvec.get   trs tr.tr_id <> 0
+let add    trs tr_id   = Bitvec.set   trs tr_id
+let remove trs tr_id   = Bitvec.unset trs tr_id
+let contains trs tr_id = Bitvec.get   trs tr_id <> 0
 
 let equal = Bitvec.equal
 

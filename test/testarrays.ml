@@ -182,13 +182,14 @@ open Marking
 
 let mk_net size = mk_dummy_net size
 
-let mk_pl pl_id = { pl_id ; pl_name = "test-place" ; pl_pre = [] ; pl_post = [] }
+(* let mk_pl pl_id = { pl_id ; pl_name = "test-place" ; pl_pre = [] ; pl_post = [] } *)
 
-let get t i = get t (mk_pl i)
+(* let get t i = get t (mk_pl i) *)
 let set t i x =
-  let pl = mk_pl i in
+  (* let _pl = mk_pl i in *)
   let z = get t i in
-  add (add t pl (-z)) pl x
+  (* add (add t pl (-z)) pl x *)
+  add (add t i (-z)) i x
 
 let cmp = compare
 

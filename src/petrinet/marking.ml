@@ -22,23 +22,23 @@ let clone = function
   | Bits b -> Bits (Bitvec.clone b)
 
 (* @noalloc *)
-let get m pl = match m with
-  | Dense ar -> Intarray.get ar pl.pl_id
-  | Bits bv -> Bitvec.get bv pl.pl_id
+let get m pl_id = match m with
+  | Dense ar -> Intarray.get ar pl_id
+  | Bits bv -> Bitvec.get bv pl_id
 
 (* @noalloc most of the time *)
-let add m pl x =
+let add m pl_id x =
   if x = 0 then m
   else match m with
     | Dense ar ->
-      let ar2 = Intarray.add ar pl.pl_id x in
+      let ar2 = Intarray.add ar pl_id x in
       if ar == ar2 then m
       else Dense ar2
 
     | Bits bv ->
-      begin match x, Bitvec.get bv pl.pl_id with
-        | 1, 0 -> Bitvec.set bv pl.pl_id ; m
-        | -1, 1 -> Bitvec.unset bv pl.pl_id ; m
+      begin match x, Bitvec.get bv pl_id with
+        | 1, 0 -> Bitvec.set bv pl_id ; m
+        | -1, 1 -> Bitvec.unset bv pl_id ; m
         | _ -> raise Intarray.Marking_overflow
       end
 

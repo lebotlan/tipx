@@ -12,7 +12,7 @@ val init: ?safe:bool -> net -> marking
 val clone: t -> t
 
 (* @noalloc *)
-val get: t -> pl -> int
+val get: t -> pl_id -> int
 
 (* add m pl x  returns m, modified,  or a new marking.
  *
@@ -20,7 +20,7 @@ val get: t -> pl -> int
  *
  * @noalloc most of the time.
  * @alloc if the array needs to be reformated (overflows the current format). See Intarray. *)
-val add: t -> pl -> int -> t
+val add: t -> pl_id -> int -> t
 
 (* @noalloc *)
 val compare: t -> t -> int

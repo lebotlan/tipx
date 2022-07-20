@@ -9,11 +9,11 @@ type trset
 (* Creates an empty set *)
 val init: net -> trset
 
-val add: trset -> tr -> unit
+val add: trset -> tr_id -> unit
 
-val remove: trset -> tr -> unit
+val remove: trset -> tr_id -> unit
 
-val contains: trset -> tr -> bool
+val contains: trset -> tr_id -> bool
 
 val clone: trset -> trset
 
