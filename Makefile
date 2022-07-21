@@ -3,7 +3,7 @@
 all:	test 
 
 test:
-	dune build test/testparse.exe test/testexploration.exe test/testarrays.exe
+	dune build test/testparse.exe test/testexploration.exe test/testarrays.exe test/testwalk.exe
 	ln -fs _build/default/test/*.exe .
 
 clean:

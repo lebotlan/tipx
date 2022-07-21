@@ -1,1 +1,9 @@
 (dirs :standard \ src-*)
+
+;;(env
+  
+;; (dev
+;;  (ocamlopt_flags (:standard -noassert -unboxed-types -unsafe -O3))))   ;; WTF ?
+;;  (ocamlopt_flags (:standard -unsafe))))
+
+

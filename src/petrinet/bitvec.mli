@@ -9,7 +9,6 @@ val init: int -> t
 val set: t -> int -> unit
 val unset: t -> int -> unit
 
-
 (* Returns 0 or 1 
  * @noalloc *)
 val get: t -> int -> int

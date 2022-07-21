@@ -56,13 +56,13 @@ let cmp = Bytes.compare
 let rec pick_bit index u8 mask = if u8 land mask = 0 then pick_bit (index+1) u8 (mask lsl 1) else index
 
 (* @noalloc *)
-let rec pick_loop bv start_index index =
+let rec pick_loop len bv start_index index =
   let u8 = Bytes.get_uint8 bv index in
   if u8 = 0 then
-    let next_index = (index + 1) mod (Bytes.length bv) in
+    let next_index = (index + 1) mod len in
     
     if next_index = start_index then -1
-    else pick_loop bv start_index next_index
+    else pick_loop len bv start_index next_index
 
   else
     (* Hit ! *)
@@ -81,7 +81,7 @@ let pick bv start =
   let first = (Bytes.get_uint8 bv index) land mask in
   if first = 0 then
     let index1 = (index + 1) mod len in
-    pick_loop bv index1 index1
+    pick_loop len bv index1 index1
   else
     (* Assumed suboptimal *)
     pick_bit (index * 8) first 1
