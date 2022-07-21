@@ -1,3 +1,5 @@
+open Formula
+open Petrinet
 open Net
 
 val simple2s: ?v:int -> ?net:net -> simple -> string
