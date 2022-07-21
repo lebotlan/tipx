@@ -1,8 +1,9 @@
 constants:  T (true), F (false),
 
 prefixes:   [] (always), <> (eventually), - (logic negation)
-            => (implies), <=> (equivalent), of precedence 1
+         
             /\ (and), \/ (or), of precedence 2
-            <=, >=, =, le, lt, ge, gt, of precedence 3
+            <=, >=, =,, lt, ge, gt, of precedence 3
             +, of precedence 4
             *, of precedence 5
+

@@ -1,3 +1,4 @@
+(*
 open Formula
 open Petrinet
 open Net
@@ -10,3 +11,4 @@ val atom2s: ?v:int -> ?net:net -> atom -> string
 
 val formula2s: ?v:int -> ?net:net -> formula -> string
 
+*)

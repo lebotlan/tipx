@@ -15,7 +15,7 @@ type simple =
 type expr = simple list
 
 (* Equal, Less than, Less or equal *)
-type rel = EQ | LT | LE
+type rel = NE | EQ | LT | LE
 
 type atom =
   { left: expr ;
@@ -24,4 +24,8 @@ type atom =
 
 type formula = atom bexpr
 
-type t = formula
+type goal =
+  { form: formula ;
+    negates: bool }  (* Are we looking for the formula or for its negation? *)
+
+type t = goal

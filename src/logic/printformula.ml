@@ -1,3 +1,4 @@
+(*
 open Petrinet
 open Net
 
@@ -13,3 +14,4 @@ let atom2s ?v ?net atom =
 let formula2s ?v ?net formula =
   ""
 
+*)
