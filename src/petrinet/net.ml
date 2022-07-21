@@ -176,6 +176,8 @@ let nb_tr net = Array.length net.transitions
 
 let all_tr net = Array.copy net.transitions
 
+let all_pl net = Array.copy net.places
+
 let get_tr net tr_id = net.transitions.(tr_id)
 
 let get_pl net pl_id = net.places.(pl_id)

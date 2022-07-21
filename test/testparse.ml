@@ -6,7 +6,7 @@ let explore_tina_net_file file =
   let%lwt net = Parse.read file in
 
   Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
-  
+  Lwt_io.printf "%s" (Printnet.net2s net) ;%lwt 
   Lwt.return_unit
 
 

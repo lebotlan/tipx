@@ -83,6 +83,9 @@ val nb_tr: net -> int
 (* @alloc a new array (copy) *)
 val all_tr: net -> tr array
 
+(* @alloc a new array (copy) *)
+val all_pl: net -> pl array
+
 val get_tr: net -> tr_id -> tr
 
 val get_pl: net -> pl_id -> pl
