@@ -96,7 +96,7 @@ let net name =
     | _ -> return (Normal 1, name)
 
   and toutput =
-    let* _name = aname_or_qname in
+    let* name = aname_or_qname in
 
     let* c = peek_char in match c with
     | Some '*' -> let* w = advance 1 *> ws *> int <* ws in return (Normal w, name)
