@@ -21,6 +21,8 @@ let eval_atom m atom =
   | LT -> e1 < e2
   | LE -> e1 <= e2
 
-let eval_formula f m = eval_bool (eval_atom m) f
+let eval_formula m f = eval_bool (eval_atom m) f
+
+let eval_goal goal m = goal.negates <> (eval_formula m goal.form)
 
 let verdict goal res = goal.negates <> res

@@ -1,0 +1,4 @@
+net PGCD
+tr t0 p0*3 -> p0*2 p1 
+tr t1 p0 -> p0*2 p2 
+pl p0 (2)

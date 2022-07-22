@@ -10,7 +10,7 @@ let walk_tina_net_file net_file formula_file =
 
   Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
 
-  let result = Walk.sprinter ~seed:3939494 ~timeout:6 net mark (Eval.eval_formula goal.form) in
+  let result = Walk.sprinter ~seed:3939494 ~timeout:6 net mark (Eval.eval_goal goal) in
   
   Lwt_io.printf " Walker : %s.\n" (Walk.result2s result) ;%lwt
   Lwt_io.printf " Verdict : %s.\n" (Walk.result2verdict result goal) ;%lwt
