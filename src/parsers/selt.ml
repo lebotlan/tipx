@@ -16,34 +16,43 @@ let op_lor  = ws *> string "\\/" <* ws
  *  lor_expr : land_expr [ \/ land_expr \/ ... ]
  *)
 
+let (!!) = Lazy.force
+
+(* Local fix. Should be included in Angstrom itself. *)
+let ( **> ) p1 lp2 = let* _ = p1 in !!lp2
+
 let bool_expr what =
 
-  let rec inner_expr () =
-    ws *>
+  let rec inner_expr = lazy
+    (ws *>
 
-    (* (lor_expr) *)
-    (( char '(' *>
-       let* lo1 = lor_expr [] in
-       char ')' *> return lo1 )
-     
-     <|>
+     (* (lor_expr) *)
+     (( char '(' **> lazy
+          (let* lo1 = !!lor0 in
+           char ')' *> return lo1 ))
 
-     (* - expr *)
-     ( char '-' *> ws *>
-       let* e = inner_expr () in
-       return (Not e) )
+      <|>
 
-     <|>
+      (* - expr *)
+      ( char '-' *> ws **> lazy
+                      (let* e = !!inner_expr in
+                       return (Not e) ))
 
-     (* what *)
-     let* w = what in
-     return (V w))
-  
+      <|>
+
+      (* what *)
+      let* w = what in
+      return (V w)))
+
+  and land0 = lazy (land_expr [])
+
+  and lor0 = lazy (lor_expr [])
+
 
   and land_expr acu =
 
     (* expr *)
-    let* e1 = inner_expr () <* ws in
+    let* e1 = !!inner_expr <* ws in
 
     (op_land *> land_expr (e1 :: acu))
     <|>
@@ -53,7 +62,7 @@ let bool_expr what =
   and lor_expr acu =
     
     (* land_expr *)
-    let* le1 = land_expr [] in
+    let* le1 = !!land0 in
     
     (op_lor *> lor_expr (le1 :: acu))
     <|>
@@ -61,7 +70,7 @@ let bool_expr what =
 
   in
 
-  lor_expr []
+  !!lor0
 
 let build_atom e1 op e2 =
   match op with
