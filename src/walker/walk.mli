@@ -1,4 +1,5 @@
 open Petrinet
+open Logic
 
 type state =
   { marking: Marking.t ;
@@ -11,6 +12,8 @@ type walk_result =
 
 val state2s: state -> string
 val result2s: walk_result -> string
+
+val result2verdict: walk_result -> Formula.goal -> string
 
 (* timeout in seconds *)
 val sprinter: ?seed:int -> ?timeout:int -> Net.t -> Marking.t -> (Marking.t -> bool) -> walk_result

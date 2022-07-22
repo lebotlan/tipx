@@ -1,4 +1,5 @@
 open Petrinet
+open Logic
 
 type state =
   { marking: Marking.t ;
@@ -15,6 +16,11 @@ let result2s = function
   | Bingo m -> "Bingo : " ^ state2s m
   | Deadlock m -> "Deadlock : " ^ state2s m
   | Timeout m -> "Timeout : " ^ state2s m
+
+let result2verdict res goal = 
+  match res with 
+  | Bingo _ -> string_of_bool (Eval.verdict goal true)
+  | _ -> "unknown"
 
 let sprinter ?(seed=0) ?timeout net init_marking p =
 
