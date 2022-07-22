@@ -7,3 +7,6 @@ type 'a bexpr = | V of 'a
                 | Not of 'a bexpr
 
 val bool2s : ('a -> string) -> 'a bexpr -> string
+
+
+val eval_bool: ('a -> bool) -> 'a bexpr -> bool
