@@ -132,14 +132,12 @@ let parse_net ?(safe=false) name =
   in
 
   let init_acu = { inet = Net.mk_empty ~name () ; marking = [] } in
-  Printf.printf "Ok let's parsing the net...\n%!" ;
   net_loop init_acu
   >>|
   begin fun acu ->
     let net = Net.close acu.inet in
     let marking = Marking.init ~safe net in
     let marking = List.fold_left (fun marking (m,pl_id) -> Marking.add marking pl_id m) marking acu.marking in
-    Printf.printf "And we return the net and the marking\n%!" ;
     (net, marking)
   end
 
