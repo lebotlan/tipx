@@ -3,7 +3,7 @@ open Angstrom
 open Bool
 open Formula
     
-let ws = skip_while (function '\x20' | '\x09' -> true | _ -> false)
+let ws = skip_while (function '\x20' | '\x09' | '\x0A' -> true | _ -> false)
 
 let op_land = ws *> string "/\\" <* ws
 let op_lor  = ws *> string "\\/" <* ws
@@ -25,7 +25,7 @@ let bool_expr what =
 
   let rec inner_expr = lazy
     (ws *>
-
+    
      (* (lor_expr) *)
      (( char '(' **> lazy
           (let* lo1 = !!lor0 in
@@ -96,20 +96,18 @@ let parse_goal get_plid =
                | Some n -> return (K n)
                | None -> return (P (1, get_plid id))
   in
-
   
   let rec expr acu = ws *>
                      let* s = simple <* ws in
-                     ( (char '+' *> expr (s :: acu))
+                     ((char '+' *> expr (s :: acu))
                        <|>
-                       return (List.rev acu) )
+                      return (List.rev (s :: acu)))
   in
   
   (* expr REL expr *)
   let atom = lift3 build_atom (expr []) rel (expr []) in
   
   let formula = bool_expr atom in
-
   
   let* op = ws *> take 2 in
   match op with
