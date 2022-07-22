@@ -1,4 +1,4 @@
-(* open Petrinet *)
+open Petrinet
 open Angstrom.Buffered
 
 type path = string
@@ -27,6 +27,6 @@ let read_gen path parser =
                 fail_unconsumed path unconsumed
             end)
   
-let read path = read_gen path (Tina.net path)
-  
+let read_net path = read_gen path (Tina.parse_net path)
 
+let read_goal net path = read_gen path (Selt.parse_goal (Net.get_plid net))

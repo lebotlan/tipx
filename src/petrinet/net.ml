@@ -164,9 +164,12 @@ let null_tr =
 
 
 type net =
-  { places: pl array ;
+  { name: string ;
+    
+    places: pl array ;
     transitions: tr array ;
-    name: string }
+
+    pl_map: (string,pl_id) Hashtbl.t}
 
 type t = net
 
@@ -181,6 +184,8 @@ let all_pl net = Array.copy net.places
 let get_tr net tr_id = net.transitions.(tr_id)
 
 let get_pl net pl_id = net.places.(pl_id)
+
+let get_plid net pl_name = Hashtbl.find net.pl_map pl_name
 
 let get_name net = net.name
 
@@ -236,9 +241,13 @@ let create_trans inet i =
     
 
 let close inet =
-  { places      = Array.init inet.pl_count (create_place inet) ;
+  { name = inet.i_name ;
+    
+    places      = Array.init inet.pl_count (create_place inet) ;
     transitions = Array.init inet.tr_count (create_trans inet) ;
-    name = inet.i_name }
+    
+    pl_map = inet.pl_map
+    }
 
 
 let dummy_place =
@@ -248,9 +257,10 @@ let dummy_place =
     pl_post = [] }
 
 let mk_dummy_net nb_pl =
-  { places = Array.make nb_pl dummy_place ;
+  { name = "dummy-net" ;
+    places = Array.make nb_pl dummy_place ;
     transitions = [| |] ;
-    name = "dummy-net" }
+    pl_map = Hashtbl.create 0}
 
 
 
@@ -263,10 +273,17 @@ let test_net =
             
   and t0 = { tr_id = 0 ; tr_name = "t0" ; tr_pre = [ (1,0) ; (1,1) ] ; tr_post = [ (1,0) ; (1,2) ] ; tr_delta = [ (-1,1) ; (1,2) ] }
   and t1 = { tr_id = 1 ; tr_name = "t1" ; tr_pre = [ (1,0) ] ; tr_post = [ (1,2) ] ; tr_delta = [ (-1,0) ; (1,2) ] }
+  and pl_map = Hashtbl.create 3
   in
-
-  { places      = [| p0 ; p1 ; p2 |] ;
+  begin
+  Hashtbl.add pl_map "p0" 0 ;
+  Hashtbl.add pl_map "p1" 1 ;
+  Hashtbl.add pl_map "p2" 2 ;
+  { name        = "builtin-test-net" ;  
+    places      = [| p0 ; p1 ; p2 |] ;
     transitions = [| t0 ; t1 |] ;
-    name        = "builtin-test-net" }
+    pl_map = pl_map
+    }
+  end
   
              

@@ -90,6 +90,8 @@ val get_tr: net -> tr_id -> tr
 
 val get_pl: net -> pl_id -> pl
 
+val get_plid: net -> pl_name -> pl_id
+
 (* Argument is the number of places. Used for testing markings only (no transition). *)
 val mk_dummy_net: int -> net
 

@@ -4,7 +4,7 @@ open Walker
     
 let walk_tina_net_file file =
 
-  let%lwt (net,mark) = Parse.read file in
+  let%lwt (net,mark) = Parse.read_net file in
 
   Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
 
