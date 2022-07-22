@@ -8,7 +8,3 @@ let rec bool2s fu = function
   | And l -> Common.sep (fun x -> "(" ^ bool2s fu x ^ ")") " /\\ " l
   | Or  l  -> Common.sep (fun x -> "(" ^ bool2s fu x ^ ")") " \\/ " l
   | Not e  -> "-(" ^ bool2s fu e ^ ")"
-
-
-
-
