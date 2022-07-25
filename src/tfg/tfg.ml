@@ -132,5 +132,4 @@ let is_root tfg node = X.get tfg.pred node.node_id = Root
 
 let get_node tfg node_id = X.get tfg.node_map node_id
 
-
-  
+let nb_nodes tfg = tfg.node_count

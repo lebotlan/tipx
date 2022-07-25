@@ -40,7 +40,6 @@ val succ: tfg -> node -> succ
 
 val pred: tfg -> node -> pred
 
-
 val node_name: node -> node_name
 
 val node_id: node -> node_id
@@ -49,4 +48,4 @@ val is_root: tfg -> node -> bool
 
 val get_node: tfg -> node_id -> node
 
-
+val nb_nodes: tfg -> int
