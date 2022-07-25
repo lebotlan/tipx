@@ -74,6 +74,11 @@ let create roots =
 
   tfg
 
+let is_constant node_name =
+    try int_of_string node_name |> ignore; true
+    with Failure _ -> false
+   (* Str.string_match (Str.regexp "[0-9]+$") node_name 0;; *)
+
 let get_node tfg name =
   if Hashtbl.mem tfg.name_map name then X.get tfg.node_map (Hashtbl.find tfg.name_map name)
   else
@@ -87,6 +92,8 @@ let get_node tfg name =
 
       Hashtbl.add tfg.name_map name node.node_id ;
       X.set tfg.node_map node.node_id node ;
+
+      if is_constant name then tfg.roots <- (node :: tfg.roots) ;
 
       node      
     end
