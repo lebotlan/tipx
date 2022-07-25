@@ -8,5 +8,6 @@ type 'a bexpr = | V of 'a
 
 val bool2s : ('a -> string) -> 'a bexpr -> string
 
-
 val eval_bool: ('a -> bool) -> 'a bexpr -> bool
+
+val dnf: ('a -> 'a) -> bool -> 'a bexpr -> 'a bexpr

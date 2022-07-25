@@ -22,6 +22,13 @@ type atom =
     rel: rel ;
     right: expr }
 
+let atom_negation atom =
+  match atom.rel with 
+  | NE -> {left = atom.left ; rel = EQ ; right = atom.right }
+  | EQ -> {left = atom.left ; rel = NE ; right = atom.right }
+  | LT -> {left = atom.right ; rel = LE ; right = atom.left }
+  | LE -> {left = atom.right ; rel = LT ; right = atom.left }
+ 
 type formula = atom bexpr
 
 type goal =

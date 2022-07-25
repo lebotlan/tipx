@@ -22,6 +22,8 @@ type atom =
     rel: rel ;
     right: expr }
 
+val atom_negation: atom -> atom
+
 type formula = atom bexpr
 
 type goal =
