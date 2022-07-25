@@ -5,8 +5,14 @@ open Bool
 
 let eval_simple m s = 
   match s with
-  | (K k) -> k
-  | (P (w,pl_id)) -> w * (Marking.get m pl_id)
+  | K k -> k
+  | P (w,pl_id) -> w * (Marking.get m pl_id)
+
+(* TODO : performance : evaluate DELTA instead of expression 
+ *
+ *   - large transitions, small expression => eval expression
+ *   - small transitions, large expressions => eval delta
+ *)
 
 let rec eval_expr m = function
   | [] -> 0

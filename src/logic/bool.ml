@@ -13,4 +13,4 @@ let rec eval_bool fu = function
   | V x -> fu x
   | And l -> List.for_all (eval_bool fu) l
   | Or  l  -> List.exists (eval_bool fu) l
-  | Not e  -> not ((eval_bool fu) e)
+  | Not e  -> not (eval_bool fu e)

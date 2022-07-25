@@ -16,9 +16,7 @@ let init size = Bytes.make ((size + 7)/ 8) char0
 let clone = Bytes.copy
 
 let tos ?(max=40) bv =
-  (* FIXME Seq.take *)
-  let result = Seq.fold_left (fun acu b -> acu ^ Printf.sprintf "%02x" (Char.code b)) "" (Bytes.to_seq bv) in
-  if String.length result > max then String.sub result 0 max ^ "..." else result
+  Seq.fold_left (fun acu b -> acu ^ Printf.sprintf "%02x" (Char.code b)) "" (Seq.take max (Bytes.to_seq bv))
 
 (* Compute the position of the bit in the bytes array: index & mask *)
 let get_index n = n lsr 3
