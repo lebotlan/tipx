@@ -1,7 +1,7 @@
 (executables
- (names testparse testparseformula testexploration testarrays testwalk testwalkformula)
- (modules testparse testparseformula testexploration testarrays testwalk testwalkformula)
- (libraries petrinet logic parsers walker)
+ (names testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg)
+ (modules testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg)
+ (libraries petrinet logic parsers walker libtfg)
  
  (preprocess (pps lwt_ppx)))
 

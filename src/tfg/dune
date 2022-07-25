@@ -1,0 +1,5 @@
+(library
+ (name libtfg)
+ (public_name tipx.libtfg)
+ (libraries petrinet)
+)

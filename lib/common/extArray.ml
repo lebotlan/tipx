@@ -34,6 +34,8 @@ let set t index v =
   t.realsize <- max t.realsize (index+1) ;
   ()
 
+let update t index f = set t index (f (get t index))
+
 let size t = t.realsize
 
 let fold t acu f =

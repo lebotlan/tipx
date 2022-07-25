@@ -1,0 +1,50 @@
+open Petrinet
+
+open Net
+
+
+type tfg
+
+(* Identifiers of nodes in the tfg.
+ * When a node is a root, its node_id equals its pl_id in the reduced net. *)
+type node_id = int
+
+type node_name = string
+
+(* Places of the reduced net (roots). 
+ * Cell number #i must contain place #i. *)
+val create: pl array -> tfg
+
+
+(* Add agglomeration: add_agg tfg X [ Y1 ; ... ; Yn ]     X = Y1 + ... + Yn *)
+val add_agg: tfg -> node_name -> node_name list -> unit
+
+(* Add redundancy: add_red tfg [ Y1 ; ... ; YN ] X    X = Y1 + ... + Yn  
+ * If a node_name is numeric, it is a constant node. *)
+val add_red: tfg -> node_name list -> node_name -> unit
+
+type node
+
+type succ =
+  { agg: node list ;
+    red: node list }
+
+type pred = Root | A of node | R of node list
+
+(* Roots include constant nodes *)
+val roots: tfg -> node list
+
+val succ: tfg -> node -> succ
+
+val pred: tfg -> node -> pred
+
+
+val node_name: node -> node_name
+
+val node_id: node -> node_id
+
+val is_root: tfg -> node -> bool
+
+val get_node: tfg -> node_id -> node
+
+

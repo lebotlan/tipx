@@ -12,6 +12,8 @@ val set: 'a t -> int -> 'a -> unit
  * May raise Failure if index is < 0. *)
 val get: 'a t -> int -> 'a
 
+val update: 'a t -> int -> ('a -> 'a) -> unit
+
 val size: 'a t -> int
 
 val fold: 'a t -> 'b -> (int -> 'a -> 'b -> 'b) -> 'b
