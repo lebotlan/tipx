@@ -1,8 +1,10 @@
 open Parsers
+open Libtfg
 
 let explore_reduce_tfg_file file =
   let%lwt (net,_) = Parse.read_net file in 
-  let%lwt _ = Parse.read_tfg net file  in
+  let%lwt tfg = Parse.read_tfg net file  in
+  Lwt_io.printf "TFG :\n%s\n\n" (Printtfg.tfg2s tfg) ;%lwt
   Lwt.return_unit
 
 
