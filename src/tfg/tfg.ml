@@ -34,6 +34,8 @@ type tfg =
 
     pred: pred X.t }
 
+type t = tfg
+
 let dummy_node =
   { node_id = -1 ;
     node_name = "dummy_node" }

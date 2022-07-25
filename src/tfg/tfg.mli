@@ -5,6 +5,8 @@ open Net
 
 type tfg
 
+type t = tfg
+
 (* Identifiers of nodes in the tfg.
  * When a node is a root, its node_id equals its pl_id in the reduced net. *)
 type node_id = int

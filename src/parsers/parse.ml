@@ -30,3 +30,5 @@ let read_gen path parser =
 let read_net path = read_gen path (Tina.parse_net path)
 
 let read_goal net path = read_gen path (Selt.parse_goal (Net.get_plid net))
+
+let read_tfg net path = read_gen path (Reduce.parse_tfg net)
