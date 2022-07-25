@@ -1,0 +1,110 @@
+# from 68 place(s), 56 transition(s), 313 arc(s)
+# R1  |- removed 21 constant or duplicated place(s)
+# R3  |- removed 5 dead transition(s)
+# R1  |- removed 2 constant or duplicated place(s)
+# R1b |- removed 4 redundant place(s)
+# R4  |- agglomerated 3 place(s)
+# .   |- removed 3 identity transition(s)
+# R1b |- removed 2 redundant place(s)
+# R4  |- agglomerated 1 place(s)
+# .   |- removed 1 identity transition(s)
+# left 35 place(s), 47 transition(s), 246 arc(s)
+# 0.013s
+
+# a-prefix = a
+
+# generated equations
+# R |- pl_P14_1 = 0
+# R |- pl_P1_1 = 0
+# R |- pl_P21_1 = pl_P12_1
+# R |- pl_P22_1 = pl_P19_1
+# R |- pl_P24_1 = 0
+# R |- pl_P29_1 = pl_P11_1
+# R |- pl_P29_3 = pl_P26_1
+# R |- pl_P29_4 = 0
+# R |- pl_P29_5 = 0
+# R |- pl_P29_6 = 0
+# R |- pl_P37_1 = 0
+# R |- pl_P38_1 = 0
+# R |- pl_P3_1 = 0
+# R |- pl_P41_1 = pl_P28_1
+# R |- pl_P4_1 = pl_P16_1
+# R |- pl_P7_2 = 0
+# R |- pl_P7_4 = 0
+# R |- pl_P7_5 = 0
+# R |- pl_P7_6 = 0
+# R |- pl_P8_1 = pl_P25_1
+# R |- pl_P9_1 = 0
+# R |- pl_P0_6 = 0
+# R |- pl_P40_6 = 0
+# R |- pl_P29_2 = pl_P10_1 + pl_P33_1
+# R |- pl_P6_1 = pl_P0_1 + pl_P40_1
+# R |- pl_P31_1 = pl_P0_3 + pl_P40_3
+# R |- pl_P27_1 = pl_P0_4 + pl_P40_4
+# A |- a1 = pl_P40_3 + pl_P12_1
+# A |- a2 = pl_P40_1 + pl_P16_1
+# A |- a3 = pl_P40_4 + pl_P28_1
+# R |- pl_P5_1 = pl_P0_5 + pl_P40_5
+# R |- pl_P30_1 = pl_P10_1 + pl_P35_1 + pl_P7_1
+# A |- a4 = pl_P40_5 + pl_P25_1
+
+# net is bounded
+
+net {Railroad-PT-005}
+tr tr_T10_1 pl_P10_1  -> pl_P11_1 pl_P7_1 
+tr tr_T11_1 pl_P0_2 pl_P2_1 pl_P32_1  -> pl_P13_1 pl_P42_1 
+tr tr_T12_1 pl_P0_4 pl_P2_1  -> pl_P18_1 pl_P42_1 
+tr tr_T13_1 pl_P0_1 pl_P2_1  -> pl_P17_1 pl_P42_1 
+tr tr_T14_1 pl_P26_1 pl_P35_1  -> pl_P10_1 
+tr tr_T15_1 pl_P23_1 pl_P34_1 pl_P42_1  -> pl_P34_2 pl_P35_1 
+tr tr_T16_1 pl_P18_1 pl_P2_1  -> a3 pl_P2_1 
+tr tr_T17_1 pl_P33_1  -> pl_P26_1 pl_P7_3 
+tr tr_T18_1 pl_P7_1  -> pl_P23_1 pl_P2_1 
+tr tr_T19_1 pl_P13_1 pl_P2_1  -> pl_P19_1 pl_P2_1 
+tr tr_T20_1 pl_P0_3 pl_P2_1  -> pl_P15_1 pl_P42_1 
+tr tr_T22_1 pl_P17_1 pl_P2_1  -> a2 pl_P2_1 
+tr tr_T23_13 a2 pl_P23_1 pl_P34_3  -> pl_P0_1 pl_P23_1 pl_P34_2 
+tr tr_T23_14 pl_P23_1 pl_P34_3 pl_P40_2  -> pl_P0_2 pl_P23_1 pl_P34_2 
+tr tr_T23_15 a1 pl_P23_1 pl_P34_3  -> pl_P0_3 pl_P23_1 pl_P34_2 
+tr tr_T23_16 pl_P23_1 a3 pl_P34_3  -> pl_P0_4 pl_P23_1 pl_P34_2 
+tr tr_T23_17 pl_P23_1 a4 pl_P34_3  -> pl_P0_5 pl_P23_1 pl_P34_2 
+tr tr_T23_19 a2 pl_P23_1 pl_P34_4  -> pl_P0_1 pl_P23_1 pl_P34_3 
+tr tr_T23_20 pl_P23_1 pl_P34_4 pl_P40_2  -> pl_P0_2 pl_P23_1 pl_P34_3 
+tr tr_T23_21 a1 pl_P23_1 pl_P34_4  -> pl_P0_3 pl_P23_1 pl_P34_3 
+tr tr_T23_22 pl_P23_1 a3 pl_P34_4  -> pl_P0_4 pl_P23_1 pl_P34_3 
+tr tr_T23_23 pl_P23_1 a4 pl_P34_4  -> pl_P0_5 pl_P23_1 pl_P34_3 
+tr tr_T23_25 a2 pl_P23_1 pl_P34_5  -> pl_P0_1 pl_P23_1 pl_P34_4 
+tr tr_T23_26 pl_P23_1 pl_P34_5 pl_P40_2  -> pl_P0_2 pl_P23_1 pl_P34_4 
+tr tr_T23_27 a1 pl_P23_1 pl_P34_5  -> pl_P0_3 pl_P23_1 pl_P34_4 
+tr tr_T23_28 pl_P23_1 a3 pl_P34_5  -> pl_P0_4 pl_P23_1 pl_P34_4 
+tr tr_T23_29 pl_P23_1 a4 pl_P34_5  -> pl_P0_5 pl_P23_1 pl_P34_4 
+tr tr_T23_31 a2 pl_P23_1 pl_P34_6  -> pl_P0_1 pl_P23_1 pl_P34_5 
+tr tr_T23_32 pl_P23_1 pl_P34_6 pl_P40_2  -> pl_P0_2 pl_P23_1 pl_P34_5 
+tr tr_T23_33 a1 pl_P23_1 pl_P34_6  -> pl_P0_3 pl_P23_1 pl_P34_5 
+tr tr_T23_34 pl_P23_1 a3 pl_P34_6  -> pl_P0_4 pl_P23_1 pl_P34_5 
+tr tr_T23_35 pl_P23_1 a4 pl_P34_6  -> pl_P0_5 pl_P23_1 pl_P34_5 
+tr tr_T24_2 pl_P23_1 pl_P34_2 pl_P42_1  -> pl_P23_1 pl_P2_1 pl_P34_3 
+tr tr_T24_3 pl_P23_1 pl_P34_3 pl_P42_1  -> pl_P23_1 pl_P2_1 pl_P34_4 
+tr tr_T24_4 pl_P23_1 pl_P34_4 pl_P42_1  -> pl_P23_1 pl_P2_1 pl_P34_5 
+tr tr_T24_5 pl_P23_1 pl_P34_5 pl_P42_1  -> pl_P23_1 pl_P2_1 pl_P34_6 
+tr tr_T2_1 pl_P15_1 pl_P2_1  -> a1 pl_P2_1 
+tr tr_T3_1 pl_P36_1 pl_P7_3  -> pl_P23_1 
+tr tr_T4_1 pl_P11_1 pl_P39_1  -> pl_P33_1 
+tr tr_T5_1 pl_P20_1 pl_P2_1  -> a4 pl_P2_1 
+tr tr_T6_1 pl_P0_5 pl_P2_1  -> pl_P20_1 pl_P42_1 
+tr tr_T7_1 pl_P19_1  -> pl_P32_1 pl_P40_2 
+tr tr_T9_10 pl_P23_1 a3 pl_P34_2  -> pl_P0_4 pl_P34_1 pl_P36_1 pl_P39_1 
+tr tr_T9_11 pl_P23_1 a4 pl_P34_2  -> pl_P0_5 pl_P34_1 pl_P36_1 pl_P39_1 
+tr tr_T9_7 a2 pl_P23_1 pl_P34_2  -> pl_P0_1 pl_P34_1 pl_P36_1 pl_P39_1 
+tr tr_T9_8 pl_P23_1 pl_P34_2 pl_P40_2  -> pl_P0_2 pl_P34_1 pl_P36_1 pl_P39_1 
+tr tr_T9_9 a1 pl_P23_1 pl_P34_2  -> pl_P0_3 pl_P34_1 pl_P36_1 pl_P39_1 
+pl pl_P0_1 (1)
+pl pl_P0_2 (1)
+pl pl_P0_3 (1)
+pl pl_P0_4 (1)
+pl pl_P0_5 (1)
+pl pl_P23_1 (1)
+pl pl_P26_1 (1)
+pl pl_P2_1 (1)
+pl pl_P32_1 (1)
+pl pl_P34_1 (1)
