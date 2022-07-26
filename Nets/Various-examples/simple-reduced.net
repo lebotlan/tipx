@@ -1,0 +1,38 @@
+# from 10 place(s), 7 transition(s), 17 arc(s)
+# agglomerated 3 place(s)
+# removed 3 redundant transition(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 redundant place(s)
+# agglomerated 2 place(s)
+# removed 2 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# left 0 place(s), 0 transition(s), 0 arc(s)
+# 0.000s
+
+# prefix = a
+
+# generated equations
+# A |- a1 = p10 + p4
+# A |- a2 = p2 + p1
+# A |- a3 = p6 + p5
+# A |- a4 = p3 + a2
+# R |- a1 = a3 + p8
+# A |- a5 = a3 + a4
+# A |- a6 = p9 + p8
+# R |- p7 = a6
+# A |- a7 = a6 + a5
+
+# simplified equations for reachability analysis
+# R |- p10 + p4 = p6 + p5 + p8
+# R |- p7 = p9 + p8
+# R |- p9 + p8 + p6 + p5 + p3 + p2 + p1 = 10
+
+# even more simplified equations for counting
+# R |- p10 + p4 = p6 + p5 + p8
+# R |- p9 + p8 + p6 + p5 + p3 + p2 + p1 = 10
+
+net {simple-original}

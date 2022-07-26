@@ -1,0 +1,191 @@
+# from 140 place(s), 128 transition(s), 416 arc(s)
+# agglomerated 48 place(s)
+# removed 48 redundant transition(s)
+# left 92 place(s), 80 transition(s), 320 arc(s)
+# 0.012s
+
+# prefix = aa
+
+# generated equations
+# A |- aa1 = Acknowledge_1_1 + MesBuffReply_1_1
+# A |- aa2 = Acknowledge_1_2 + MesBuffReply_1_2
+# A |- aa3 = Acknowledge_1_3 + MesBuffReply_1_3
+# A |- aa4 = Acknowledge_1_4 + MesBuffReply_1_4
+# A |- aa5 = Acknowledge_2_1 + MesBuffReply_2_1
+# A |- aa6 = Acknowledge_2_2 + MesBuffReply_2_2
+# A |- aa7 = Acknowledge_2_3 + MesBuffReply_2_3
+# A |- aa8 = Acknowledge_2_4 + MesBuffReply_2_4
+# A |- aa9 = Acknowledge_3_1 + MesBuffReply_3_1
+# A |- aa10 = Acknowledge_3_2 + MesBuffReply_3_2
+# A |- aa11 = Acknowledge_3_3 + MesBuffReply_3_3
+# A |- aa12 = Acknowledge_3_4 + MesBuffReply_3_4
+# A |- aa13 = Acknowledge_4_1 + MesBuffReply_4_1
+# A |- aa14 = Acknowledge_4_2 + MesBuffReply_4_2
+# A |- aa15 = Acknowledge_4_3 + MesBuffReply_4_3
+# A |- aa16 = Acknowledge_4_4 + MesBuffReply_4_4
+# A |- aa17 = RecBuff_1_1 + Message_1_1
+# A |- aa18 = RecBuff_1_2 + Message_1_2
+# A |- aa19 = RecBuff_1_3 + Message_1_3
+# A |- aa20 = RecBuff_1_4 + Message_1_4
+# A |- aa21 = RecBuff_2_1 + Message_2_1
+# A |- aa22 = RecBuff_2_2 + Message_2_2
+# A |- aa23 = RecBuff_2_3 + Message_2_3
+# A |- aa24 = RecBuff_2_4 + Message_2_4
+# A |- aa25 = RecBuff_3_1 + Message_3_1
+# A |- aa26 = RecBuff_3_2 + Message_3_2
+# A |- aa27 = RecBuff_3_3 + Message_3_3
+# A |- aa28 = RecBuff_3_4 + Message_3_4
+# A |- aa29 = RecBuff_4_1 + Message_4_1
+# A |- aa30 = RecBuff_4_2 + Message_4_2
+# A |- aa31 = RecBuff_4_3 + Message_4_3
+# A |- aa32 = RecBuff_4_4 + Message_4_4
+# A |- aa33 = WaitMutex_1_1 + all_active_1
+# A |- aa34 = WaitMutex_1_2 + aa33
+# A |- aa35 = WaitMutex_1_3 + aa34
+# A |- aa36 = WaitMutex_1_4 + aa35
+# A |- aa37 = WaitMutex_2_1 + all_active_2
+# A |- aa38 = WaitMutex_2_2 + aa37
+# A |- aa39 = WaitMutex_2_3 + aa38
+# A |- aa40 = WaitMutex_2_4 + aa39
+# A |- aa41 = WaitMutex_3_1 + all_active_3
+# A |- aa42 = WaitMutex_3_2 + aa41
+# A |- aa43 = WaitMutex_3_3 + aa42
+# A |- aa44 = WaitMutex_3_4 + aa43
+# A |- aa45 = WaitMutex_4_1 + all_active_4
+# A |- aa46 = WaitMutex_4_2 + aa45
+# A |- aa47 = WaitMutex_4_3 + aa46
+# A |- aa48 = WaitMutex_4_4 + aa47
+
+# R |- aa36 = 1
+# R |- aa40 = 1
+# R |- aa44 = 1
+# R |- aa48 = 1
+# R |- aa1 = 1
+# R |- aa2 = 1
+# R |- aa3 = 1
+# R |- aa4 = 1
+# R |- aa5 = 1
+# R |- aa6 = 1
+# R |- aa7 = 1
+# R |- aa8 = 1
+# R |- aa9 = 1
+# R |- aa10 = 1
+# R |- aa11 = 1
+# R |- aa12 = 1
+# R |- aa13 = 1
+# R |- aa14 = 1
+# R |- aa15 = 1
+# R |- aa16 = 1
+# R |- aa17 = 1
+# R |- aa18 = 1
+# R |- aa19 = 1
+# R |- aa20 = 1
+# R |- aa21 = 1
+# R |- aa22 = 1
+# R |- aa23 = 1
+# R |- aa24 = 1
+# R |- aa25 = 1
+# R |- aa26 = 1
+# R |- aa27 = 1
+# R |- aa28 = 1
+# R |- aa29 = 1
+# R |- aa30 = 1
+# R |- aa31 = 1
+# R |- aa32 = 1
+
+
+
+
+net {DatabaseWithMutex-PT-04}
+tr Acquire_1_1 Mutex_1 aa36  -> Modify_1_1 
+tr Acquire_1_2 Mutex_2 aa36  -> Modify_1_2 
+tr Acquire_1_3 Mutex_3 aa36  -> Modify_1_3 
+tr Acquire_1_4 Mutex_4 aa36  -> Modify_1_4 
+tr Acquire_2_1 Mutex_1 aa40  -> Modify_2_1 
+tr Acquire_2_2 Mutex_2 aa40  -> Modify_2_2 
+tr Acquire_2_3 Mutex_3 aa40  -> Modify_2_3 
+tr Acquire_2_4 Mutex_4 aa40  -> Modify_2_4 
+tr Acquire_3_1 Mutex_1 aa44  -> Modify_3_1 
+tr Acquire_3_2 Mutex_2 aa44  -> Modify_3_2 
+tr Acquire_3_3 Mutex_3 aa44  -> Modify_3_3 
+tr Acquire_3_4 Mutex_4 aa44  -> Modify_3_4 
+tr Acquire_4_1 Mutex_1 aa48  -> Modify_4_1 
+tr Acquire_4_2 Mutex_2 aa48  -> Modify_4_2 
+tr Acquire_4_3 Mutex_3 aa48  -> Modify_4_3 
+tr Acquire_4_4 Mutex_4 aa48  -> Modify_4_4 
+tr Change_1_1 Modify_1_1  -> Active_1_1 aa21 aa25 aa29 
+tr Change_1_2 Modify_1_2  -> Active_1_2 aa22 aa26 aa30 
+tr Change_1_3 Modify_1_3  -> Active_1_3 aa23 aa27 aa31 
+tr Change_1_4 Modify_1_4  -> Active_1_4 aa24 aa28 aa32 
+tr Change_2_1 Modify_2_1  -> Active_2_1 aa17 aa25 aa29 
+tr Change_2_2 Modify_2_2  -> Active_2_2 aa18 aa26 aa30 
+tr Change_2_3 Modify_2_3  -> Active_2_3 aa19 aa27 aa31 
+tr Change_2_4 Modify_2_4  -> Active_2_4 aa20 aa28 aa32 
+tr Change_3_1 Modify_3_1  -> Active_3_1 aa17 aa21 aa29 
+tr Change_3_2 Modify_3_2  -> Active_3_2 aa18 aa22 aa30 
+tr Change_3_3 Modify_3_3  -> Active_3_3 aa19 aa23 aa31 
+tr Change_3_4 Modify_3_4  -> Active_3_4 aa20 aa24 aa32 
+tr Change_4_1 Modify_4_1  -> Active_4_1 aa17 aa21 aa25 
+tr Change_4_2 Modify_4_2  -> Active_4_2 aa18 aa22 aa26 
+tr Change_4_3 Modify_4_3  -> Active_4_3 aa19 aa23 aa27 
+tr Change_4_4 Modify_4_4  -> Active_4_4 aa20 aa24 aa28 
+tr Release_1_1 Active_1_1 aa5 aa9 aa13  -> Mutex_1 aa36 
+tr Release_1_2 Active_1_2 aa6 aa10 aa14  -> Mutex_2 aa36 
+tr Release_1_3 Active_1_3 aa7 aa11 aa15  -> Mutex_3 aa36 
+tr Release_1_4 Active_1_4 aa8 aa12 aa16  -> Mutex_4 aa36 
+tr Release_2_1 Active_2_1 aa1 aa9 aa13  -> Mutex_1 aa40 
+tr Release_2_2 Active_2_2 aa2 aa10 aa14  -> Mutex_2 aa40 
+tr Release_2_3 Active_2_3 aa3 aa11 aa15  -> Mutex_3 aa40 
+tr Release_2_4 Active_2_4 aa4 aa12 aa16  -> Mutex_4 aa40 
+tr Release_3_1 Active_3_1 aa1 aa5 aa13  -> Mutex_1 aa44 
+tr Release_3_2 Active_3_2 aa2 aa6 aa14  -> Mutex_2 aa44 
+tr Release_3_3 Active_3_3 aa3 aa7 aa15  -> Mutex_3 aa44 
+tr Release_3_4 Active_3_4 aa4 aa8 aa16  -> Mutex_4 aa44 
+tr Release_4_1 Active_4_1 aa1 aa5 aa9  -> Mutex_1 aa48 
+tr Release_4_2 Active_4_2 aa2 aa6 aa10  -> Mutex_2 aa48 
+tr Release_4_3 Active_4_3 aa3 aa7 aa11  -> Mutex_3 aa48 
+tr Release_4_4 Active_4_4 aa4 aa8 aa12  -> Mutex_4 aa48 
+tr Update_1_1 aa17 all_passive_1  -> updating_1_1 
+tr Update_1_2 aa18 all_passive_1  -> updating_1_2 
+tr Update_1_3 aa19 all_passive_1  -> updating_1_3 
+tr Update_1_4 aa20 all_passive_1  -> updating_1_4 
+tr Update_2_1 aa21 all_passive_2  -> updating_2_1 
+tr Update_2_2 aa22 all_passive_2  -> updating_2_2 
+tr Update_2_3 aa23 all_passive_2  -> updating_2_3 
+tr Update_2_4 aa24 all_passive_2  -> updating_2_4 
+tr Update_3_1 aa25 all_passive_3  -> updating_3_1 
+tr Update_3_2 aa26 all_passive_3  -> updating_3_2 
+tr Update_3_3 aa27 all_passive_3  -> updating_3_3 
+tr Update_3_4 aa28 all_passive_3  -> updating_3_4 
+tr Update_4_1 aa29 all_passive_4  -> updating_4_1 
+tr Update_4_2 aa30 all_passive_4  -> updating_4_2 
+tr Update_4_3 aa31 all_passive_4  -> updating_4_3 
+tr Update_4_4 aa32 all_passive_4  -> updating_4_4 
+tr end_update_1_1 updating_1_1  -> aa1 all_passive_1 
+tr end_update_1_2 updating_1_2  -> aa2 all_passive_1 
+tr end_update_1_3 updating_1_3  -> aa3 all_passive_1 
+tr end_update_1_4 updating_1_4  -> aa4 all_passive_1 
+tr end_update_2_1 updating_2_1  -> aa5 all_passive_2 
+tr end_update_2_2 updating_2_2  -> aa6 all_passive_2 
+tr end_update_2_3 updating_2_3  -> aa7 all_passive_2 
+tr end_update_2_4 updating_2_4  -> aa8 all_passive_2 
+tr end_update_3_1 updating_3_1  -> aa9 all_passive_3 
+tr end_update_3_2 updating_3_2  -> aa10 all_passive_3 
+tr end_update_3_3 updating_3_3  -> aa11 all_passive_3 
+tr end_update_3_4 updating_3_4  -> aa12 all_passive_3 
+tr end_update_4_1 updating_4_1  -> aa13 all_passive_4 
+tr end_update_4_2 updating_4_2  -> aa14 all_passive_4 
+tr end_update_4_3 updating_4_3  -> aa15 all_passive_4 
+tr end_update_4_4 updating_4_4  -> aa16 all_passive_4 
+pl Mutex_1 (1)
+pl Mutex_2 (1)
+pl Mutex_3 (1)
+pl Mutex_4 (1)
+pl aa36 (1)
+pl aa40 (1)
+pl aa44 (1)
+pl aa48 (1)
+pl all_passive_1 (1)
+pl all_passive_2 (1)
+pl all_passive_3 (1)
+pl all_passive_4 (1)

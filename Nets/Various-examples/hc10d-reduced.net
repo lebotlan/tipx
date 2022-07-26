@@ -1,0 +1,55 @@
+# from 26 place(s), 18 transition(s), 51 arc(s)
+# R1  |- removed 1 isolated or duplicated place(s)
+# R4  |- agglomerated 6 place(s)
+# .   |- removed 6 identity transition(s)
+# R4  |- agglomerated 2 place(s)
+# .   |- removed 2 identity transition(s)
+# R1c |- removed 5 redundant place(s)
+# R4  |- agglomerated 4 place(s)
+# .   |- removed 4 identity transition(s)
+# R4  |- agglomerated 1 place(s)
+# .   |- removed 1 identity transition(s)
+# R4  |- agglomerated 1 place(s)
+# .   |- removed 1 identity transition(s)
+# R1c |- removed 2 redundant place(s)
+# R4  |- agglomerated 2 place(s)
+# .   |- removed 2 identity transition(s)
+# R4  |- agglomerated 1 place(s)
+# .   |- removed 1 identity transition(s)
+# R7  |- converted 1 place->transition pair
+# left 0 place(s), 0 transition(s), 0 arc(s)
+# 0.004s
+
+# prefix = a
+
+# generated equations
+# R |- p19 = p20
+# A |- a4 = p21 + p18
+# A |- a5 = p22 + p20
+# R |- a4 = a5 + p23
+# R |- p27 = p23 + p26
+# A |- a11 = p23 + a5
+# A |- a13 = a11 + p26
+
+# A |- a1 = p11 + p7
+# A |- a2 = p17 + p14
+# A |- a3 = p2 + p1
+# A |- a6 = p25 + p16
+# A |- a7 = p15 + a1
+# A |- a8 = p3 + a3
+# R |- p12 = p10 + p8
+# R |- p13 = p10 + p9
+# R |- p4 = p6 + a7
+# A |- a9 = a2 + p10
+# A |- a10 = a6 + a7
+# A |- a12 = p9 + p5
+# A |- a14 = a9 + a13
+# R |- a12 = p6 + p8
+# R |- a10 = a14 + p8
+# A |- a15 = a14 + p8
+# A |- a16 = p6 + a8
+# A |- a17 = a15 + a16
+# R |- a17 <= 10
+
+
+net {HouseConstruction-PT-010}

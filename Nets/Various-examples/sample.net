@@ -1,0 +1,11 @@
+# prefix = a
+
+# generated equations
+# A |- a1 = x1 + x2
+# A |- a2 = x3 + x4
+# A |- a3 = a2 + x5
+# R |- a1 = a3
+# A |- a4 = y1 + y2
+# A |- a5 = a3 + a4
+# R |- a5 = 5
+

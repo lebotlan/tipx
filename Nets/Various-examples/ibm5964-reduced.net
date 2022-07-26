@@ -1,0 +1,415 @@
+# from 263 place(s), 139 transition(s), 541 arc(s)
+# removed 117 isolated or redundant place(s)
+# agglomerated 60 place(s)
+# removed 60 redundant transition(s)
+# agglomerated 25 place(s)
+# removed 25 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# removed 1 isolated or redundant transition(s)
+# agglomerated 12 place(s)
+# removed 12 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# removed 1 isolated or redundant transition(s)
+# agglomerated 6 place(s)
+# removed 6 redundant transition(s)
+# agglomerated 3 place(s)
+# removed 3 redundant transition(s)
+# removed 1 isolated or redundant transition(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 isolated or redundant transition(s)
+# agglomerated 2 place(s)
+# removed 2 redundant transition(s)
+# removed 2 redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 2 redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# left 29 place(s), 24 transition(s), 66 arc(s)
+# 0.016s
+
+# prefix = aa
+
+# generated equations
+# R |- {callToProcess.s00002316.output.s00000938} = {callToProcess.s00002316.output.s00000959}
+# R |- {callToProcess.s00002411.input.s00000935} = {callToProcess.s00002411.input.s00000950}
+# R |- {callToProcess.s00002411.input.s00000950} = {callToProcess.s00002411.input.s00000985}
+# R |- {callToProcess.s00002411.output.s00000938} = {callToProcess.s00002411.output.s00000956}
+# R |- {callToProcess.s00002411.output.s00000956} = {callToProcess.s00002411.output.s00000981}
+# R |- {callToProcess.s00002538.input.s00000950} = {callToProcess.s00002538.input.s00000952}
+# R |- {callToProcess.s00002538.input.s00000952} = {callToProcess.s00002538.input.s00001011}
+# R |- {callToProcess.s00002538.output.s00000938} = {callToProcess.s00002538.output.s00000956}
+# R |- {callToProcess.s00002538.output.s00000956} = {callToProcess.s00002538.output.s00000961}
+# R |- {callToProcess.s00004075.input.s00000935} = {callToProcess.s00004075.input.s00000950}
+# R |- {callToProcess.s00004075.input.s00000950} = {callToProcess.s00004075.input.s00000986}
+# R |- {callToProcess.s00005925.input.s00000952} = {callToProcess.s00005925.input.s00000985}
+# R |- {callToProcess.s00005925.input.s00000985} = {callToProcess.s00005925.input.s00000986}
+# R |- {callToProcess.s00005925.output.s00000938} = {callToProcess.s00005925.output.s00000956}
+# R |- {callToProcess.s00005925.output.s00000956} = {callToProcess.s00005925.output.s00000959}
+# R |- {callToTask.s00001305.input.s00000935} = {callToTask.s00001305.input.s00000950}
+# R |- {callToTask.s00001305.input.s00000950} = {callToTask.s00001305.input.s00001009}
+# R |- {callToTask.s00001632.output.s00000938} = {callToTask.s00001632.output.s00000956}
+# R |- {callToTask.s00001632.output.s00000956} = {callToTask.s00001632.output.s00000959}
+# R |- {callToTask.s00001632.output.s00000959} = {callToTask.s00001632.output.s00000979}
+# R |- {callToTask.s00001746.input.s00000935} = {callToTask.s00001746.input.s00000950}
+# R |- {callToTask.s00001746.input.s00000950} = {callToTask.s00001746.input.s00000952}
+# R |- {callToTask.s00001746.input.s00000952} = {callToTask.s00001746.input.s00000987}
+# R |- {callToTask.s00001746.output.s00000938} = {callToTask.s00001746.output.s00000956}
+# R |- {callToTask.s00001746.output.s00000956} = {callToTask.s00001746.output.s00000960}
+# R |- {callToTask.s00001971.input.s00000935} = {callToTask.s00001971.input.s00000950}
+# R |- {callToTask.s00001971.input.s00000950} = {callToTask.s00001971.input.s00000952}
+# R |- {callToTask.s00001971.input.s00000952} = {callToTask.s00001971.input.s00000985}
+# R |- {callToTask.s00001971.output.s00000938} = {callToTask.s00001971.output.s00000956}
+# R |- {callToTask.s00001971.output.s00000956} = {callToTask.s00001971.output.s00000979}
+# R |- {callToTask.s00001971.output.s00000979} = {callToTask.s00001971.output.s00000981}
+# R |- {callToTask.s00002181.output.s00000938} = {callToTask.s00002181.output.s00000956}
+# R |- {callToTask.s00002181.output.s00000956} = {callToTask.s00002181.output.s00000979}
+# R |- {callToTask.s00002183.output.s00000938} = {callToTask.s00002183.output.s00000956}
+# R |- {callToTask.s00002183.output.s00000956} = {callToTask.s00002183.output.s00000962}
+# R |- {callToTask.s00002183.output.s00000962} = {callToTask.s00002183.output.s00000981}
+# R |- {callToTask.s00002185.input.s00000935} = {callToTask.s00002185.input.s00000950}
+# R |- {callToTask.s00002185.input.s00000950} = {callToTask.s00002185.input.s00000952}
+# R |- {callToTask.s00002186.input.s00000935} = {callToTask.s00002186.input.s00000950}
+# R |- {callToTask.s00002186.input.s00000950} = {callToTask.s00002186.input.s00001011}
+# R |- {callToTask.s00002186.input.s00001011} = {callToTask.s00002186.input.s00001012}
+# R |- {callToTask.s00002186.input.s00001012} = {callToTask.s00002186.input.s00001513}
+# R |- {callToTask.s00002186.output.s00000938} = {callToTask.s00002186.output.s00000962}
+# R |- {callToTask.s00002186.output.s00000962} = {callToTask.s00002186.output.s00000979}
+# R |- {callToTask.s00002189.output.s00000938} = {callToTask.s00002189.output.s00000960}
+# R |- {callToTask.s00002190.output.s00000938} = {callToTask.s00002190.output.s00000956}
+# R |- {callToTask.s00002190.output.s00000956} = {callToTask.s00002190.output.s00000979}
+# R |- {callToTask.s00002427.input.s00000950} = {callToTask.s00002427.input.s00000952}
+# R |- {callToTask.s00002427.input.s00000952} = {callToTask.s00002427.input.s00001203}
+# R |- {callToTask.s00002427.output.s00000938} = {callToTask.s00002427.output.s00000956}
+# R |- {callToTask.s00002427.output.s00000956} = {callToTask.s00002427.output.s00000979}
+# R |- {callToTask.s00002526.input.s00000935} = {callToTask.s00002526.input.s00000950}
+# R |- {callToTask.s00002526.input.s00000950} = {callToTask.s00002526.input.s00000986}
+# R |- {callToTask.s00002526.output.s00000938} = {callToTask.s00002526.output.s00000956}
+# R |- {callToTask.s00002526.output.s00000956} = {callToTask.s00002526.output.s00000981}
+# R |- {callToTask.s00002741.input.s00000935} = {callToTask.s00002741.input.s00000985}
+# R |- {callToTask.s00002741.input.s00000985} = {callToTask.s00002741.input.s00000986}
+# R |- {callToTask.s00002741.output.s00000956} = {callToTask.s00002741.output.s00000960}
+# R |- {callToTask.s00002741.output.s00000960} = {callToTask.s00002741.output.s00000979}
+# R |- {callToTask.s00002741.output.s00000979} = {callToTask.s00002741.output.s00000981}
+# R |- {callToTask.s00005849.input.s00000950} = {callToTask.s00005849.input.s00000952}
+# R |- {callToTask.s00005849.input.s00000952} = {callToTask.s00005849.input.s00000985}
+# R |- {callToTask.s00005849.output.s00000938} = {callToTask.s00005849.output.s00000959}
+# R |- {callToTask.s00005849.output.s00000959} = {callToTask.s00005849.output.s00000960}
+# R |- {callToTask.s00005897.input.s00000950} = {callToTask.s00005897.input.s00000986}
+# R |- {callToTask.s00005897.output.s00000938} = {callToTask.s00005897.output.s00000956}
+# R |- {callToTask.s00005897.output.s00000956} = {callToTask.s00005897.output.s00000979}
+# R |- {callToTask.s00005965.input.s00000935} = {callToTask.s00005965.input.s00000950}
+# R |- {callToTask.s00005965.input.s00000950} = {callToTask.s00005965.input.s00000952}
+# R |- {callToTask.s00005966.output.s00000938} = {callToTask.s00005966.output.s00000956}
+# R |- {callToTask.s00005966.output.s00000956} = {callToTask.s00005966.output.s00000979}
+# R |- {callToTask.s00005967.input.s00000935} = {callToTask.s00005967.input.s00000950}
+# R |- {callToTask.s00005967.input.s00000950} = {callToTask.s00005967.input.s00000952}
+# R |- {callToTask.s00005967.output.s00000938} = {callToTask.s00005967.output.s00000956}
+# R |- {callToTask.s00005967.output.s00000956} = {callToTask.s00005967.output.s00000979}
+# R |- {callToTask.s00005968.input.s00000935} = {callToTask.s00005968.input.s00000950}
+# R |- {callToTask.s00005968.input.s00000950} = {callToTask.s00005968.input.s00000952}
+# R |- {callToTask.s00005969.input.s00000935} = {callToTask.s00005969.input.s00000952}
+# R |- {callToTask.s00005969.input.s00000952} = {callToTask.s00005969.input.s00000985}
+# R |- {callToTask.s00005969.output.s00000938} = {callToTask.s00005969.output.s00000959}
+# R |- {callToTask.s00005969.output.s00000959} = {callToTask.s00005969.output.s00000960}
+# R |- {callToTask.s00005970.input.s00000935} = {callToTask.s00005970.input.s00000950}
+# R |- {callToTask.s00005970.input.s00000950} = {callToTask.s00005970.input.s00000952}
+# R |- {callToTask.s00005970.output.s00000938} = {callToTask.s00005970.output.s00000956}
+# R |- {callToTask.s00005970.output.s00000956} = {callToTask.s00005970.output.s00000979}
+# R |- {callToTask.s00005970.output.s00000979} = {callToTask.s00005970.output.s00000981}
+# R |- {callToTask.s00005971.output.s00000938} = {callToTask.s00005971.output.s00000956}
+# R |- {callToTask.s00005971.output.s00000956} = {callToTask.s00005971.output.s00000959}
+# R |- {callToTask.s00005972.input.s00000935} = {callToTask.s00005972.input.s00000950}
+# R |- {callToTask.s00005972.input.s00000950} = {callToTask.s00005972.input.s00000952}
+# R |- {callToTask.s00005972.input.s00000952} = {callToTask.s00005972.input.s00001009}
+# R |- {fork.s00001067.input.s00000935} = {fork.s00001067.input.s00000950}
+# R |- {fork.s00001067.input.s00000950} = {fork.s00001067.input.s00000952}
+# R |- {fork.s00001293.input.s00000935} = {fork.s00001293.input.s00000950}
+# R |- {fork.s00001293.input.s00000950} = {fork.s00001293.input.s00000952}
+# R |- {join.s00001295.input.s00000935} = {join.s00001295.input.s00000952}
+# R |- {join.s00001295.input.s00000950} = {join.s00001295.input.s00000985}
+# R |- {join.s00001295.input.s00000952} = {join.s00001295.input.s00000986}
+# R |- {join.s00001295.input.s00000985} = {join.s00001295.input.s00000987}
+# R |- {merge.s00000945.input.s00000935} = {merge.s00000945.input.s00000952}
+# R |- {merge.s00000945.input.s00000950} = {merge.s00000945.input.s00000985}
+# R |- {merge.s00000945.input.s00000952} = {merge.s00000945.input.s00000986}
+# R |- {merge.s00000945.input.s00000985} = {merge.s00000945.input.s00000987}
+# R |- {merge.s00001066.input.s00000950} = {merge.s00001066.input.s00000985}
+# R |- {merge.s00001066.input.s00000985} = {merge.s00001066.input.s00000987}
+# R |- {merge.s00001120.input.s00000935} = {merge.s00001120.input.s00000988}
+# R |- {merge.s00001120.input.s00000950} = {merge.s00001120.input.s00001012}
+# R |- {merge.s00001120.input.s00000952} = {merge.s00001120.input.s00000987}
+# R |- {merge.s00001120.input.s00000987} = {merge.s00001120.input.s00001010}
+# R |- {merge.s00001120.input.s00000988} = {merge.s00001120.input.s00001011}
+# R |- {merge.s00001120.input.s00001010} = {merge.s00001120.input.s00001013}
+# R |- {merge.s00001120.input.s00001012} = {merge.s00001120.input.s00001513}
+# R |- {merge.s00001290.input.s00000950} = {process.s00000383##s00005964.input.s00001431}
+# R |- {merge.s00001291.input.s00000935} = {merge.s00001291.input.s00000952}
+# R |- {merge.s00001291.input.s00000950} = {merge.s00001291.input.s00000987}
+# R |- {merge.s00001291.input.s00000952} = {merge.s00001291.input.s00000986}
+# R |- {merge.s00001291.input.s00000987} = {merge.s00001291.input.s00001009}
+# A |- aa1 = {callToProcess.s00001273.input.s00000950} + {decision.s00001618.activated}
+# A |- aa2 = {callToProcess.s00002316.inputCriterion.s00000937.used} + {callToTask.s00005967.output.s00000979}
+# A |- aa3 = {callToProcess.s00002411.input.s00000985} + {fork.s00001536.activated.s00000991}
+# A |- aa4 = {callToProcess.s00002411.output.s00000981} + {callToProcess.s00002411.inputCriterion.s00000937.used}
+# A |- aa5 = {callToProcess.s00002538.input.s00001011} + {decision.s00001616.activated}
+# A |- aa6 = {callToProcess.s00002538.output.s00000961} + {callToProcess.s00002538.inputCriterion.s00000937.used}
+# A |- aa7 = {callToProcess.s00004075.inputCriterion.s00000937.used} + {callToProcess.s00004075.input.s00000986}
+# A |- aa8 = {callToProcess.s00005925.input.s00000986} + {merge.s00001290.activated}
+# A |- aa9 = {callToProcess.s00005925.output.s00000959} + {callToProcess.s00005925.inputCriterion.s00000937.used}
+# A |- aa10 = {callToTask.s00001305.input.s00001009} + {fork.s00001067.activated.s00000993}
+# A |- aa11 = {callToTask.s00001305.output.s00000956} + {callToTask.s00001305.inputCriterion.s00000937.used}
+# A |- aa12 = {callToTask.s00001632.inputCriterion.s00000937.used} + {callToTask.s00001971.output.s00000981}
+# A |- aa13 = {callToTask.s00001746.input.s00000987} + {decision.s00001288.activated}
+# A |- aa14 = {callToTask.s00001746.output.s00000960} + {callToTask.s00001746.inputCriterion.s00000937.used}
+# A |- aa15 = {callToTask.s00002181.inputCriterion.s00000937.used} + {callToTask.s00002189.output.s00000960}
+# A |- aa16 = {callToTask.s00002183.inputCriterion.s00000937.used} + {callToTask.s00002190.output.s00000979}
+# A |- aa17 = {callToTask.s00002185.input.s00000952} + {decision.s00001289.activated}
+# A |- aa18 = {callToTask.s00002186.input.s00001513} + {merge.s00001120.activated}
+# A |- aa19 = {callToTask.s00002186.output.s00000979} + {callToTask.s00002186.inputCriterion.s00000937.used}
+# A |- aa20 = {callToTask.s00002189.inputCriterion.s00000937.used} + {callToProcess.s00002316.output.s00000959}
+# A |- aa21 = {callToTask.s00002190.inputCriterion.s00000937.used} + {callToTask.s00002181.output.s00000979}
+# A |- aa22 = {callToTask.s00002427.input.s00001013} + {decision.s00000989.activated}
+# A |- aa23 = {callToTask.s00002427.input.s00001203} + aa22
+# A |- aa24 = {callToTask.s00002427.output.s00000979} + {callToTask.s00002427.inputCriterion.s00000937.used}
+# A |- aa25 = {callToTask.s00002526.input.s00000986} + {merge.s00001066.activated}
+# A |- aa26 = {callToTask.s00002526.output.s00000981} + {callToTask.s00002526.inputCriterion.s00000937.used}
+# A |- aa27 = {callToTask.s00002741.input.s00000986} + {fork.s00001536.activated.s00000993}
+# A |- aa28 = {callToTask.s00002741.output.s00000981} + {callToTask.s00002741.inputCriterion.s00000937.used}
+# A |- aa29 = {callToTask.s00005849.input.s00000985} + {decision.s00001286.activated}
+# A |- aa30 = {callToTask.s00005849.output.s00000960} + {callToTask.s00005849.inputCriterion.s00000937.used}
+# A |- aa31 = {callToTask.s00005897.input.s00000986} + {merge.s00001292.activated}
+# A |- aa32 = {callToTask.s00005897.output.s00000979} + {callToTask.s00005897.inputCriterion.s00000937.used}
+# A |- aa33 = {callToTask.s00005965.input.s00000952} + {decision.s00001615.activated}
+# A |- aa34 = {callToTask.s00005966.inputCriterion.s00000937.used} + {callToTask.s00005970.output.s00000981}
+# A |- aa35 = {callToTask.s00005967.input.s00000952} + {decision.s00000999.activated}
+# A |- aa36 = {callToTask.s00005968.input.s00000952} + aa33
+# A |- aa37 = {callToTask.s00005969.input.s00000985} + {decision.s00001617.activated}
+# A |- aa38 = {callToTask.s00005969.output.s00000960} + {callToTask.s00005969.inputCriterion.s00000937.used}
+# A |- aa39 = {callToTask.s00005970.input.s00000952} + {merge.s00000945.activated}
+# A |- aa40 = {callToTask.s00005971.output.s00000959} + {callToTask.s00005971.inputCriterion.s00000937.used}
+# A |- aa41 = {callToTask.s00005972.input.s00001009} + {merge.s00001291.activated}
+# A |- aa42 = {endNode.s00000942.input.default} + aa23
+# A |- aa43 = {endNode.s00001065.input.default} + aa1
+# A |- aa44 = {fork.s00001067.input.s00000952} + aa35
+# A |- aa45 = {fork.s00001293.input.s00000952} + aa17
+# A |- aa46 = {join.s00001295.activated.s00000946} + {join.s00001295.input.s00000986}
+# A |- aa47 = {join.s00001295.activated.s00000948} + {join.s00001295.input.s00000987}
+# A |- aa48 = {merge.s00000945.input.s00000986} + aa37
+# A |- aa49 = {merge.s00000945.input.s00000987} + {decision.s00001287.activated}
+# A |- aa50 = {merge.s00001066.input.s00000987} + aa13
+# A |- aa51 = {merge.s00001120.input.s00001011} + aa49
+# A |- aa52 = {merge.s00001120.input.s00001013} + aa29
+# A |- aa53 = {merge.s00001120.input.s00001513} + aa50
+# A |- aa54 = {merge.s00001290.input.s00001009} + {fork.s00001537.activated.s00000991}
+# A |- aa55 = {merge.s00001291.input.s00000986} + {fork.s00001067.activated.s00000991}
+# A |- aa56 = {merge.s00001291.input.s00001009} + aa36
+# A |- aa57 = {merge.s00001292.input.s00000952} + aa5
+# A |- aa58 = {merge.s00001292.input.s00000986} + {fork.s00001537.activated.s00000993}
+# A |- aa59 = {process.s00000383##s00005964.output.s00001463} + {merge.s00001369.activated}
+# A |- aa60 = {process.s00000383##s00005964.output.s00001610} + {merge.s00003354.activated}
+# A |- aa61 = {callToProcess.s00001273.inputCriterion.s00000937.used} + aa43
+# A |- aa62 = aa20 + aa2
+# A |- aa63 = aa4 + aa3
+# A |- aa64 = aa9 + aa8
+# A |- aa65 = aa11 + aa10
+# A |- aa66 = {callToTask.s00001632.output.s00000979} + aa12
+# A |- aa67 = aa14 + aa53
+# A |- aa68 = aa21 + aa15
+# A |- aa69 = {callToTask.s00002183.output.s00000981} + aa16
+# A |- aa70 = {callToTask.s00002185.inputCriterion.s00000937.used} + aa45
+# A |- aa71 = aa19 + aa18
+# A |- aa72 = aa26 + aa25
+# A |- aa73 = aa28 + aa27
+# A |- aa74 = aa30 + aa52
+# A |- aa75 = aa32 + aa31
+# A |- aa76 = {callToTask.s00005965.inputCriterion.s00000937.used} + aa56
+# A |- aa77 = {callToTask.s00005966.output.s00000979} + aa34
+# A |- aa78 = {callToTask.s00005967.inputCriterion.s00000937.used} + aa44
+# A |- aa79 = {callToTask.s00005968.inputCriterion.s00000937.used} + aa76
+# A |- aa80 = aa38 + aa48
+# A |- aa81 = {callToTask.s00005970.inputCriterion.s00000937.used} + aa39
+# A |- aa82 = {callToTask.s00005972.inputCriterion.s00000937.used} + aa41
+# A |- aa83 = aa42 + aa6
+# A |- aa84 = aa46 + {fork.s00001293.activated.s00000991}
+# A |- aa85 = aa47 + {fork.s00001293.activated.s00000993}
+# R |- aa84 = aa85
+# A |- aa86 = aa7 + aa85
+# A |- aa87 = aa66 + {callToTask.s00001971.inputCriterion.s00000937.used}
+# A |- aa88 = aa68 + aa62
+# A |- aa89 = aa77 + aa81
+# A |- aa90 = aa40 + aa72
+# A |- aa91 = aa51 + aa80
+# A |- aa92 = aa67 + aa69
+# A |- aa93 = aa70 + aa71
+# A |- aa94 = aa57 + aa64
+# A |- aa95 = aa61 + aa65
+# A |- aa96 = {join.s00001294.activated.s00000946} + aa63
+# A |- aa97 = {join.s00001294.activated.s00000948} + aa73
+# R |- aa96 = aa97
+# A |- aa98 = {callToTask.s00001971.input.s00000985} + aa97
+# A |- aa99 = aa92 + aa88
+# A |- aa100 = aa78 + aa89
+# A |- aa101 = aa74 + aa87
+# A |- aa102 = aa79 + aa90
+# A |- aa103 = aa86 + aa93
+# A |- aa104 = aa99 + aa100
+# A |- aa105 = aa91 + aa101
+# A |- aa106 = aa98 + aa24
+# A |- aa107 = aa104 + aa105
+# A |- aa108 = aa102 + aa107
+# A |- aa109 = aa103 + aa108
+# R |- {merge.s00001292.input.s00000950} = aa58 + {process.s00000383##s00005964.input.s00001512}
+# R |- {callToProcess.s00001273.output.s00000956} = {callToProcess.s00001273.output.s00000938} + {process.s00000383##s00005964.outputCriterion.s00000939_omega}
+# A |- aa110 = {callToProcess.s00001273.output.s00000938} + aa95
+# R |- {process.s00000383##s00005964.input.s00001431} = aa54 + {process.s00000383##s00005964.input.s00001512}
+# R |- {callToProcess.s00004075.output.s00000956} = {callToProcess.s00004075.output.s00000938} + {process.s00000383##s00005964.outputCriterion.s00000939_omega}
+# A |- aa111 = {callToProcess.s00004075.output.s00000938} + aa109
+
+# markings
+alpha,aa83,aa111,{callToTask.s00002185.output.s00000938},{callToTask.s00002185.output.s00000956},aa106,{callToTask.s00005965.output.s00000938},{callToTask.s00005965.output.s00000956},{callToTask.s00005968.output.s00000938},{callToTask.s00005968.output.s00000956},{callToTask.s00005968.output.s00000979},{callToTask.s00005972.output.s00000938},{callToTask.s00005972.output.s00000979},aa55,aa110,aa54,aa58,aa94,{merge.s00001290.input.s00000935},{merge.s00001290.input.s00000952},aa82,aa75,{merge.s00001292.input.s00000935},aa59,aa60,{process.s00000383##s00005964.input.s00000936},{process.s00000383##s00005964.input.s00001512},{process.s00000383##s00005964.input.s00001609},{process.s00000383##s00005964.outputCriterion.s00000939_omega}
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,1,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,0,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,1,1,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,1,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,2,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,1,1,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,1,1,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,3,0,0,0,1,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,1,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,1,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,1,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,2,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,2,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,3,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,3,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,3,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,3,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,3,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,0,0,0,1,0,0,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,3,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,3,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,3,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,3,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,4,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,4,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,4,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,1,0,0,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,2,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,4,0,0,0,1,0,1,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,4,0,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1,0,0,1,0,1,0
+0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,1,0,1,0
+

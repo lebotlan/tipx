@@ -1,0 +1,52 @@
+# from 16 place(s), 16 transition(s), 40 arc(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 8 place(s)
+# removed 8 redundant transition(s)
+# removed 4 isolated or redundant transition(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 2 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# removed 1 isolated or redundant transition(s)
+# left 0 place(s), 0 transition(s), 0 arc(s)
+# 0.000s
+
+# prefix = a
+
+# generated equations
+# R |- P2 = P3
+# A |- a1 = Pback1 + Pm1
+# A |- a2 = Pback2 + Pm2
+# A |- a3 = Pback3 + Pm3
+# A |- a4 = Pback4 + Pm4
+# A |- a5 = Pout1 + a1
+# A |- a6 = Pout2 + a2
+# A |- a7 = Pout3 + a3
+# A |- a8 = Pout4 + a4
+# A |- a9 = a8 + P4
+# R |- a9 = xx
+# R |- a6 = a7
+# A |- a10 = a7 + P3
+# R |- a10 = xx
+# A |- a11 = a5 + P1
+# R |- a11 = xx
+
+# simplified equations for reachability analysis
+# R |- P2 = P3
+# R |- Pout4 + Pback4 + Pm4 + P4 = 5
+# R |- Pout2 + Pback2 + Pm2 = Pout3 + Pback3 + Pm3
+# R |- Pout3 + Pback3 + Pm3 + P3 = 5
+# R |- Pout1 + Pback1 + Pm1 + P1 = 5
+
+# even more simplified equations for counting
+# R |- Pout4 + Pback4 + Pm4 + P4 = 5
+# R |- Pout2 + Pback2 + Pm2 = Pout3 + Pback3 + Pm3
+# R |- Pout3 + Pback3 + Pm3 + P3 = 5
+# R |- Pout1 + Pback1 + Pm1 + P1 = 5
+
+net K5

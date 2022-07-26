@@ -1,0 +1,71 @@
+# from 26 place(s), 18 transition(s), 51 arc(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 6 place(s)
+# removed 6 redundant transition(s)
+# agglomerated 2 place(s)
+# removed 2 redundant transition(s)
+# removed 4 redundant place(s)
+# agglomerated 4 place(s)
+# removed 4 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# removed 1 redundant place(s)
+# agglomerated 2 place(s)
+# removed 2 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# left 0 place(s), 0 transition(s), 0 arc(s)
+# 0.004s
+
+# prefix = a
+
+# generated equations
+# R |- p19 = p20
+# A |- a1 = p11 + p7
+# A |- a2 = p17 + p14
+# A |- a3 = p2 + p1
+# A |- a4 = p21 + p18
+# A |- a5 = p22 + p20
+# A |- a6 = p25 + p16
+# A |- a7 = p15 + a1
+# A |- a8 = p3 + a3
+# R |- p12 = p10 + p8
+# R |- p13 = p10 + p9
+# R |- a4 = a5 + p23
+# R |- p4 = p6 + a7
+# A |- a9 = a2 + p10
+# A |- a10 = a6 + a7
+# A |- a11 = p26 + p23
+# A |- a12 = p9 + p5
+# R |- a11 = p27
+# A |- a13 = a5 + a9
+# A |- a14 = p27 + a13
+# R |- a12 = p6 + p8
+# A |- a15 = a14 + p8
+# A |- a16 = p6 + a8
+# R |- a10 = a15
+# A |- a17 = a15 + a16
+# R |- a17 <= 5
+
+# simplified equations for reachability analysis
+# R |- p19 = p20
+# R |- p12 = p10 + p8
+# R |- p13 = p10 + p9
+# R |- p21 + p18 = p22 + p20 + p23
+# R |- p4 = p6 + p15 + p11 + p7
+# R |- p26 + p23 = p27
+# R |- p9 + p5 = p6 + p8
+# R |- p25 + p16 + p15 + p11 + p7 = p27 + p22 + p20 + p17 + p14 + p10 + p8
+# R |- p27 + p22 + p20 + p17 + p14 + p10 + p8 + p6 + p3 + p2 + p1 <= 5
+
+# even more simplified equations for counting
+# R |- p21 + p18 = p22 + p20 + p23
+# R |- p9 + p5 = p6 + p8
+# R |- p25 + p16 + p15 + p11 + p7 = p27 + p22 + p20 + p17 + p14 + p10 + p8
+# R |- p27 + p22 + p20 + p17 + p14 + p10 + p8 + p6 + p3 + p2 + p1 <= 5
+
+net HC3

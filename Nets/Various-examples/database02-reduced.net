@@ -1,0 +1,94 @@
+# from 38 place(s), 32 transition(s), 88 arc(s)
+# agglomerated 12 place(s)
+# removed 12 redundant transition(s)
+# removed 3 redundant place(s)
+# agglomerated 3 place(s)
+# removed 3 redundant transition(s)
+# removed 2 redundant place(s)
+# agglomerated 4 place(s)
+# removed 4 redundant transition(s)
+# agglomerated 4 place(s)
+# removed 4 redundant transition(s)
+# removed 1 isolated or redundant place(s)
+# agglomerated 1 place(s)
+# removed 1 redundant transition(s)
+# left 8 place(s), 8 transition(s), 24 arc(s)
+# 0.008s
+
+# prefix = aa
+
+# generated equations
+# A |- aa1 = Acknowledge_1_1 + MesBuffReply_1_1
+# A |- aa2 = Acknowledge_1_2 + MesBuffReply_1_2
+# A |- aa3 = Acknowledge_2_1 + MesBuffReply_2_1
+# A |- aa4 = Acknowledge_2_2 + MesBuffReply_2_2
+# A |- aa5 = RecBuff_1_1 + Message_1_1
+# A |- aa6 = RecBuff_1_2 + Message_1_2
+# A |- aa7 = RecBuff_2_1 + Message_2_1
+# A |- aa8 = RecBuff_2_2 + Message_2_2
+# A |- aa9 = WaitMutex_1_1 + all_active_1
+# A |- aa10 = WaitMutex_1_2 + aa9
+# A |- aa11 = WaitMutex_2_1 + all_active_2
+# A |- aa12 = WaitMutex_2_2 + aa11
+# R |- Active_1_2 = aa4 + aa8 + updating_2_2
+# R |- Active_2_1 = aa1 + aa5 + updating_1_1
+# R |- Active_1_1 = aa3 + aa7 + updating_2_1
+# A |- aa13 = aa5 + Modify_2_1
+# A |- aa14 = aa7 + Modify_1_1
+# A |- aa15 = aa8 + Modify_1_2
+# R |- all_passive_1 = aa1 + aa2 + aa6 + aa13 + Modify_2_2 + aa12
+# R |- all_passive_2 = aa3 + aa4 + aa14 + aa15 + aa10
+# A |- aa16 = aa1 + updating_1_1
+# A |- aa17 = aa2 + updating_1_2
+# A |- aa18 = aa3 + updating_2_1
+# A |- aa19 = aa4 + updating_2_2
+# A |- aa20 = aa16 + aa13
+# A |- aa21 = aa17 + aa6
+# A |- aa22 = aa18 + aa14
+# A |- aa23 = aa19 + aa15
+# R |- Active_2_2 = aa21
+# A |- aa24 = aa21 + Modify_2_2
+
+# R |- aa10 = 1
+# R |- aa12 = 1
+# R |- aa20 = 1
+# R |- aa22 = 1
+# R |- aa23 = 1
+# R |- aa24 = 1
+
+
+# simplified equations for reachability analysis
+# A |- aa10 = WaitMutex_1_2 + WaitMutex_1_1 + all_active_1
+# A |- aa12 = WaitMutex_2_2 + WaitMutex_2_1 + all_active_2
+# R |- Active_1_2 = Acknowledge_2_2 + MesBuffReply_2_2 + RecBuff_2_2 + Message_2_2 + updating_2_2
+# R |- Active_2_1 = Acknowledge_1_1 + MesBuffReply_1_1 + RecBuff_1_1 + Message_1_1 + updating_1_1
+# R |- Active_1_1 = Acknowledge_2_1 + MesBuffReply_2_1 + RecBuff_2_1 + Message_2_1 + updating_2_1
+# R |- all_passive_1 = Acknowledge_1_1 + MesBuffReply_1_1 + Acknowledge_1_2 + MesBuffReply_1_2 + RecBuff_1_2 + Message_1_2 + RecBuff_1_1 + Message_1_1 + Modify_2_1 + Modify_2_2 + WaitMutex_2_2 + WaitMutex_2_1 + all_active_2
+# R |- all_passive_2 = Acknowledge_2_1 + MesBuffReply_2_1 + Acknowledge_2_2 + MesBuffReply_2_2 + RecBuff_2_1 + Message_2_1 + Modify_1_1 + RecBuff_2_2 + Message_2_2 + Modify_1_2 + WaitMutex_1_2 + WaitMutex_1_1 + all_active_1
+# A |- aa20 = Acknowledge_1_1 + MesBuffReply_1_1 + updating_1_1 + RecBuff_1_1 + Message_1_1 + Modify_2_1
+# A |- aa22 = Acknowledge_2_1 + MesBuffReply_2_1 + updating_2_1 + RecBuff_2_1 + Message_2_1 + Modify_1_1
+# A |- aa23 = Acknowledge_2_2 + MesBuffReply_2_2 + updating_2_2 + RecBuff_2_2 + Message_2_2 + Modify_1_2
+# R |- Active_2_2 = Acknowledge_1_2 + MesBuffReply_1_2 + updating_1_2 + RecBuff_1_2 + Message_1_2
+# A |- aa24 = Acknowledge_1_2 + MesBuffReply_1_2 + updating_1_2 + RecBuff_1_2 + Message_1_2 + Modify_2_2
+
+# even more simplified equations for counting
+# A |- aa10 = WaitMutex_1_2 + WaitMutex_1_1 + all_active_1
+# A |- aa12 = WaitMutex_2_2 + WaitMutex_2_1 + all_active_2
+# A |- aa20 = Acknowledge_1_1 + MesBuffReply_1_1 + updating_1_1 + RecBuff_1_1 + Message_1_1 + Modify_2_1
+# A |- aa22 = Acknowledge_2_1 + MesBuffReply_2_1 + updating_2_1 + RecBuff_2_1 + Message_2_1 + Modify_1_1
+# A |- aa23 = Acknowledge_2_2 + MesBuffReply_2_2 + updating_2_2 + RecBuff_2_2 + Message_2_2 + Modify_1_2
+# A |- aa24 = Acknowledge_1_2 + MesBuffReply_1_2 + updating_1_2 + RecBuff_1_2 + Message_1_2 + Modify_2_2
+
+net {DatabaseWithMutex-PT-02}
+tr Acquire_1_1 Mutex_1 aa10  -> aa22 
+tr Acquire_1_2 Mutex_2 aa10  -> aa23 
+tr Acquire_2_1 Mutex_1 aa12  -> aa20 
+tr Acquire_2_2 Mutex_2 aa12  -> aa24 
+tr Release_1_1 aa22  -> Mutex_1 aa10 
+tr Release_1_2 aa23  -> Mutex_2 aa10 
+tr Release_2_1 aa20  -> Mutex_1 aa12 
+tr Release_2_2 aa24  -> Mutex_2 aa12 
+pl Mutex_1 (1)
+pl Mutex_2 (1)
+pl aa10 (1)
+pl aa12 (1)

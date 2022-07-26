@@ -1,0 +1,37 @@
+p 245.0 30.0 p1 10 w
+p 245.0 280.0 p3 0 w
+p 30.0 340.0 p4 0 e
+p 430.0 340.0 p5 0 w
+p 245.0 150.0 p2 0 w
+p 30.0 475.0 p10 0 e
+p 245.0 535.0 p8 0 s
+p 30.0 615.0 p9 0 e
+p 430.0 615.0 p7 0 w
+t 245.0 80.0 t1 w 0 w n {} ne
+t 245.0 350.0 t13 sw 0 w n {} ne
+t 30.0 425.0 t14 e 0 w n {} ne
+t 30.0 545.0 t16 e 0 w n {} ne
+t 405.0 545.0 t17 w 0 w n {} ne
+t 245.0 205.0 t2 w 0 w n {} ne
+t 430.0 410.0 t15 w 0 w n {} ne
+p 430.0 475.0 p6 0 w
+e p1 t1 1 n
+e p2 t2 1 n
+e t1 p2 1 n
+e p3 t13 1 n
+e t13 p4 1 n
+e t13 p5 1 n
+e p5 t15 1 n
+e t15 p6 1 n
+e p6 t17 1 n
+e t17 p7 1 n
+e p4 t14 1 n
+e t14 p10 1 n
+e p10 t16 1 n
+e t16 p9 1 n
+e t17 p8 1 n
+e p8 t16 1 n
+e t2 p3 1 n
+h {simple-original}
+
+
