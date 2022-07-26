@@ -22,6 +22,14 @@ let rec eval_bool fu = function
   | True -> true
   | False -> false
 
+let rec neg_propagation lit_neg neg = function
+  | V x as expr -> if neg then V (lit_neg x) else expr
+  | And l -> if neg then Or (List.rev_map (neg_propagation lit_neg neg) l) else And (List.rev_map (neg_propagation lit_neg neg) l)
+  | Or l -> if neg then And (List.rev_map (neg_propagation lit_neg neg) l) else Or (List.rev_map (neg_propagation lit_neg neg) l)
+  | Not e -> neg_propagation lit_neg (not neg) e
+  | True -> if neg then False else True
+  | False -> if neg then True else False
+
 let and_append vv = function
   | [False] -> [False]
   | acu -> vv :: acu
@@ -50,33 +58,6 @@ let cartesian ll =
   in
 
   loop [] [] ll
-    
-    
-(*
-let rec dnf_aux lit_negation negation = function
-  | V x as vv -> if negation then V (lit_negation x) else vv
-
-  | And l -> 
-    if negation then
-      (* Not (l1 /\ ... /\ ln) <-> (not l1 \/ ... \/ not ln) *)
-      dnf_aux lit_negation false (Or l)
-    else
-      (* DNF(P and Q) <-> (P1 and Q1) or ... or (Pm and Q1) or ... or (Pm and Qn) *)
-      (* with (DNF P) = (P1 or ... or Pm) and (DNF Q) = (Q1 or ... or Qn)         *)
-      (* TODO *)
-      And l
-
-  | Or l -> 
-    if negation then 
-      (* Not (l1 \/ ... \/ ln) <-> (l1 /\ ... /\ ln) *)
-      dnf_aux lit_negation false (And l)
-    else 
-      (* DNF(l1 /\ ... /\ ln) <-> DNF(l1) /\ ... /\ DNF(ln) *)
-      Or (List.map (dnf_aux lit_negation negation) l)
- 
-  | Not e -> dnf_aux lit_negation (not negation) e 
-*)
-    
 
 let or_to_list = function
   | Not _ -> assert false
@@ -114,5 +95,4 @@ let rec dnf_aux acu = function
     let cubes = List.rev_map (fun tuple -> make_and tuple) (cartesian sets) in
     List.rev_append cubes acu
 
-let dnf _lit_negation bexpr = make_or (dnf_aux [] bexpr)
-    
+let dnf lit_neg ?(neg=false) bexpr = make_or (dnf_aux [] (neg_propagation lit_neg neg bexpr))

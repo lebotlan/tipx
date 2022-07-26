@@ -13,4 +13,4 @@ val bool2s : ('a -> string) -> 'a bexpr -> string
 val eval_bool: ('a -> bool) -> 'a bexpr -> bool
 
 (* dnf  v-negation *)
-val dnf: ('a -> 'a) -> 'a bexpr -> 'a bexpr
+val dnf: ('a -> 'a) -> ?neg:bool -> 'a bexpr -> 'a bexpr
