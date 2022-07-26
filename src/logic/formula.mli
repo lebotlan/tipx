@@ -31,3 +31,6 @@ type goal =
     negates: bool }  (* Are we looking for the formula or for its negation? *)
 
 type t = goal
+
+val dnf: goal -> goal
+  

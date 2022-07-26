@@ -2,13 +2,20 @@ open Petrinet
 open Parsers
 open Walker
 open Logic  
-
+open Printformula
+    
 let walk_tina_net_file net_file formula_file =
 
   let%lwt (net,mark) = Parse.read_net net_file in
   let%lwt goal = Parse.read_goal net formula_file in
 
   Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
+
+  Lwt_io.printf " Initial formula : %s\n\n" (goal2s net goal) ;%lwt
+
+  let goal = Formula.dnf goal in
+  Lwt_io.printf " Dnf formula : %s\n\n" (goal2s net goal) ;%lwt
+  
 
   let result = Walk.sprinter ~seed:3939494 ~timeout:6 net mark (Eval.eval_goal goal) in
   

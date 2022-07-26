@@ -36,3 +36,8 @@ type goal =
     negates: bool }  (* Are we looking for the formula or for its negation? *)
 
 type t = goal
+
+let dnf goal =
+  { form = dnf atom_negation goal.form ;
+    negates = goal.negates }
+

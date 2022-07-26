@@ -5,9 +5,12 @@ type 'a bexpr = | V of 'a
                 | And of 'a bexpr list
                 | Or  of 'a bexpr list
                 | Not of 'a bexpr
+                | True
+                | False
 
 val bool2s : ('a -> string) -> 'a bexpr -> string
 
 val eval_bool: ('a -> bool) -> 'a bexpr -> bool
 
-val dnf: ('a -> 'a) -> bool -> 'a bexpr -> 'a bexpr
+(* dnf  v-negation *)
+val dnf: ('a -> 'a) -> 'a bexpr -> 'a bexpr
