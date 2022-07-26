@@ -10,9 +10,13 @@ type node_id = int
 
 type node_name = string
 
+type node_type =
+  | Var of node_name
+  | Intv of int * int
+
 type node =
   { node_id: node_id ;
-    node_name: node_name }
+    node_type: node_type }
 
 type succ =
   { agg: node list ;
@@ -38,12 +42,13 @@ type t = tfg
 
 let dummy_node =
   { node_id = -1 ;
-    node_name = "dummy_node" }
+    node_type = Var "dummy_node" }
 
-let register_node tfg node =
-  assert (not (Hashtbl.mem tfg.name_map node.node_name)) ;
+let register_node tfg name node =
+  
+  assert (not (Hashtbl.mem tfg.name_map name)) ;
 
-  Hashtbl.add  tfg.name_map node.node_name node.node_id ;
+  Hashtbl.add  tfg.name_map name node.node_id ;
   X.set tfg.node_map node.node_id node ;
   
   ()
@@ -63,37 +68,34 @@ let create roots =
 
     let node =
       { node_id = i ;
-        node_name = pl.pl_name }
+        node_type = Var pl.pl_name }
     in
     
     tfg.roots <- node :: tfg.roots ;
-    register_node tfg node
+    register_node tfg pl.pl_name node
   in
   
   Array.iteri create_init_node roots ;
 
   tfg
 
-let is_constant node_name =
-    try int_of_string node_name |> ignore; true
-    with Failure _ -> false
-   (* Str.string_match (Str.regexp "[0-9]+$") node_name 0;; *)
-
 let get_node tfg name =
   if Hashtbl.mem tfg.name_map name then X.get tfg.node_map (Hashtbl.find tfg.name_map name)
   else
     begin
-      let node =
-        { node_id = tfg.node_count ;
-          node_name = name }
-      in
 
+      let node_type = match int_of_string_opt name with
+        | None -> Var name
+        | Some x -> Intv (x,x)
+      in
+      
+      let node = { node_id = tfg.node_count ; node_type } in
       tfg.node_count <- tfg.node_count + 1 ;
 
       Hashtbl.add tfg.name_map name node.node_id ;
       X.set tfg.node_map node.node_id node ;
 
-      if is_constant name then tfg.roots <- (node :: tfg.roots) ;
+      (match node_type with Intv _ -> tfg.roots <- (node :: tfg.roots) | _ -> ()) ;
 
       node      
     end
@@ -125,13 +127,29 @@ let add_red tfg ll p =
 
   ()
 
+let add_leq tfg p k =
+
+  let node_p = get_node tfg p in
+
+  let node_k = { node_id = tfg.node_count ; node_type = Intv (0,k) } in
+  tfg.node_count <- tfg.node_count + 1 ;  
+
+  X.set tfg.node_map node_k.node_id node_k ;
+  tfg.roots <- node_k :: tfg.roots ;
+
+  assert (X.get tfg.pred node_p.node_id = Root) ;
+  X.set tfg.pred node_p.node_id (R [node_k]) ;
+  X.set tfg.succ node_k.node_id { agg = [] ; red = [ node_p ] } ;
+  
+  ()
+
 let roots tfg = tfg.roots
 
 let succ tfg node = X.get tfg.succ node.node_id
 
 let pred tfg node = X.get tfg.pred node.node_id
 
-let node_name node = node.node_name
+let node_type node = node.node_type
 
 let node_id node = node.node_id
 

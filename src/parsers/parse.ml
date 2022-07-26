@@ -8,7 +8,7 @@ let fail_unconsumed path u =
   let bigstr = Bigstring.sub u.buf u.off u.len in
   let rest = Bigstring.to_string bigstr in
 
-  Lwt_io.printf "File %s has garbage at the end : --%s--\n" path rest ;%lwt
+  Lwt_io.printf "File %s has garbage at the end : << %s >>\n" path rest ;%lwt
   Lwt.fail_with ("Cannot parse file " ^ path)
 
 let read_gen ?(consume_all=true) path parser =
@@ -31,4 +31,4 @@ let read_net path = read_gen path (Tina.parse_net path)
 
 let read_goal net path = read_gen path (Selt.parse_goal (Net.get_plid net))
 
-let read_tfg net path = read_gen ~consume_all: false path (Reduce.parse_tfg net)
+let read_tfg net path = read_gen ~consume_all:false path (Reduce.parse_tfg net)

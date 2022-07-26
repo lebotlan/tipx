@@ -1,2 +1,0 @@
-_tags: true:profile
-gprof ../testauto.native | /usr/local/Divers/gprof2dot/gprof2dot.py | dot -Tsvg -o output.svg

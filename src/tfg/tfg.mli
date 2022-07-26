@@ -25,6 +25,17 @@ val add_agg: tfg -> node_name -> node_name list -> unit
  * If a node_name is numeric, it is a constant node. *)
 val add_red: tfg -> node_name list -> node_name -> unit
 
+(* Add X <= k *)
+val add_leq: tfg -> node_name -> int -> unit
+
+
+type node_type =
+  (* Variable *)
+  | Var of node_name
+
+  (* Any value in interval (unconstrained) *)
+  | Intv of int * int
+
 type node
 
 type succ =
@@ -40,7 +51,7 @@ val succ: tfg -> node -> succ
 
 val pred: tfg -> node -> pred
 
-val node_name: node -> node_name
+val node_type: node -> node_type
 
 val node_id: node -> node_id
 
