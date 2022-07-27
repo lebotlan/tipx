@@ -24,8 +24,8 @@ let rec eval_bool fu = function
 
 let rec neg_propagation lit_neg neg = function
   | V x as expr -> if neg then V (lit_neg x) else expr
-  | And l -> if neg then Or (List.rev_map (neg_propagation lit_neg neg) l) else And (List.rev_map (neg_propagation lit_neg neg) l)
-  | Or l -> if neg then And (List.rev_map (neg_propagation lit_neg neg) l) else Or (List.rev_map (neg_propagation lit_neg neg) l)
+  | And l -> let l = List.rev_map (neg_propagation lit_neg neg) l in if neg then Or  l else And l
+  | Or  l -> let l = List.rev_map (neg_propagation lit_neg neg) l in if neg then And l else Or  l
   | Not e -> neg_propagation lit_neg (not neg) e
   | True -> if neg then False else True
   | False -> if neg then True else False

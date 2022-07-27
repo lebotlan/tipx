@@ -1,7 +1,7 @@
 (library
  (name walker)
  (public_name tipx.walker)
- (libraries petrinet logic))
+ (libraries petrinet logic lwtutils))
 
 
 

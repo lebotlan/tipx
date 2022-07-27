@@ -82,7 +82,7 @@ let build_atom e1 op e2 =
   | "!=" | "ne" -> { left = e1 ; rel = NE ; right = e2 }
   | _ -> assert false
 
-let rel_ops = List.map string [ ">=" ; "ge" ; ">"  ; "gt" ; "<"  ; "lt" ; "<=" ; "le" ; "="  ; "eq" ; "!=" ; "ne" ]
+let rel_ops = List.map string [ ">=" ; "ge" ; "gt" ; "<=" ; "lt" ; "le" ; "eq" ; "!=" ; "ne" ; ">" ; "<" ; "=" ]
 
 let rel = ws *> choice ~failure_msg:"Bad operator. Should be <, <=, >, >=, =, !=, ge, gt, lt, le, eq, ne" rel_ops <* ws
 
