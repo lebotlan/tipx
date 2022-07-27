@@ -1,0 +1,1057 @@
+net {DLCround-PT-05a}
+tr t0 p0 -> p100 p101 p102 p103 p104 p105 p106 p107 p108 p109 p110 p111 p112 p113 p114 p115 p116 p117 p118 p119 p120 p121 p122 p123 p124 p125 p126 p127 p128 p129 p130 p131 p132 p133 p134 p135 p136 p137 p138 p139 p14 p140 p141 p142 p143 p144 p145 p146 p147 p148 p149 p150 p151 p152 p153 p154 p155 p156 p157 p158 p159 p160 p161 p162 p163 p164 p165 p166 p21 p28 p38 p48 p58 p68 p7 p78 p88 p89 p90 p91 p92 p93 p94 p95 p96 p97 p98 p99 
+tr t1 p88 -> p88 
+tr t10 p81 -> p87 
+tr t100 p26 -> p28 
+tr t1000 p161 p78 -> p161 p77 
+tr t1001 p163 p47 -> p163 p47 
+tr t1002 p163 p47 -> p163 p43 
+tr t1003 p163 p47 -> p163 p40 
+tr t1004 p163 p88 -> p163 p87 
+tr t1005 p163 p86 -> p163 p87 
+tr t1006 p163 p85 -> p163 p84 
+tr t1007 p163 p84 -> p163 p84 
+tr t1008 p163 p83 -> p163 p82 
+tr t1009 p163 p82 -> p163 p82 
+tr t101 p26 -> p28 
+tr t1010 p163 p86 -> p163 p87 
+tr t1011 p163 p87 -> p163 p81 
+tr t1012 p163 p81 -> p163 p81 
+tr t1013 p163 p79 -> p163 p79 
+tr t1014 p165 p67 -> p165 p67 
+tr t1015 p165 p67 -> p165 p63 
+tr t1016 p165 p67 -> p165 p60 
+tr t1017 p165 p88 -> p165 p87 
+tr t1018 p165 p86 -> p165 p87 
+tr t1019 p165 p85 -> p165 p84 
+tr t102 p27 -> p26 
+tr t1020 p165 p84 -> p165 p84 
+tr t1021 p165 p83 -> p165 p82 
+tr t1022 p165 p82 -> p165 p82 
+tr t1023 p165 p86 -> p165 p87 
+tr t1024 p165 p87 -> p165 p81 
+tr t1025 p165 p81 -> p165 p81 
+tr t1026 p165 p79 -> p165 p79 
+tr t1027 p86 -> p85 
+tr t1028 p87 -> p83 
+tr t1029 p66 -> p65 
+tr t103 p25 -> p28 
+tr t1030 p67 -> p63 
+tr t1031 p46 -> p45 
+tr t1032 p47 -> p43 
+tr t1033 p28 -> p28 
+tr t1034 p28 -> p25 
+tr t1035 p24 -> p23 
+tr t1036 p24 -> p22 
+tr t1037 p14 -> p14 
+tr t1038 p14 -> p11 
+tr t1039 p10 -> p9 
+tr t104 p23 -> p28 
+tr t1040 p10 -> p8 
+tr t1041 p7 -> p7 
+tr t1042 p7 -> p4 
+tr t1043 p3 -> p2 
+tr t1044 p3 -> p1 
+tr t1045 p17 -> p15 
+tr t1046 p17 -> p16 
+tr t1047 p21 -> p18 
+tr t1048 p21 -> p21 
+tr t1049 p37 -> p33 
+tr t105 p22 -> p28 
+tr t1050 p36 -> p35 
+tr t1051 p57 -> p53 
+tr t1052 p56 -> p55 
+tr t1053 p77 -> p73 
+tr t1054 p76 -> p75 
+tr t106 p20 -> p19 
+tr t107 p19 -> p21 
+tr t108 p19 -> p21 
+tr t109 p19 -> p21 
+tr t11 p80 -> p87 
+tr t110 p19 -> p21 
+tr t111 p20 -> p19 
+tr t112 p18 -> p21 
+tr t113 p16 -> p21 
+tr t114 p15 -> p21 
+tr t115 p13 -> p12 
+tr t116 p12 -> p14 
+tr t117 p12 -> p14 
+tr t118 p12 -> p14 
+tr t119 p12 -> p14 
+tr t12 p80 -> p87 
+tr t120 p13 -> p12 
+tr t121 p11 -> p14 
+tr t122 p9 -> p14 
+tr t123 p8 -> p14 
+tr t124 p6 -> p5 
+tr t125 p5 -> p7 
+tr t126 p5 -> p7 
+tr t127 p5 -> p7 
+tr t128 p5 -> p7 
+tr t129 p6 -> p5 
+tr t13 p80 -> p87 
+tr t130 p4 -> p7 
+tr t131 p2 -> p7 
+tr t132 p1 -> p7 
+tr t133 p166 p88 -> p166 p87 
+tr t134 p166 p86 -> p166 p87 
+tr t135 p166 p85 -> p166 p84 
+tr t136 p166 p84 -> p166 p84 
+tr t137 p166 p83 -> p166 p82 
+tr t138 p166 p82 -> p166 p82 
+tr t139 p166 p86 -> p166 p87 
+tr t14 p88 -> p79 
+tr t140 p166 p87 -> p166 p81 
+tr t141 p166 p81 -> p166 p81 
+tr t142 p166 p79 -> p166 p79 
+tr t143 p166 p77 -> p166 p70 
+tr t144 p166 p77 -> p166 p73 
+tr t145 p166 p77 -> p166 p77 
+tr t146 p164 p88 -> p164 p87 
+tr t147 p164 p86 -> p164 p87 
+tr t148 p164 p85 -> p164 p84 
+tr t149 p164 p84 -> p164 p84 
+tr t15 p79 -> p79 
+tr t150 p164 p83 -> p164 p82 
+tr t151 p164 p82 -> p164 p82 
+tr t152 p164 p86 -> p164 p87 
+tr t153 p164 p87 -> p164 p81 
+tr t154 p164 p81 -> p164 p81 
+tr t155 p164 p79 -> p164 p79 
+tr t156 p164 p57 -> p164 p50 
+tr t157 p164 p57 -> p164 p53 
+tr t158 p164 p57 -> p164 p57 
+tr t159 p162 p88 -> p162 p87 
+tr t16 p79 -> p87 
+tr t160 p162 p86 -> p162 p87 
+tr t161 p162 p85 -> p162 p84 
+tr t162 p162 p84 -> p162 p84 
+tr t163 p162 p83 -> p162 p82 
+tr t164 p162 p82 -> p162 p82 
+tr t165 p162 p86 -> p162 p87 
+tr t166 p162 p87 -> p162 p81 
+tr t167 p162 p81 -> p162 p81 
+tr t168 p162 p79 -> p162 p79 
+tr t169 p162 p37 -> p162 p30 
+tr t17 p78 -> p78 
+tr t170 p162 p37 -> p162 p33 
+tr t171 p162 p37 -> p162 p37 
+tr t172 p160 p69 -> p160 p69 
+tr t173 p160 p71 -> p160 p71 
+tr t174 p160 p77 -> p160 p71 
+tr t175 p160 p76 -> p160 p77 
+tr t176 p160 p72 -> p160 p72 
+tr t177 p160 p73 -> p160 p72 
+tr t178 p160 p74 -> p160 p74 
+tr t179 p160 p75 -> p160 p74 
+tr t18 p77 -> p76 
+tr t180 p160 p76 -> p160 p77 
+tr t181 p160 p78 -> p160 p77 
+tr t182 p160 p67 -> p160 p67 
+tr t183 p160 p67 -> p160 p63 
+tr t184 p160 p67 -> p160 p60 
+tr t185 p158 p69 -> p158 p69 
+tr t186 p158 p71 -> p158 p71 
+tr t187 p158 p77 -> p158 p71 
+tr t188 p158 p76 -> p158 p77 
+tr t189 p158 p72 -> p158 p72 
+tr t19 p74 -> p74 
+tr t190 p158 p73 -> p158 p72 
+tr t191 p158 p74 -> p158 p74 
+tr t192 p158 p75 -> p158 p74 
+tr t193 p158 p76 -> p158 p77 
+tr t194 p158 p78 -> p158 p77 
+tr t195 p158 p47 -> p158 p47 
+tr t196 p158 p47 -> p158 p43 
+tr t197 p158 p47 -> p158 p40 
+tr t198 p156 p68 -> p156 p67 
+tr t199 p156 p66 -> p156 p67 
+tr t2 p87 -> p86 
+tr t20 p74 -> p73 
+tr t200 p156 p65 -> p156 p64 
+tr t201 p156 p64 -> p156 p64 
+tr t202 p156 p63 -> p156 p62 
+tr t203 p156 p62 -> p156 p62 
+tr t204 p156 p66 -> p156 p67 
+tr t205 p156 p67 -> p156 p61 
+tr t206 p156 p61 -> p156 p61 
+tr t207 p156 p59 -> p156 p59 
+tr t208 p156 p87 -> p156 p87 
+tr t209 p156 p87 -> p156 p83 
+tr t21 p72 -> p72 
+tr t210 p156 p87 -> p156 p80 
+tr t211 p154 p68 -> p154 p67 
+tr t212 p154 p66 -> p154 p67 
+tr t213 p154 p65 -> p154 p64 
+tr t214 p154 p64 -> p154 p64 
+tr t215 p154 p63 -> p154 p62 
+tr t216 p154 p62 -> p154 p62 
+tr t217 p154 p66 -> p154 p67 
+tr t218 p154 p67 -> p154 p61 
+tr t219 p154 p61 -> p154 p61 
+tr t22 p72 -> p73 
+tr t220 p154 p59 -> p154 p59 
+tr t221 p154 p57 -> p154 p50 
+tr t222 p154 p57 -> p154 p53 
+tr t223 p154 p57 -> p154 p57 
+tr t224 p152 p68 -> p152 p67 
+tr t225 p152 p66 -> p152 p67 
+tr t226 p152 p65 -> p152 p64 
+tr t227 p152 p64 -> p152 p64 
+tr t228 p152 p63 -> p152 p62 
+tr t229 p152 p62 -> p152 p62 
+tr t23 p73 -> p78 
+tr t230 p152 p66 -> p152 p67 
+tr t231 p152 p67 -> p152 p61 
+tr t232 p152 p61 -> p152 p61 
+tr t233 p152 p59 -> p152 p59 
+tr t234 p152 p37 -> p152 p30 
+tr t235 p152 p37 -> p152 p33 
+tr t236 p152 p37 -> p152 p37 
+tr t237 p150 p49 -> p150 p49 
+tr t238 p150 p51 -> p150 p51 
+tr t239 p150 p57 -> p150 p51 
+tr t24 p77 -> p76 
+tr t240 p150 p56 -> p150 p57 
+tr t241 p150 p52 -> p150 p52 
+tr t242 p150 p53 -> p150 p52 
+tr t243 p150 p54 -> p150 p54 
+tr t244 p150 p55 -> p150 p54 
+tr t245 p150 p56 -> p150 p57 
+tr t246 p150 p58 -> p150 p57 
+tr t247 p150 p77 -> p150 p70 
+tr t248 p150 p77 -> p150 p73 
+tr t249 p150 p77 -> p150 p77 
+tr t25 p71 -> p71 
+tr t250 p148 p49 -> p148 p49 
+tr t251 p148 p51 -> p148 p51 
+tr t252 p148 p57 -> p148 p51 
+tr t253 p148 p56 -> p148 p57 
+tr t254 p148 p52 -> p148 p52 
+tr t255 p148 p53 -> p148 p52 
+tr t256 p148 p54 -> p148 p54 
+tr t257 p148 p55 -> p148 p54 
+tr t258 p148 p56 -> p148 p57 
+tr t259 p148 p58 -> p148 p57 
+tr t26 p71 -> p77 
+tr t260 p148 p47 -> p148 p47 
+tr t261 p148 p47 -> p148 p43 
+tr t262 p148 p47 -> p148 p40 
+tr t263 p146 p48 -> p146 p47 
+tr t264 p146 p46 -> p146 p47 
+tr t265 p146 p45 -> p146 p44 
+tr t266 p146 p44 -> p146 p44 
+tr t267 p146 p43 -> p146 p42 
+tr t268 p146 p42 -> p146 p42 
+tr t269 p146 p46 -> p146 p47 
+tr t27 p70 -> p77 
+tr t270 p146 p47 -> p146 p41 
+tr t271 p146 p41 -> p146 p41 
+tr t272 p146 p39 -> p146 p39 
+tr t273 p146 p87 -> p146 p87 
+tr t274 p146 p87 -> p146 p83 
+tr t275 p146 p87 -> p146 p80 
+tr t276 p144 p48 -> p144 p47 
+tr t277 p144 p46 -> p144 p47 
+tr t278 p144 p45 -> p144 p44 
+tr t279 p144 p44 -> p144 p44 
+tr t28 p70 -> p77 
+tr t280 p144 p43 -> p144 p42 
+tr t281 p144 p42 -> p144 p42 
+tr t282 p144 p46 -> p144 p47 
+tr t283 p144 p47 -> p144 p41 
+tr t284 p144 p41 -> p144 p41 
+tr t285 p144 p39 -> p144 p39 
+tr t286 p144 p67 -> p144 p67 
+tr t287 p144 p67 -> p144 p63 
+tr t288 p144 p67 -> p144 p60 
+tr t289 p142 p48 -> p142 p47 
+tr t29 p70 -> p77 
+tr t290 p142 p46 -> p142 p47 
+tr t291 p142 p45 -> p142 p44 
+tr t292 p142 p44 -> p142 p44 
+tr t293 p142 p43 -> p142 p42 
+tr t294 p142 p42 -> p142 p42 
+tr t295 p142 p46 -> p142 p47 
+tr t296 p142 p47 -> p142 p41 
+tr t297 p142 p41 -> p142 p41 
+tr t298 p142 p39 -> p142 p39 
+tr t299 p142 p37 -> p142 p30 
+tr t3 p84 -> p84 
+tr t30 p78 -> p69 
+tr t300 p142 p37 -> p142 p33 
+tr t301 p142 p37 -> p142 p37 
+tr t302 p140 p29 -> p140 p29 
+tr t303 p140 p31 -> p140 p31 
+tr t304 p140 p37 -> p140 p31 
+tr t305 p140 p36 -> p140 p37 
+tr t306 p140 p32 -> p140 p32 
+tr t307 p140 p33 -> p140 p32 
+tr t308 p140 p34 -> p140 p34 
+tr t309 p140 p35 -> p140 p34 
+tr t31 p69 -> p69 
+tr t310 p140 p36 -> p140 p37 
+tr t311 p140 p38 -> p140 p37 
+tr t312 p140 p77 -> p140 p70 
+tr t313 p140 p77 -> p140 p73 
+tr t314 p140 p77 -> p140 p77 
+tr t315 p138 p29 -> p138 p29 
+tr t316 p138 p31 -> p138 p31 
+tr t317 p138 p37 -> p138 p31 
+tr t318 p138 p36 -> p138 p37 
+tr t319 p138 p32 -> p138 p32 
+tr t32 p69 -> p77 
+tr t320 p138 p33 -> p138 p32 
+tr t321 p138 p34 -> p138 p34 
+tr t322 p138 p35 -> p138 p34 
+tr t323 p138 p36 -> p138 p37 
+tr t324 p138 p38 -> p138 p37 
+tr t325 p138 p57 -> p138 p50 
+tr t326 p138 p57 -> p138 p53 
+tr t327 p138 p57 -> p138 p57 
+tr t328 p136 p88 -> p136 p87 
+tr t329 p136 p86 -> p136 p87 
+tr t33 p68 -> p68 
+tr t330 p136 p85 -> p136 p84 
+tr t331 p136 p84 -> p136 p84 
+tr t332 p136 p83 -> p136 p82 
+tr t333 p136 p82 -> p136 p82 
+tr t334 p136 p86 -> p136 p87 
+tr t335 p136 p87 -> p136 p81 
+tr t336 p136 p81 -> p136 p81 
+tr t337 p136 p79 -> p136 p79 
+tr t338 p136 p28 -> p136 p27 
+tr t339 p136 p28 -> p136 p28 
+tr t34 p67 -> p66 
+tr t340 p136 p28 -> p136 p28 
+tr t341 p136 p28 -> p136 p24 
+tr t342 p134 p88 -> p134 p87 
+tr t343 p134 p86 -> p134 p87 
+tr t344 p134 p85 -> p134 p84 
+tr t345 p134 p84 -> p134 p84 
+tr t346 p134 p83 -> p134 p82 
+tr t347 p134 p82 -> p134 p82 
+tr t348 p134 p86 -> p134 p87 
+tr t349 p134 p87 -> p134 p81 
+tr t35 p64 -> p64 
+tr t350 p134 p81 -> p134 p81 
+tr t351 p134 p79 -> p134 p79 
+tr t352 p134 p21 -> p134 p17 
+tr t353 p134 p21 -> p134 p21 
+tr t354 p134 p21 -> p134 p21 
+tr t355 p134 p21 -> p134 p20 
+tr t356 p132 p88 -> p132 p87 
+tr t357 p132 p86 -> p132 p87 
+tr t358 p132 p85 -> p132 p84 
+tr t359 p132 p84 -> p132 p84 
+tr t36 p64 -> p63 
+tr t360 p132 p83 -> p132 p82 
+tr t361 p132 p82 -> p132 p82 
+tr t362 p132 p86 -> p132 p87 
+tr t363 p132 p87 -> p132 p81 
+tr t364 p132 p81 -> p132 p81 
+tr t365 p132 p79 -> p132 p79 
+tr t366 p132 p14 -> p13 p132 
+tr t367 p132 p14 -> p132 p14 
+tr t368 p132 p14 -> p132 p14 
+tr t369 p132 p14 -> p10 p132 
+tr t37 p62 -> p62 
+tr t370 p130 p88 -> p130 p87 
+tr t371 p130 p86 -> p130 p87 
+tr t372 p130 p85 -> p130 p84 
+tr t373 p130 p84 -> p130 p84 
+tr t374 p130 p83 -> p130 p82 
+tr t375 p130 p82 -> p130 p82 
+tr t376 p130 p86 -> p130 p87 
+tr t377 p130 p87 -> p130 p81 
+tr t378 p130 p81 -> p130 p81 
+tr t379 p130 p79 -> p130 p79 
+tr t38 p62 -> p63 
+tr t380 p130 p7 -> p130 p6 
+tr t381 p130 p7 -> p130 p7 
+tr t382 p130 p7 -> p130 p7 
+tr t383 p130 p7 -> p130 p3 
+tr t384 p128 p69 -> p128 p69 
+tr t385 p128 p71 -> p128 p71 
+tr t386 p128 p77 -> p128 p71 
+tr t387 p128 p76 -> p128 p77 
+tr t388 p128 p72 -> p128 p72 
+tr t389 p128 p73 -> p128 p72 
+tr t39 p63 -> p68 
+tr t390 p128 p74 -> p128 p74 
+tr t391 p128 p75 -> p128 p74 
+tr t392 p128 p76 -> p128 p77 
+tr t393 p128 p78 -> p128 p77 
+tr t394 p128 p28 -> p128 p27 
+tr t395 p128 p28 -> p128 p28 
+tr t396 p128 p28 -> p128 p28 
+tr t397 p128 p28 -> p128 p24 
+tr t398 p126 p69 -> p126 p69 
+tr t399 p126 p71 -> p126 p71 
+tr t4 p84 -> p83 
+tr t40 p67 -> p66 
+tr t400 p126 p77 -> p126 p71 
+tr t401 p126 p76 -> p126 p77 
+tr t402 p126 p72 -> p126 p72 
+tr t403 p126 p73 -> p126 p72 
+tr t404 p126 p74 -> p126 p74 
+tr t405 p126 p75 -> p126 p74 
+tr t406 p126 p76 -> p126 p77 
+tr t407 p126 p78 -> p126 p77 
+tr t408 p126 p21 -> p126 p17 
+tr t409 p126 p21 -> p126 p21 
+tr t41 p61 -> p61 
+tr t410 p126 p21 -> p126 p21 
+tr t411 p126 p21 -> p126 p20 
+tr t412 p124 p69 -> p124 p69 
+tr t413 p124 p71 -> p124 p71 
+tr t414 p124 p77 -> p124 p71 
+tr t415 p124 p76 -> p124 p77 
+tr t416 p124 p72 -> p124 p72 
+tr t417 p124 p73 -> p124 p72 
+tr t418 p124 p74 -> p124 p74 
+tr t419 p124 p75 -> p124 p74 
+tr t42 p61 -> p67 
+tr t420 p124 p76 -> p124 p77 
+tr t421 p124 p78 -> p124 p77 
+tr t422 p124 p14 -> p124 p13 
+tr t423 p124 p14 -> p124 p14 
+tr t424 p124 p14 -> p124 p14 
+tr t425 p124 p14 -> p10 p124 
+tr t426 p122 p69 -> p122 p69 
+tr t427 p122 p71 -> p122 p71 
+tr t428 p122 p77 -> p122 p71 
+tr t429 p122 p76 -> p122 p77 
+tr t43 p60 -> p67 
+tr t430 p122 p72 -> p122 p72 
+tr t431 p122 p73 -> p122 p72 
+tr t432 p122 p74 -> p122 p74 
+tr t433 p122 p75 -> p122 p74 
+tr t434 p122 p76 -> p122 p77 
+tr t435 p122 p78 -> p122 p77 
+tr t436 p122 p7 -> p122 p6 
+tr t437 p122 p7 -> p122 p7 
+tr t438 p122 p7 -> p122 p7 
+tr t439 p122 p7 -> p122 p3 
+tr t44 p60 -> p67 
+tr t440 p120 p68 -> p120 p67 
+tr t441 p120 p66 -> p120 p67 
+tr t442 p120 p65 -> p120 p64 
+tr t443 p120 p64 -> p120 p64 
+tr t444 p120 p63 -> p120 p62 
+tr t445 p120 p62 -> p120 p62 
+tr t446 p120 p66 -> p120 p67 
+tr t447 p120 p67 -> p120 p61 
+tr t448 p120 p61 -> p120 p61 
+tr t449 p120 p59 -> p120 p59 
+tr t45 p60 -> p67 
+tr t450 p120 p28 -> p120 p27 
+tr t451 p120 p28 -> p120 p28 
+tr t452 p120 p28 -> p120 p28 
+tr t453 p120 p28 -> p120 p24 
+tr t454 p118 p68 -> p118 p67 
+tr t455 p118 p66 -> p118 p67 
+tr t456 p118 p65 -> p118 p64 
+tr t457 p118 p64 -> p118 p64 
+tr t458 p118 p63 -> p118 p62 
+tr t459 p118 p62 -> p118 p62 
+tr t46 p68 -> p59 
+tr t460 p118 p66 -> p118 p67 
+tr t461 p118 p67 -> p118 p61 
+tr t462 p118 p61 -> p118 p61 
+tr t463 p118 p59 -> p118 p59 
+tr t464 p118 p21 -> p118 p17 
+tr t465 p118 p21 -> p118 p21 
+tr t466 p118 p21 -> p118 p21 
+tr t467 p118 p21 -> p118 p20 
+tr t468 p116 p68 -> p116 p67 
+tr t469 p116 p66 -> p116 p67 
+tr t47 p59 -> p59 
+tr t470 p116 p65 -> p116 p64 
+tr t471 p116 p64 -> p116 p64 
+tr t472 p116 p63 -> p116 p62 
+tr t473 p116 p62 -> p116 p62 
+tr t474 p116 p66 -> p116 p67 
+tr t475 p116 p67 -> p116 p61 
+tr t476 p116 p61 -> p116 p61 
+tr t477 p116 p59 -> p116 p59 
+tr t478 p116 p14 -> p116 p13 
+tr t479 p116 p14 -> p116 p14 
+tr t48 p59 -> p67 
+tr t480 p116 p14 -> p116 p14 
+tr t481 p116 p14 -> p10 p116 
+tr t482 p114 p68 -> p114 p67 
+tr t483 p114 p66 -> p114 p67 
+tr t484 p114 p65 -> p114 p64 
+tr t485 p114 p64 -> p114 p64 
+tr t486 p114 p63 -> p114 p62 
+tr t487 p114 p62 -> p114 p62 
+tr t488 p114 p66 -> p114 p67 
+tr t489 p114 p67 -> p114 p61 
+tr t49 p58 -> p58 
+tr t490 p114 p61 -> p114 p61 
+tr t491 p114 p59 -> p114 p59 
+tr t492 p114 p7 -> p114 p6 
+tr t493 p114 p7 -> p114 p7 
+tr t494 p114 p7 -> p114 p7 
+tr t495 p114 p7 -> p114 p3 
+tr t496 p112 p49 -> p112 p49 
+tr t497 p112 p51 -> p112 p51 
+tr t498 p112 p57 -> p112 p51 
+tr t499 p112 p56 -> p112 p57 
+tr t5 p82 -> p82 
+tr t50 p57 -> p56 
+tr t500 p112 p52 -> p112 p52 
+tr t501 p112 p53 -> p112 p52 
+tr t502 p112 p54 -> p112 p54 
+tr t503 p112 p55 -> p112 p54 
+tr t504 p112 p56 -> p112 p57 
+tr t505 p112 p58 -> p112 p57 
+tr t506 p112 p28 -> p112 p27 
+tr t507 p112 p28 -> p112 p28 
+tr t508 p112 p28 -> p112 p28 
+tr t509 p112 p28 -> p112 p24 
+tr t51 p54 -> p54 
+tr t510 p110 p49 -> p110 p49 
+tr t511 p110 p51 -> p110 p51 
+tr t512 p110 p57 -> p110 p51 
+tr t513 p110 p56 -> p110 p57 
+tr t514 p110 p52 -> p110 p52 
+tr t515 p110 p53 -> p110 p52 
+tr t516 p110 p54 -> p110 p54 
+tr t517 p110 p55 -> p110 p54 
+tr t518 p110 p56 -> p110 p57 
+tr t519 p110 p58 -> p110 p57 
+tr t52 p54 -> p53 
+tr t520 p110 p21 -> p110 p17 
+tr t521 p110 p21 -> p110 p21 
+tr t522 p110 p21 -> p110 p21 
+tr t523 p110 p21 -> p110 p20 
+tr t524 p108 p49 -> p108 p49 
+tr t525 p108 p51 -> p108 p51 
+tr t526 p108 p57 -> p108 p51 
+tr t527 p108 p56 -> p108 p57 
+tr t528 p108 p52 -> p108 p52 
+tr t529 p108 p53 -> p108 p52 
+tr t53 p52 -> p52 
+tr t530 p108 p54 -> p108 p54 
+tr t531 p108 p55 -> p108 p54 
+tr t532 p108 p56 -> p108 p57 
+tr t533 p108 p58 -> p108 p57 
+tr t534 p108 p14 -> p108 p13 
+tr t535 p108 p14 -> p108 p14 
+tr t536 p108 p14 -> p108 p14 
+tr t537 p108 p14 -> p10 p108 
+tr t538 p106 p49 -> p106 p49 
+tr t539 p106 p51 -> p106 p51 
+tr t54 p52 -> p53 
+tr t540 p106 p57 -> p106 p51 
+tr t541 p106 p56 -> p106 p57 
+tr t542 p106 p52 -> p106 p52 
+tr t543 p106 p53 -> p106 p52 
+tr t544 p106 p54 -> p106 p54 
+tr t545 p106 p55 -> p106 p54 
+tr t546 p106 p56 -> p106 p57 
+tr t547 p106 p58 -> p106 p57 
+tr t548 p106 p7 -> p106 p6 
+tr t549 p106 p7 -> p106 p7 
+tr t55 p53 -> p58 
+tr t550 p106 p7 -> p106 p7 
+tr t551 p106 p7 -> p106 p3 
+tr t552 p104 p48 -> p104 p47 
+tr t553 p104 p46 -> p104 p47 
+tr t554 p104 p45 -> p104 p44 
+tr t555 p104 p44 -> p104 p44 
+tr t556 p104 p43 -> p104 p42 
+tr t557 p104 p42 -> p104 p42 
+tr t558 p104 p46 -> p104 p47 
+tr t559 p104 p47 -> p104 p41 
+tr t56 p57 -> p56 
+tr t560 p104 p41 -> p104 p41 
+tr t561 p104 p39 -> p104 p39 
+tr t562 p104 p28 -> p104 p27 
+tr t563 p104 p28 -> p104 p28 
+tr t564 p104 p28 -> p104 p28 
+tr t565 p104 p28 -> p104 p24 
+tr t566 p102 p48 -> p102 p47 
+tr t567 p102 p46 -> p102 p47 
+tr t568 p102 p45 -> p102 p44 
+tr t569 p102 p44 -> p102 p44 
+tr t57 p51 -> p51 
+tr t570 p102 p43 -> p102 p42 
+tr t571 p102 p42 -> p102 p42 
+tr t572 p102 p46 -> p102 p47 
+tr t573 p102 p47 -> p102 p41 
+tr t574 p102 p41 -> p102 p41 
+tr t575 p102 p39 -> p102 p39 
+tr t576 p102 p21 -> p102 p17 
+tr t577 p102 p21 -> p102 p21 
+tr t578 p102 p21 -> p102 p21 
+tr t579 p102 p21 -> p102 p20 
+tr t58 p51 -> p57 
+tr t580 p100 p48 -> p100 p47 
+tr t581 p100 p46 -> p100 p47 
+tr t582 p100 p45 -> p100 p44 
+tr t583 p100 p44 -> p100 p44 
+tr t584 p100 p43 -> p100 p42 
+tr t585 p100 p42 -> p100 p42 
+tr t586 p100 p46 -> p100 p47 
+tr t587 p100 p47 -> p100 p41 
+tr t588 p100 p41 -> p100 p41 
+tr t589 p100 p39 -> p100 p39 
+tr t59 p50 -> p57 
+tr t590 p100 p14 -> p100 p13 
+tr t591 p100 p14 -> p100 p14 
+tr t592 p100 p14 -> p100 p14 
+tr t593 p100 p14 -> p10 p100 
+tr t594 p48 p98 -> p47 p98 
+tr t595 p46 p98 -> p47 p98 
+tr t596 p45 p98 -> p44 p98 
+tr t597 p44 p98 -> p44 p98 
+tr t598 p43 p98 -> p42 p98 
+tr t599 p42 p98 -> p42 p98 
+tr t6 p82 -> p83 
+tr t60 p50 -> p57 
+tr t600 p46 p98 -> p47 p98 
+tr t601 p47 p98 -> p41 p98 
+tr t602 p41 p98 -> p41 p98 
+tr t603 p39 p98 -> p39 p98 
+tr t604 p7 p98 -> p6 p98 
+tr t605 p7 p98 -> p7 p98 
+tr t606 p7 p98 -> p7 p98 
+tr t607 p7 p98 -> p3 p98 
+tr t608 p29 p96 -> p29 p96 
+tr t609 p31 p96 -> p31 p96 
+tr t61 p50 -> p57 
+tr t610 p37 p96 -> p31 p96 
+tr t611 p36 p96 -> p37 p96 
+tr t612 p32 p96 -> p32 p96 
+tr t613 p33 p96 -> p32 p96 
+tr t614 p34 p96 -> p34 p96 
+tr t615 p35 p96 -> p34 p96 
+tr t616 p36 p96 -> p37 p96 
+tr t617 p38 p96 -> p37 p96 
+tr t618 p28 p96 -> p27 p96 
+tr t619 p28 p96 -> p28 p96 
+tr t62 p58 -> p49 
+tr t620 p28 p96 -> p28 p96 
+tr t621 p28 p96 -> p24 p96 
+tr t622 p29 p94 -> p29 p94 
+tr t623 p31 p94 -> p31 p94 
+tr t624 p37 p94 -> p31 p94 
+tr t625 p36 p94 -> p37 p94 
+tr t626 p32 p94 -> p32 p94 
+tr t627 p33 p94 -> p32 p94 
+tr t628 p34 p94 -> p34 p94 
+tr t629 p35 p94 -> p34 p94 
+tr t63 p49 -> p49 
+tr t630 p36 p94 -> p37 p94 
+tr t631 p38 p94 -> p37 p94 
+tr t632 p21 p94 -> p17 p94 
+tr t633 p21 p94 -> p21 p94 
+tr t634 p21 p94 -> p21 p94 
+tr t635 p21 p94 -> p20 p94 
+tr t636 p29 p92 -> p29 p92 
+tr t637 p31 p92 -> p31 p92 
+tr t638 p37 p92 -> p31 p92 
+tr t639 p36 p92 -> p37 p92 
+tr t64 p49 -> p57 
+tr t640 p32 p92 -> p32 p92 
+tr t641 p33 p92 -> p32 p92 
+tr t642 p34 p92 -> p34 p92 
+tr t643 p35 p92 -> p34 p92 
+tr t644 p36 p92 -> p37 p92 
+tr t645 p38 p92 -> p37 p92 
+tr t646 p14 p92 -> p13 p92 
+tr t647 p14 p92 -> p14 p92 
+tr t648 p14 p92 -> p14 p92 
+tr t649 p14 p92 -> p10 p92 
+tr t65 p48 -> p48 
+tr t650 p29 p90 -> p29 p90 
+tr t651 p31 p90 -> p31 p90 
+tr t652 p37 p90 -> p31 p90 
+tr t653 p36 p90 -> p37 p90 
+tr t654 p32 p90 -> p32 p90 
+tr t655 p33 p90 -> p32 p90 
+tr t656 p34 p90 -> p34 p90 
+tr t657 p35 p90 -> p34 p90 
+tr t658 p36 p90 -> p37 p90 
+tr t659 p38 p90 -> p37 p90 
+tr t66 p47 -> p46 
+tr t660 p7 p90 -> p6 p90 
+tr t661 p7 p90 -> p7 p90 
+tr t662 p7 p90 -> p7 p90 
+tr t663 p7 p90 -> p3 p90 
+tr t664 p4 p89 -> p4 p89 
+tr t665 p7 p89 -> p7 p89 
+tr t666 p2 p89 -> p2 p89 
+tr t667 p1 p89 -> p1 p89 
+tr t668 p37 p89 -> p30 p89 
+tr t669 p37 p89 -> p33 p89 
+tr t67 p44 -> p44 
+tr t670 p37 p89 -> p37 p89 
+tr t671 p37 p91 -> p30 p91 
+tr t672 p37 p91 -> p33 p91 
+tr t673 p37 p91 -> p37 p91 
+tr t674 p11 p91 -> p11 p91 
+tr t675 p14 p91 -> p14 p91 
+tr t676 p9 p91 -> p9 p91 
+tr t677 p8 p91 -> p8 p91 
+tr t678 p37 p93 -> p30 p93 
+tr t679 p37 p93 -> p33 p93 
+tr t68 p44 -> p43 
+tr t680 p37 p93 -> p37 p93 
+tr t681 p15 p93 -> p15 p93 
+tr t682 p16 p93 -> p16 p93 
+tr t683 p21 p93 -> p21 p93 
+tr t684 p18 p93 -> p18 p93 
+tr t685 p37 p95 -> p30 p95 
+tr t686 p37 p95 -> p33 p95 
+tr t687 p37 p95 -> p37 p95 
+tr t688 p25 p95 -> p25 p95 
+tr t689 p28 p95 -> p28 p95 
+tr t69 p42 -> p42 
+tr t690 p23 p95 -> p23 p95 
+tr t691 p22 p95 -> p22 p95 
+tr t692 p47 p97 -> p47 p97 
+tr t693 p47 p97 -> p43 p97 
+tr t694 p47 p97 -> p40 p97 
+tr t695 p4 p97 -> p4 p97 
+tr t696 p7 p97 -> p7 p97 
+tr t697 p2 p97 -> p2 p97 
+tr t698 p1 p97 -> p1 p97 
+tr t699 p47 p99 -> p47 p99 
+tr t7 p83 -> p88 
+tr t70 p42 -> p43 
+tr t700 p47 p99 -> p43 p99 
+tr t701 p47 p99 -> p40 p99 
+tr t702 p11 p99 -> p11 p99 
+tr t703 p14 p99 -> p14 p99 
+tr t704 p9 p99 -> p9 p99 
+tr t705 p8 p99 -> p8 p99 
+tr t706 p101 p47 -> p101 p47 
+tr t707 p101 p47 -> p101 p43 
+tr t708 p101 p47 -> p101 p40 
+tr t709 p101 p15 -> p101 p15 
+tr t71 p43 -> p48 
+tr t710 p101 p16 -> p101 p16 
+tr t711 p101 p21 -> p101 p21 
+tr t712 p101 p18 -> p101 p18 
+tr t713 p103 p47 -> p103 p47 
+tr t714 p103 p47 -> p103 p43 
+tr t715 p103 p47 -> p103 p40 
+tr t716 p103 p25 -> p103 p25 
+tr t717 p103 p28 -> p103 p28 
+tr t718 p103 p23 -> p103 p23 
+tr t719 p103 p22 -> p103 p22 
+tr t72 p47 -> p46 
+tr t720 p105 p57 -> p105 p50 
+tr t721 p105 p57 -> p105 p53 
+tr t722 p105 p57 -> p105 p57 
+tr t723 p105 p4 -> p105 p4 
+tr t724 p105 p7 -> p105 p7 
+tr t725 p105 p2 -> p105 p2 
+tr t726 p1 p105 -> p1 p105 
+tr t727 p107 p57 -> p107 p50 
+tr t728 p107 p57 -> p107 p53 
+tr t729 p107 p57 -> p107 p57 
+tr t73 p41 -> p41 
+tr t730 p107 p11 -> p107 p11 
+tr t731 p107 p14 -> p107 p14 
+tr t732 p107 p9 -> p107 p9 
+tr t733 p107 p8 -> p107 p8 
+tr t734 p109 p57 -> p109 p50 
+tr t735 p109 p57 -> p109 p53 
+tr t736 p109 p57 -> p109 p57 
+tr t737 p109 p15 -> p109 p15 
+tr t738 p109 p16 -> p109 p16 
+tr t739 p109 p21 -> p109 p21 
+tr t74 p41 -> p47 
+tr t740 p109 p18 -> p109 p18 
+tr t741 p111 p57 -> p111 p50 
+tr t742 p111 p57 -> p111 p53 
+tr t743 p111 p57 -> p111 p57 
+tr t744 p111 p25 -> p111 p25 
+tr t745 p111 p28 -> p111 p28 
+tr t746 p111 p23 -> p111 p23 
+tr t747 p111 p22 -> p111 p22 
+tr t748 p113 p67 -> p113 p67 
+tr t749 p113 p67 -> p113 p63 
+tr t75 p40 -> p47 
+tr t750 p113 p67 -> p113 p60 
+tr t751 p113 p4 -> p113 p4 
+tr t752 p113 p7 -> p113 p7 
+tr t753 p113 p2 -> p113 p2 
+tr t754 p1 p113 -> p1 p113 
+tr t755 p115 p67 -> p115 p67 
+tr t756 p115 p67 -> p115 p63 
+tr t757 p115 p67 -> p115 p60 
+tr t758 p11 p115 -> p11 p115 
+tr t759 p115 p14 -> p115 p14 
+tr t76 p40 -> p47 
+tr t760 p115 p9 -> p115 p9 
+tr t761 p115 p8 -> p115 p8 
+tr t762 p117 p67 -> p117 p67 
+tr t763 p117 p67 -> p117 p63 
+tr t764 p117 p67 -> p117 p60 
+tr t765 p117 p15 -> p117 p15 
+tr t766 p117 p16 -> p117 p16 
+tr t767 p117 p21 -> p117 p21 
+tr t768 p117 p18 -> p117 p18 
+tr t769 p119 p67 -> p119 p67 
+tr t77 p40 -> p47 
+tr t770 p119 p67 -> p119 p63 
+tr t771 p119 p67 -> p119 p60 
+tr t772 p119 p25 -> p119 p25 
+tr t773 p119 p28 -> p119 p28 
+tr t774 p119 p23 -> p119 p23 
+tr t775 p119 p22 -> p119 p22 
+tr t776 p121 p77 -> p121 p70 
+tr t777 p121 p77 -> p121 p73 
+tr t778 p121 p77 -> p121 p77 
+tr t779 p121 p4 -> p121 p4 
+tr t78 p48 -> p39 
+tr t780 p121 p7 -> p121 p7 
+tr t781 p121 p2 -> p121 p2 
+tr t782 p1 p121 -> p1 p121 
+tr t783 p123 p77 -> p123 p70 
+tr t784 p123 p77 -> p123 p73 
+tr t785 p123 p77 -> p123 p77 
+tr t786 p11 p123 -> p11 p123 
+tr t787 p123 p14 -> p123 p14 
+tr t788 p123 p9 -> p123 p9 
+tr t789 p123 p8 -> p123 p8 
+tr t79 p39 -> p39 
+tr t790 p125 p77 -> p125 p70 
+tr t791 p125 p77 -> p125 p73 
+tr t792 p125 p77 -> p125 p77 
+tr t793 p125 p15 -> p125 p15 
+tr t794 p125 p16 -> p125 p16 
+tr t795 p125 p21 -> p125 p21 
+tr t796 p125 p18 -> p125 p18 
+tr t797 p127 p77 -> p127 p70 
+tr t798 p127 p77 -> p127 p73 
+tr t799 p127 p77 -> p127 p77 
+tr t8 p87 -> p86 
+tr t80 p39 -> p47 
+tr t800 p127 p25 -> p127 p25 
+tr t801 p127 p28 -> p127 p28 
+tr t802 p127 p23 -> p127 p23 
+tr t803 p127 p22 -> p127 p22 
+tr t804 p129 p87 -> p129 p87 
+tr t805 p129 p87 -> p129 p83 
+tr t806 p129 p87 -> p129 p80 
+tr t807 p129 p4 -> p129 p4 
+tr t808 p129 p7 -> p129 p7 
+tr t809 p129 p2 -> p129 p2 
+tr t81 p38 -> p38 
+tr t810 p1 p129 -> p1 p129 
+tr t811 p131 p87 -> p131 p87 
+tr t812 p131 p87 -> p131 p83 
+tr t813 p131 p87 -> p131 p80 
+tr t814 p11 p131 -> p11 p131 
+tr t815 p131 p14 -> p131 p14 
+tr t816 p131 p9 -> p131 p9 
+tr t817 p131 p8 -> p131 p8 
+tr t818 p133 p87 -> p133 p87 
+tr t819 p133 p87 -> p133 p83 
+tr t82 p37 -> p36 
+tr t820 p133 p87 -> p133 p80 
+tr t821 p133 p15 -> p133 p15 
+tr t822 p133 p16 -> p133 p16 
+tr t823 p133 p21 -> p133 p21 
+tr t824 p133 p18 -> p133 p18 
+tr t825 p135 p87 -> p135 p87 
+tr t826 p135 p87 -> p135 p83 
+tr t827 p135 p87 -> p135 p80 
+tr t828 p135 p25 -> p135 p25 
+tr t829 p135 p28 -> p135 p28 
+tr t83 p34 -> p34 
+tr t830 p135 p23 -> p135 p23 
+tr t831 p135 p22 -> p135 p22 
+tr t832 p137 p47 -> p137 p47 
+tr t833 p137 p47 -> p137 p43 
+tr t834 p137 p47 -> p137 p40 
+tr t835 p137 p29 -> p137 p29 
+tr t836 p137 p31 -> p137 p31 
+tr t837 p137 p37 -> p137 p31 
+tr t838 p137 p36 -> p137 p37 
+tr t839 p137 p32 -> p137 p32 
+tr t84 p34 -> p33 
+tr t840 p137 p33 -> p137 p32 
+tr t841 p137 p34 -> p137 p34 
+tr t842 p137 p35 -> p137 p34 
+tr t843 p137 p36 -> p137 p37 
+tr t844 p137 p38 -> p137 p37 
+tr t845 p139 p67 -> p139 p67 
+tr t846 p139 p67 -> p139 p63 
+tr t847 p139 p67 -> p139 p60 
+tr t848 p139 p29 -> p139 p29 
+tr t849 p139 p31 -> p139 p31 
+tr t85 p32 -> p32 
+tr t850 p139 p37 -> p139 p31 
+tr t851 p139 p36 -> p139 p37 
+tr t852 p139 p32 -> p139 p32 
+tr t853 p139 p33 -> p139 p32 
+tr t854 p139 p34 -> p139 p34 
+tr t855 p139 p35 -> p139 p34 
+tr t856 p139 p36 -> p139 p37 
+tr t857 p139 p38 -> p139 p37 
+tr t858 p141 p87 -> p141 p87 
+tr t859 p141 p87 -> p141 p83 
+tr t86 p32 -> p33 
+tr t860 p141 p87 -> p141 p80 
+tr t861 p141 p29 -> p141 p29 
+tr t862 p141 p31 -> p141 p31 
+tr t863 p141 p37 -> p141 p31 
+tr t864 p141 p36 -> p141 p37 
+tr t865 p141 p32 -> p141 p32 
+tr t866 p141 p33 -> p141 p32 
+tr t867 p141 p34 -> p141 p34 
+tr t868 p141 p35 -> p141 p34 
+tr t869 p141 p36 -> p141 p37 
+tr t87 p33 -> p38 
+tr t870 p141 p38 -> p141 p37 
+tr t871 p143 p57 -> p143 p50 
+tr t872 p143 p57 -> p143 p53 
+tr t873 p143 p57 -> p143 p57 
+tr t874 p143 p48 -> p143 p47 
+tr t875 p143 p46 -> p143 p47 
+tr t876 p143 p45 -> p143 p44 
+tr t877 p143 p44 -> p143 p44 
+tr t878 p143 p43 -> p143 p42 
+tr t879 p143 p42 -> p143 p42 
+tr t88 p37 -> p36 
+tr t880 p143 p46 -> p143 p47 
+tr t881 p143 p47 -> p143 p41 
+tr t882 p143 p41 -> p143 p41 
+tr t883 p143 p39 -> p143 p39 
+tr t884 p145 p77 -> p145 p70 
+tr t885 p145 p77 -> p145 p73 
+tr t886 p145 p77 -> p145 p77 
+tr t887 p145 p48 -> p145 p47 
+tr t888 p145 p46 -> p145 p47 
+tr t889 p145 p45 -> p145 p44 
+tr t89 p31 -> p31 
+tr t890 p145 p44 -> p145 p44 
+tr t891 p145 p43 -> p145 p42 
+tr t892 p145 p42 -> p145 p42 
+tr t893 p145 p46 -> p145 p47 
+tr t894 p145 p47 -> p145 p41 
+tr t895 p145 p41 -> p145 p41 
+tr t896 p145 p39 -> p145 p39 
+tr t897 p147 p37 -> p147 p30 
+tr t898 p147 p37 -> p147 p33 
+tr t899 p147 p37 -> p147 p37 
+tr t9 p81 -> p81 
+tr t90 p31 -> p37 
+tr t900 p147 p49 -> p147 p49 
+tr t901 p147 p51 -> p147 p51 
+tr t902 p147 p57 -> p147 p51 
+tr t903 p147 p56 -> p147 p57 
+tr t904 p147 p52 -> p147 p52 
+tr t905 p147 p53 -> p147 p52 
+tr t906 p147 p54 -> p147 p54 
+tr t907 p147 p55 -> p147 p54 
+tr t908 p147 p56 -> p147 p57 
+tr t909 p147 p58 -> p147 p57 
+tr t91 p30 -> p37 
+tr t910 p149 p67 -> p149 p67 
+tr t911 p149 p67 -> p149 p63 
+tr t912 p149 p67 -> p149 p60 
+tr t913 p149 p49 -> p149 p49 
+tr t914 p149 p51 -> p149 p51 
+tr t915 p149 p57 -> p149 p51 
+tr t916 p149 p56 -> p149 p57 
+tr t917 p149 p52 -> p149 p52 
+tr t918 p149 p53 -> p149 p52 
+tr t919 p149 p54 -> p149 p54 
+tr t92 p30 -> p37 
+tr t920 p149 p55 -> p149 p54 
+tr t921 p149 p56 -> p149 p57 
+tr t922 p149 p58 -> p149 p57 
+tr t923 p151 p87 -> p151 p87 
+tr t924 p151 p87 -> p151 p83 
+tr t925 p151 p87 -> p151 p80 
+tr t926 p151 p49 -> p151 p49 
+tr t927 p151 p51 -> p151 p51 
+tr t928 p151 p57 -> p151 p51 
+tr t929 p151 p56 -> p151 p57 
+tr t93 p30 -> p37 
+tr t930 p151 p52 -> p151 p52 
+tr t931 p151 p53 -> p151 p52 
+tr t932 p151 p54 -> p151 p54 
+tr t933 p151 p55 -> p151 p54 
+tr t934 p151 p56 -> p151 p57 
+tr t935 p151 p58 -> p151 p57 
+tr t936 p153 p47 -> p153 p47 
+tr t937 p153 p47 -> p153 p43 
+tr t938 p153 p47 -> p153 p40 
+tr t939 p153 p68 -> p153 p67 
+tr t94 p38 -> p29 
+tr t940 p153 p66 -> p153 p67 
+tr t941 p153 p65 -> p153 p64 
+tr t942 p153 p64 -> p153 p64 
+tr t943 p153 p63 -> p153 p62 
+tr t944 p153 p62 -> p153 p62 
+tr t945 p153 p66 -> p153 p67 
+tr t946 p153 p67 -> p153 p61 
+tr t947 p153 p61 -> p153 p61 
+tr t948 p153 p59 -> p153 p59 
+tr t949 p155 p77 -> p155 p70 
+tr t95 p29 -> p29 
+tr t950 p155 p77 -> p155 p73 
+tr t951 p155 p77 -> p155 p77 
+tr t952 p155 p68 -> p155 p67 
+tr t953 p155 p66 -> p155 p67 
+tr t954 p155 p65 -> p155 p64 
+tr t955 p155 p64 -> p155 p64 
+tr t956 p155 p63 -> p155 p62 
+tr t957 p155 p62 -> p155 p62 
+tr t958 p155 p66 -> p155 p67 
+tr t959 p155 p67 -> p155 p61 
+tr t96 p29 -> p37 
+tr t960 p155 p61 -> p155 p61 
+tr t961 p155 p59 -> p155 p59 
+tr t962 p157 p37 -> p157 p30 
+tr t963 p157 p37 -> p157 p33 
+tr t964 p157 p37 -> p157 p37 
+tr t965 p157 p69 -> p157 p69 
+tr t966 p157 p71 -> p157 p71 
+tr t967 p157 p77 -> p157 p71 
+tr t968 p157 p76 -> p157 p77 
+tr t969 p157 p72 -> p157 p72 
+tr t97 p27 -> p26 
+tr t970 p157 p73 -> p157 p72 
+tr t971 p157 p74 -> p157 p74 
+tr t972 p157 p75 -> p157 p74 
+tr t973 p157 p76 -> p157 p77 
+tr t974 p157 p78 -> p157 p77 
+tr t975 p159 p57 -> p159 p50 
+tr t976 p159 p57 -> p159 p53 
+tr t977 p159 p57 -> p159 p57 
+tr t978 p159 p69 -> p159 p69 
+tr t979 p159 p71 -> p159 p71 
+tr t98 p26 -> p28 
+tr t980 p159 p77 -> p159 p71 
+tr t981 p159 p76 -> p159 p77 
+tr t982 p159 p72 -> p159 p72 
+tr t983 p159 p73 -> p159 p72 
+tr t984 p159 p74 -> p159 p74 
+tr t985 p159 p75 -> p159 p74 
+tr t986 p159 p76 -> p159 p77 
+tr t987 p159 p78 -> p159 p77 
+tr t988 p161 p87 -> p161 p87 
+tr t989 p161 p87 -> p161 p83 
+tr t99 p26 -> p28 
+tr t990 p161 p87 -> p161 p80 
+tr t991 p161 p69 -> p161 p69 
+tr t992 p161 p71 -> p161 p71 
+tr t993 p161 p77 -> p161 p71 
+tr t994 p161 p76 -> p161 p77 
+tr t995 p161 p72 -> p161 p72 
+tr t996 p161 p73 -> p161 p72 
+tr t997 p161 p74 -> p161 p74 
+tr t998 p161 p75 -> p161 p74 
+tr t999 p161 p76 -> p161 p77 
+pl p0 (1)
