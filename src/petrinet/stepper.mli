@@ -4,7 +4,9 @@ open Trset
     
 exception Not_fireable of tr * marking
 
+(* @noalloc *)
 val is_fireable: tr -> marking -> bool
+
 
 val fireables: net -> marking -> trset
 
@@ -36,5 +38,9 @@ val quick_fire: marking -> tr -> marking
  *    the new marking is m 
  *
  *  ts is updated, it contains the transitions fireable at m.
+ *
+ * let upd = update_fireables net ()   allocates some data.
+ *
+ * then, upd m tr t   is @noalloc
  *)
-val update_fireables: net -> marking -> trset -> tr -> unit
+val update_fireables: net -> unit -> marking -> trset -> tr -> unit

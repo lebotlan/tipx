@@ -19,7 +19,7 @@ let fire_if_fireable net seen m (acu, trset) tr =
     
     (* Check update_fireables *)
     let trset0 = Stepper.fireables net m in
-    let () = Stepper.update_fireables net m2 trset0 tr in
+    let () = Stepper.update_fireables net () m2 trset0 tr in  (* Inefficient *)
     let trset1 = Stepper.fireables net m2 in
     let () = assert (Trset.equal trset0 trset1) in
     

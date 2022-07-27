@@ -30,6 +30,7 @@ let clone ar =
     maxv = ar.maxv ;
     tab = Bytes.copy ar.tab }
 
+let clear ar = Bytes.fill ar.tab 0 (Bytes.length ar.tab) '\x00'
 
 (* @noalloc *)
 let get ar i =

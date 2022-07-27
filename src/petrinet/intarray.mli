@@ -39,6 +39,8 @@ exception Marking_overflow
 val set: t -> int -> int -> t
 val add: t -> int -> int -> t
 
+(* Put 0 everywhere *)                            
+val clear: t -> unit
 
 (* @noalloc *)
 val cmp: t -> t -> int
