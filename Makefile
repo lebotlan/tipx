@@ -2,9 +2,9 @@
 
 all:	test
 
-perf:
-	dune build --instrument-with landmarks test/testwalkformula.exe
-	_build/default/test/testwalkformula.exe Nets/DLCround/dlcro_13_b.net Nets/PGCD/formula2.selt
+# perf:
+# 	dune build --instrument-with landmarks test/testwalkformula.exe
+# 	_build/default/test/testwalkformula.exe Nets/DLCround/dlcro_13_b.net Nets/PGCD/formula2.selt
 
 
 test:

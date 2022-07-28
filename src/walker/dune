@@ -2,7 +2,7 @@
  (name walker)
  (public_name tipx.walker)
 
- (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
+ ; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
  
  (libraries petrinet logic lwtutils))
 

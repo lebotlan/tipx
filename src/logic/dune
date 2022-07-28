@@ -2,7 +2,7 @@
  (name logic)
  (public_name tipx.logic)
 
- (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
+ ; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
  
  (libraries petrinet))
 

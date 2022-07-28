@@ -2,7 +2,7 @@
  (name petrinet)
  (public_name tipx.petrinet)
 
- (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
+ ; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
  
  (libraries common))
 
