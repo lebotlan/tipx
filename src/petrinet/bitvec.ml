@@ -1,6 +1,6 @@
 (* TODO PERF:
  *    - use unsafe versions of Bytes.get Bytes.set
- *    - write pick_loop in C
+ *    - write pick_loop in C TODO TODO !!!
  *    - write add, remove, contains in C *)
 
 
@@ -14,6 +14,8 @@ let char0 = Char.chr 0
 let init size = Bytes.make ((size + 7)/ 8) char0
 
 let clone = Bytes.copy
+
+let clear ar = Bytes.fill ar 0 (Bytes.length ar) '\x00'
 
 let tos ?(max=40) bv =
   Seq.fold_left (fun acu b -> acu ^ Printf.sprintf "%02x" (Char.code b)) "" (Seq.take max (Bytes.to_seq bv))
@@ -44,7 +46,7 @@ let get bv i =
   and mask = get_mask i in
 
   let vval = Bytes.get_uint8 bv index in
-  (vval land mask) lsr (i mod 8)
+  (vval land mask) lsr (i land 7)
 
 let equal = Bytes.equal
 let cmp = Bytes.compare

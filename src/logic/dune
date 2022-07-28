@@ -1,5 +1,8 @@
 (library
  (name logic)
  (public_name tipx.logic)
- (libraries petrinet)
-)
+
+ (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
+ 
+ (libraries petrinet))
+

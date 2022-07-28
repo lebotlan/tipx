@@ -221,7 +221,10 @@ let rec compute_delta acu pre post =
 
   | (w1,pl1) :: rest1, (w2,pl2) :: rest2 ->
 
-    if pl1 = pl2 then compute_delta ((w2 - w1, pl1) :: acu) rest1 rest2
+    if pl1 = pl2 then
+      if w2 = w1 then compute_delta acu rest1 rest2
+      else compute_delta ((w2 - w1, pl1) :: acu) rest1 rest2
+          
     else if pl1 < pl2 then compute_delta ((-w1, pl1) :: acu) rest1 post
     else compute_delta ((w2, pl2) :: acu) pre rest2
 

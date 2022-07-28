@@ -20,6 +20,7 @@ val pick: t -> int -> int
 
 val clone: t -> t
 
+val clear: t -> unit
 
 val equal: t -> t -> bool
   
