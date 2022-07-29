@@ -3,6 +3,8 @@
  (public_name tipx.petrinet)
 
  ; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks
+
+(foreign_stubs (language c) (names bitvec_pick))
  
  (libraries common))
 

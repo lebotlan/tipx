@@ -11,7 +11,8 @@ type t = bitvec
 
 let char0 = Char.chr 0
 
-let init size = Bytes.make ((size + 7)/ 8) char0
+(* Ensure multiple of 64 bits *)
+let init size = Bytes.make (8 * ((size + 63) / 64)) char0
 
 let clone = Bytes.copy
 
@@ -67,6 +68,10 @@ let rec pick_loop len bv start_index index =
   else
     (* Hit ! *)
     pick_bit (index * 8) u8 1
+
+external ext_pick_loop : int -> Bytes.t -> int -> int -> int = "c_pick_loop"
+
+let _ = ext_pick_loop
 
 (* @noalloc *)
 let pick bv start =
