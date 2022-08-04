@@ -185,6 +185,8 @@ let get_tr net tr_id = net.transitions.(tr_id)
 
 let get_pl net pl_id = net.places.(pl_id)
 
+let get_plname net pl_id = (get_pl net pl_id).pl_name
+
 let get_plid net pl_name = Hashtbl.find net.pl_map pl_name
 
 let get_name net = net.name
