@@ -1,4 +1,5 @@
 open Petrinet
+open Libtfg
 open Angstrom.Buffered
 
 type path = string
@@ -30,5 +31,7 @@ let read_gen ?(consume_all=true) path parser =
 let read_net ?safe  path = read_gen path (Tina.parse_net ?safe path)
 
 let read_goal net path = read_gen path (Selt.parse_goal (Net.get_plid net))
+
+let read_goal_to_project net path = read_gen path (Selt.parse_goal (Tfg.get_nodeid net)) 
 
 let read_tfg net path = read_gen ~consume_all:false path (Reduce.parse_tfg net)
