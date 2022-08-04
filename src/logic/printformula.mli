@@ -12,12 +12,12 @@ val atom2s: ?v:int -> ?net:net -> atom -> string
 val formula2s: ?v:int -> ?net:net -> formula -> string
  *)
 
-val simple2s: net -> simple -> string
+val simple2s: (pl_id -> string) -> simple -> string
 
-val expr2s: net -> expr -> string
+val expr2s: (pl_id -> string) -> expr -> string
 
-val atom2s: net -> atom -> string
+val atom2s: (pl_id -> string) -> atom -> string
 
-val formula2s: net -> formula -> string
+val formula2s: (pl_id -> string) -> formula -> string
 
-val goal2s: net -> goal -> string
+val goal2s: (pl_id -> string) -> goal -> string
