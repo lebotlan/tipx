@@ -1,4 +1,4 @@
-(* open Petrinet *)
+open Petrinet
 open Parsers
 open Logic
 open Printformula
@@ -6,10 +6,10 @@ open Printformula
 let explore_selt_formula_file net_file formula_file =
   let%lwt (net,_) = Parse.read_net net_file in 
   let%lwt goal = Parse.read_goal net formula_file in
-  Lwt_io.printf "Initial Formula: %s\n" (goal2s net goal) ;%lwt
+  Lwt_io.printf "Initial Formula: %s\n" (goal2s (Net.get_plname net) goal) ;%lwt
 
   let goal = Formula.dnf goal in
-  Lwt_io.printf " Dnf formula : %s\n\n" (goal2s net goal) ;%lwt
+  Lwt_io.printf " Dnf formula : %s\n\n" (goal2s (Net.get_plname net) goal) ;%lwt
 
   Lwt.return_unit
 

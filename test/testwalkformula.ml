@@ -11,10 +11,10 @@ let walk_tina_net_file net_file formula_file =
 
   Lwt_io.printf " Read : %d places, %d transitions\n\n" (Net.nb_pl net) (Net.nb_tr net) ;%lwt
 
-  Lwt_io.printf " Initial formula : %s\n\n" (goal2s net goal) ;%lwt
+  Lwt_io.printf " Initial formula : %s\n\n" (goal2s (Net.get_plname net) goal) ;%lwt
 
   let goal = Formula.dnf goal in
-  Lwt_io.printf " Dnf formula : %s\n\n" (goal2s net goal) ;%lwt
+  Lwt_io.printf " Dnf formula : %s\n\n" (goal2s (Net.get_plname net) goal) ;%lwt
   
 
   let result = Walk.(sprinter ~timeout:8000 ~seed:3939494 ~stats:stat_stdout net mark (Eval.eval_goal goal)) in
