@@ -1,44 +1,97 @@
 open Logic
 open Formula
 open Bool
+open Tfg
+open Annotation
+open Petrinet
 
-(* L'algorithme projete cube par cube, et donc project_formula itére sur les cubes.
- *
- *
- * Créer un id par litéral
- * Associer ces ids aux noeuds correspondant dans une hash map
- * Il faut ajouter le d'(in)équation associé au noeud (eq,le,lt,ge,gt,diff) et la multiplicité k (bien souvent 1)
- *
- * La projection itere sur les noeuds (bottom-up)
- * Pour réaliser la projection sur un noeud il faut que les succésseurs soient déjà projetés.
- *
- * Distinguer les cas: red et agg
- *
- * Red est trivial : on duplique les informations sur les parents.
- *
- * Agglomération : 
- * 1°) On peut faire disparaitre un une contrainte le/lt sur un des fils, si il existe un fils non contraint par un le/lt
- * 2°) Si des fils ont des equations différentes cela rajoute une nouvelle inéquation pour gérer la contrainte mutuelle
- * 3°) Des opérateurs non-linéaires apparaissent seulement quand les tous les neouds ont une borne sup ET inf.
- *
- * A la fin on somme les ids des roots et on récupère les contraintes non linéaires générées par les agglomerations problématiques
+(* 
+ * Clean the printfformula (print node functions)
+ * Really usfeull DNF to list ? Code is simpler I hope   
 *)
 
+let populate_annotation tfg c =
+  let annotation = Annotation.init (nb_nodes tfg) in
 
-let project_cube _tfg cube = cube
+  (* Add a literal to the TFG annotation *)
+  let add_literal lit_id lit =
+    
+    let rec add_label ?(mult=1) lit_id = function
+    | [] -> ()
+    | K k :: rest -> add_label_to_node annotation (lit_id,mult*k) (Tfg.get_nodeid tfg "1") ;  add_label ?mult:(Some mult) lit_id rest
+    | P (w,pl) :: rest -> add_label_to_node annotation (lit_id,mult*w) pl ; add_label ?mult:(Some mult) lit_id rest
+    in
+
+    add_label ~mult:(-1) lit_id lit.left  ;
+    add_label lit_id lit.right ;
+
+    (match lit.rel with 
+    | LE -> ()
+    | LT -> add_label_to_node annotation (lit_id,-1) (Tfg.get_nodeid tfg (string_of_int 1))
+    | EQ | NE -> assert false)
+  in
+
+  let rec populate_aux count = function
+  | [] -> annotation
+  | lit :: rest ->
+    begin
+      add_literal count lit ;
+      populate_aux (count + 1) rest ;
+    end
+  in
+  populate_aux 0 c
 
 
-(* Dummy function -> to rewrite *)
-let project_formula tfg = function
-  | Or l -> And (project_cube tfg l)
-  | And _ as c -> project_cube tfg c
-  | V _ as v -> project_cube tfg v
-  | _ -> assert false
+let roots2list tfg annotation nb_lit =
 
-
-let project tfg goal = 
-  { form = project_formula tfg goal.form ; 
-    negates=goal.negates }
-
-
+  let literals = Array.make nb_lit [] in
   
+  let explore_node node =
+    let create_simple = 
+      match Tfg.node_type node with
+        | Var _ -> fun coef -> P (coef,(Tfg.node_id node)) 
+        | Intv (_,_) -> fun coef -> K coef
+    in
+    Seq.iter (fun (lit_id,coef) -> literals.(lit_id) <- ((create_simple coef) :: literals.(lit_id))) (get_labels annotation (Tfg.node_id node))
+  in
+  
+  List.iter explore_node (Tfg.roots tfg) ;
+  Array.to_list (Array.map (fun l -> {left = [K 0] ; rel = LE ; right = l}) literals)
+
+
+(* Project a given cube on a TFG *)
+let project_cube tfg c = 
+  let annotation = populate_annotation tfg c in
+  let visited = Bitvec.init (Tfg.nb_nodes tfg) in
+
+  let rec visit node = 
+    let node_id = Tfg.node_id node in
+    
+    if Bitvec.get visited node_id = 0 then
+      begin
+        Bitvec.set visited node_id ;
+
+        let succ = Tfg.succ tfg node
+        and pred = Tfg.pred tfg node in
+
+        if succ.agg != [] then
+          (List.iter visit succ.agg ; propagate_agg annotation (List.map Tfg.node_id succ.agg) node_id) ;
+
+        if succ.red != [] then
+          List.iter visit succ.red ;
+
+        match pred with
+        | R l -> propagate_red annotation node_id (List.map Tfg.node_id l) ;
+        | _ -> () ;
+      end
+    in
+
+  List.iter visit (Tfg.roots tfg) ;
+  roots2list tfg annotation (List.length c)
+
+(* Project a formula on a TFG *)
+let project_formula tfg formula = list_to_dnf (List.rev_map (project_cube tfg) (dnf_to_list formula))
+
+(* Project a goal on a TFG *)
+(* TODO: fix the use of the negates flag! *)
+let project tfg goal = { form = project_formula tfg goal.form ; negates=goal.negates }
