@@ -1,5 +1,4 @@
 open Petrinet
-
 open Net
 
 module X = ExtArray
@@ -53,6 +52,29 @@ let register_node tfg name node =
   
   ()
 
+
+let get_node tfg name =
+  if Hashtbl.mem tfg.name_map name then X.get tfg.node_map (Hashtbl.find tfg.name_map name)
+  else
+    begin
+
+      let node_type = match int_of_string_opt name with
+        | None -> Var name
+        | Some x -> Intv (x,x)
+      in
+      
+      let node = { node_id = tfg.node_count ; node_type } in
+      tfg.node_count <- tfg.node_count + 1 ;
+
+      Hashtbl.add tfg.name_map name node.node_id ;
+      X.set tfg.node_map node.node_id node ;
+
+      (match node_type with Intv _ -> tfg.roots <- (node :: tfg.roots) | _ -> ()) ;
+
+      node      
+    end
+  
+  
 let create roots =
   let name_map = Hashtbl.create init_size
   and node_map = X.create init_size dummy_node
@@ -77,28 +99,10 @@ let create roots =
   
   Array.iteri create_init_node roots ;
 
+  (* Add by default constant nodes equal to 0 and 1 *)
+  let _ = get_node tfg "0" in
+  let _ = get_node tfg "1" in
   tfg
-
-let get_node tfg name =
-  if Hashtbl.mem tfg.name_map name then X.get tfg.node_map (Hashtbl.find tfg.name_map name)
-  else
-    begin
-
-      let node_type = match int_of_string_opt name with
-        | None -> Var name
-        | Some x -> Intv (x,x)
-      in
-      
-      let node = { node_id = tfg.node_count ; node_type } in
-      tfg.node_count <- tfg.node_count + 1 ;
-
-      Hashtbl.add tfg.name_map name node.node_id ;
-      X.set tfg.node_map node.node_id node ;
-
-      (match node_type with Intv _ -> tfg.roots <- (node :: tfg.roots) | _ -> ()) ;
-
-      node      
-    end
 
 
 let add_agg tfg a ll =
@@ -156,5 +160,13 @@ let node_id node = node.node_id
 let is_root tfg node = X.get tfg.pred node.node_id = Root
 
 let get_node tfg node_id = X.get tfg.node_map node_id
+
+let get_nodename tfg node_id =
+  match (get_node tfg node_id).node_type with 
+  | Var n -> n
+  | Intv (a,b) when a = b -> string_of_int a
+  | Intv (a,b) -> Printf.sprintf "[%d ; %d]" a b
+
+let get_nodeid tfg node_name = (X.get tfg.node_map (Hashtbl.find tfg.name_map node_name)).node_id
 
 let nb_nodes tfg = tfg.node_count
