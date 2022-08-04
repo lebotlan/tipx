@@ -1,0 +1,12 @@
+# A |- a1 = p1 + a2
+# A |- a2 = p2 + p3
+# R |- a3 = p1
+# R |- p6 = p1 + p2
+# A |- a3 = p4 + p5
+# R |- p7 = p3 + p4
+# R |- p8 = p5 + p6
+# R |- p9 = p6 + p3
+
+net {Dummy_net}
+pl a1
+pl p3
