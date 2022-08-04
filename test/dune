@@ -1,6 +1,6 @@
 (executables
- (names testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg)
- (modules testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg)
+ (names testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg testprojection)
+ (modules testparse testparseformula testexploration testarrays testwalk testwalkformula testtfg testprojection)
  (libraries petrinet logic parsers walker libtfg)
 
 ;; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks  and export OCAML_LANDMARKS="auto"
