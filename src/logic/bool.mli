@@ -12,17 +12,14 @@ val bool2s : ('a -> string) -> 'a bexpr -> string
 
 val eval_bool: ('a -> bool) -> 'a bexpr -> bool
 
-(* dnf  v-negation *)
-val dnf: ('a -> 'a) -> ?neg:bool -> 'a bexpr -> 'a bexpr
+(* dnf  v-negation 
+ * Returns a DNF. The result does not contain any Not subexpressions. *)
+val dnf: lit_neg:('a -> 'a) -> 'a bexpr -> 'a bexpr
 
-(* Transform a DNF into a list of list *)
-val dnf_to_list: 'a bexpr -> 'a list list 
+(* A cube is a conjunction of 'a values. *)
+type 'a cube = 'a list
 
-(* Only write list_to_dnf? *)
-(* val lit_to_bool: 'a -> 'a bexpr
+(* Transforms a DNF into a (or) list of cubes *)
+val dnf_to_list: 'a bexpr -> 'a cube list 
 
-val cube_list_to_bool: 'a bexpr list -> 'a bexpr
-
-val clause_list_to_bool: 'a bexpr list -> 'a bexpr *)
-
-val list_to_dnf: 'a list list -> 'a bexpr
+val list_to_dnf: 'a cube list -> 'a bexpr

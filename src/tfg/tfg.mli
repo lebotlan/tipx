@@ -62,3 +62,4 @@ val get_nodename: tfg -> node_id -> node_name
 val get_nodeid: tfg -> node_name -> node_id
 
 val nb_nodes: tfg -> int
+

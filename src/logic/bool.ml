@@ -95,22 +95,22 @@ let rec dnf_aux acu = function
     let cubes = List.rev_map (fun tuple -> make_and tuple) (cartesian sets) in
     List.rev_append cubes acu
 
-let dnf lit_neg ?(neg=false) bexpr = make_or (dnf_aux [] (neg_propagation lit_neg neg bexpr))
+let dnf ~lit_neg bexpr = make_or (dnf_aux [] (neg_propagation lit_neg false bexpr))
 
 let and_to_list l =
   let rec loop acu = function
     | [] -> acu
     | V x :: rest -> loop (x :: acu) rest
-    | _ -> assert false
+    | _ -> failwith "dnf_to_list: argument is not in DNF (dnf error 3)."
   in
   loop [] l 
 
 let or_to_list l =
   let rec loop acu = function
     | [] -> acu
-    | V v :: rest -> loop ([v] :: acu) rest 
-    | (And l) :: rest -> loop (and_to_list l :: acu) rest
-    | _ -> assert false
+    | V v   :: rest -> loop ([v] :: acu) rest 
+    | And l :: rest -> loop (and_to_list l :: acu) rest
+    | _ -> failwith "dnf_to_list: argument is not in DNF (dnf error 2)."
     in
     loop [] l
 
@@ -118,13 +118,7 @@ let dnf_to_list = function
     | V x -> [[x]] 
     | And l -> [and_to_list l]
     | Or l -> or_to_list l
-    | _ -> assert false
-
-(* let lit_to_bool l = V l
-
-let cube_list_to_bool l = And l
-
-let clause_list_to_bool l = Or l *)
+    | _ -> failwith "dnf_to_list: argument is not in DNF (dnf error 1)."
 
 let list_to_dnf l = 
   let rec loop acu = function
