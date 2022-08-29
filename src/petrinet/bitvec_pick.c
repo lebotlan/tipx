@@ -14,7 +14,6 @@ int c_pick_loop_aux(int len, char* bv, int start_index, int index) {
 
  https://code.woboq.org/linux/linux/lib/find_bit.c.html
 
-
   */
   
 }

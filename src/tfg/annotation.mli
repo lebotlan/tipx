@@ -1,21 +1,22 @@
 open Tfg
 
-(* Literal identifier (index in a cube) *)
+(* Each literal is identified by an int (its index in the cube) *)
 type lit_id = int
 
-(* Coef of the node in a literal *)
+(* Coef of a node (= variable) in a literal *)
 type coef = int
 
-(* Label is a pair composed of a lit_id and a coeff *)
+(* A label is used to annotate nodes *)
 type label = lit_id * coef
 
-(* Annotation is a mapping node_id <-> labels *)
-type annotation (* Abstract type *)
+(* Annotation is a mapping node_id --> labels *)
+type annotation
 
-(* Iinitialize a TFG annotation *)
+(* Initialize a TFG annotation.
+ * init n  : n is the number of literals in the cube. *)
 val init: int -> annotation
 
-(* Add the label to a given node_id
+(* Associate the label to the given node_id
  * If the node_id is already associated to the lit_id then it sums the coefficients. *)
 val add_label_to_node: annotation -> label -> node_id -> unit
 
@@ -28,3 +29,4 @@ val propagate_agg: annotation -> node_id list -> node_id -> unit
 val get_labels: annotation -> node_id -> label Seq.t
 
 val annotation2s: tfg -> annotation -> string
+  

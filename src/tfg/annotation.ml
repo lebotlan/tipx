@@ -1,24 +1,20 @@
-(* Literal identifier (index in a cube) *)
 type lit_id = int
 
 (* Node identifier (index in the TFG) *)
 (* type node_id = int *)
 module SetId = Set.Make(Int)
 
-(* Coef of the node in a literal *)
 type coef = int
 
-(* Label is a pair composed of a lit_id and a coeff *)
 type label = int * int
 
-(* Annotation *)
 type annotation = ((lit_id,coef) Hashtbl.t) array
 
 (* Incomplete projection exception (still sound) *)
 (* exception Incomplete_projection *)
 
 (* Initialize a TFG annotation *)
-let init nb_nodes = Array.init nb_nodes (fun _ -> Hashtbl.create 1)
+let init nb_nodes = Array.init nb_nodes (fun _ -> Hashtbl.create 1) (* Expensive? *)
 
 (* Get the coef associated to a node for a given literal *)
 let get_coef annotation lit_id node_id =
@@ -29,7 +25,7 @@ let get_coef annotation lit_id node_id =
 (* Add the label to a given node_id
  * If the node_id is already associated to the lit_id then it sums the coefficients. *)
 let add_label_to_node annotation (lit_id,coef) node_id =
-  
+
   let labels = Array.get annotation node_id in 
 
   match Hashtbl.find_opt labels lit_id with
@@ -61,17 +57,18 @@ let propagate_agg annotation children parent =
 
   let propagate_min lit_id =
     let aux coef node_id = let current = get_coef annotation lit_id node_id in if current < coef then current else coef in
-    add_label_to_node annotation (lit_id,List.fold_left aux Int.max_int children) parent
+    add_label_to_node annotation (lit_id, List.fold_left aux Int.max_int children) parent
   in
 
-  if literals != [] then let candidates = List.fold_left (update_candidates None SetId.empty children) (SetId.of_list children) literals in
+  if literals != [] then
+    let candidates = List.fold_left (update_candidates None SetId.empty children) (SetId.of_list children) literals in
 
-  match SetId.choose_opt candidates with
+    match SetId.choose_opt candidates with
     | Some node -> (* Propagate red or add label ?*) propagate_red annotation node [parent]
     | None -> List.iter propagate_min literals ;
-              Printf.printf "WARNING: Incomplete projection!\n%!" ;
-              (* raise Incomplete_projection *)
-
+      Printf.printf "WARNING: Incomplete projection!\n%!" ;
+      (* raise Incomplete_projection *)
+      
   else ()
 
 let get_labels annotation node_id = Hashtbl.to_seq (Array.get annotation node_id)
@@ -79,5 +76,5 @@ let get_labels annotation node_id = Hashtbl.to_seq (Array.get annotation node_id
 (* Annotation to string (only for debug purpose) *)
 let annotation2s tfg annotation = 
   let label2s hash = Seq.fold_left (fun acu (lit_id,w) -> acu ^ "( " ^ (string_of_int lit_id ^ " ; " ^ (string_of_int w) ^ " )")) "" (Hashtbl.to_seq hash) in
-  let _,st = Array.fold_left (fun (count,acu) node -> if Hashtbl.length node > 0 then ((count+1),(acu ^ (Tfg.get_nodename tfg count) ^ "  <->  " ^ (label2s node) ^ "\n")) else (count+1,acu)) (0, "") annotation
+  let _,st = Array.fold_left (fun (count,acu) node -> if Hashtbl.length node > 0 then (count+1, (acu ^ Tfg.get_nodename tfg count ^ "  <->  " ^ label2s node ^ "\n")) else (count+1,acu)) (0, "") annotation
   in st
