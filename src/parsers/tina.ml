@@ -135,7 +135,7 @@ let parse_net ?(safe=false) name =
   net_loop init_acu
   >>|
   begin fun acu ->
-    let net = Net.close acu.inet in
+    let net = Net.close ~safe acu.inet in
     let marking = Marking.init ~safe net in
     let marking = List.fold_left (fun marking (m,pl_id) -> Marking.add marking pl_id m) marking acu.marking in
     (net, marking)

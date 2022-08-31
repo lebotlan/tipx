@@ -1,0 +1,12 @@
+(executable
+ (name tipx)
+ (libraries term2 stackcl petrinet parsers)
+
+;; (instrumentation (backend landmarks)) ;; no effect unless  dune build --instrument-with landmarks  and export OCAML_LANDMARKS="auto"
+ 
+ (preprocess (pps lwt_ppx)))
+
+
+
+  
+

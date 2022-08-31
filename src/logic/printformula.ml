@@ -17,7 +17,7 @@ let atom2s plid2s atom =
     | LE -> "  <= ")
   ^ expr2s plid2s atom.right
 
-  let formula2s plid2s formula = Bool.bool2s (atom2s plid2s) formula 
+  let formula2s plid2s formula = Bool.bexpr2s (atom2s plid2s) formula 
 
   let goal2s plid2s goal =
     (match goal.negates with

@@ -165,6 +165,8 @@ let null_tr =
 
 type net =
   { name: string ;
+
+    safe: bool ;
     
     places: pl array ;
     transitions: tr array ;
@@ -190,6 +192,8 @@ let get_plname net pl_id = (get_pl net pl_id).pl_name
 let get_plid net pl_name = Hashtbl.find net.pl_map pl_name
 
 let get_name net = net.name
+
+let is_safe net = net.safe
 
 let remove_duplicates inet l =
 
@@ -245,8 +249,9 @@ let create_trans inet i =
     
     
 
-let close inet =
+let close ?(safe=false) inet =
   { name = inet.i_name ;
+    safe ;
     
     places      = Array.init inet.pl_count (create_place inet) ;
     transitions = Array.init inet.tr_count (create_trans inet) ;
@@ -263,6 +268,7 @@ let dummy_place =
 
 let mk_dummy_net nb_pl =
   { name = "dummy-net" ;
+    safe = false ;
     places = Array.make nb_pl dummy_place ;
     transitions = [| |] ;
     pl_map = Hashtbl.create 0}
@@ -284,7 +290,8 @@ let test_net =
   Hashtbl.add pl_map "p0" 0 ;
   Hashtbl.add pl_map "p1" 1 ;
   Hashtbl.add pl_map "p2" 2 ;
-  { name        = "builtin-test-net" ;  
+  { name        = "builtin-test-net" ;
+    safe        = false ;
     places      = [| p0 ; p1 ; p2 |] ;
     transitions = [| t0 ; t1 |] ;
     pl_map = pl_map

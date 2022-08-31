@@ -8,9 +8,11 @@ type 'a bexpr = | V of 'a
                 | True
                 | False
 
-val bool2s : ('a -> string) -> 'a bexpr -> string
+val bool2b: bool -> 'a bexpr
 
-val eval_bool: ('a -> bool) -> 'a bexpr -> bool
+val bexpr2s: ('a -> string) -> 'a bexpr -> string
+
+val eval_bexpr: ('a -> bool) -> 'a bexpr -> bool
 
 (* dnf  v-negation 
  * Returns a DNF. The result does not contain any Not subexpressions. *)
@@ -23,3 +25,9 @@ type 'a cube = 'a list
 val dnf_to_list: 'a bexpr -> 'a cube list 
 
 val list_to_dnf: 'a cube list -> 'a bexpr
+
+
+(* map_simplify f : maps literals with f, and then simplifies the resulting expression, e.g. And [ ... ; False ; ... ] -> False  *)
+val map_simplify: ('a -> 'a bexpr option) -> 'a bexpr -> 'a bexpr
+
+

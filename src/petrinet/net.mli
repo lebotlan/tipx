@@ -63,11 +63,14 @@ type net
 
 type t = net
 
-val close: inet -> net
+(* safe:true : assume the net is safe *)
+val close: ?safe:bool -> inet -> net
 
   
 (* name can be empty *)
 val get_name: net -> string
+
+val is_safe: net -> bool
 
 (* The id of each place is its index in the array. *)
 (*     val all_pl: net -> pl array *)

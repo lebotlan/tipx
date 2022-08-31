@@ -22,6 +22,8 @@ type atom =
     rel: rel ;
     right: expr }
 
+val get_rel: rel -> ('a -> 'a -> bool)
+
 val atom_negation: atom -> atom
 
 type formula = atom bexpr
@@ -33,4 +35,8 @@ type goal =
 type t = goal
 
 val dnf: goal -> goal
+  
+
+(* Simplifies constant atoms such as k1 >= 0 (and propagates) *)
+val simplify: goal -> goal
   

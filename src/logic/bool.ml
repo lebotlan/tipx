@@ -5,20 +5,21 @@ type 'a bexpr = | V of 'a
                 | True
                 | False
 
+let bool2b x = if x then True else False
 
-let rec bool2s fu = function
+let rec bexpr2s fu = function
   | V x -> fu x
-  | And l -> Common.sep (fun x -> "(" ^ bool2s fu x ^ ")") " /\\ " l
-  | Or  l  -> Common.sep (fun x -> "(" ^ bool2s fu x ^ ")") " \\/ " l
-  | Not e  -> "-(" ^ bool2s fu e ^ ")"
+  | And l -> Common.sep (fun x -> "(" ^ bexpr2s fu x ^ ")") " /\\ " l
+  | Or  l  -> Common.sep (fun x -> "(" ^ bexpr2s fu x ^ ")") " \\/ " l
+  | Not e  -> "-(" ^ bexpr2s fu e ^ ")"
   | True -> "True"
   | False -> "False"
 
-let rec eval_bool fu = function
+let rec eval_bexpr fu = function
   | V x -> fu x
-  | And l -> List.for_all (eval_bool fu) l
-  | Or  l  -> List.exists (eval_bool fu) l
-  | Not e  -> not (eval_bool fu e)
+  | And l -> List.for_all (eval_bexpr fu) l
+  | Or  l  -> List.exists (eval_bexpr fu) l
+  | Not e  -> not (eval_bexpr fu e)
   | True -> true
   | False -> false
 
@@ -114,6 +115,8 @@ let or_to_list l =
     in
     loop [] l
 
+type 'a cube = 'a list
+
 let dnf_to_list = function
     | V x -> [[x]] 
     | And l -> [and_to_list l]
@@ -126,3 +129,45 @@ let list_to_dnf l =
     | c :: rest -> loop ((And (List.rev_map (fun x -> V x) c)) :: acu) rest
   in
   Or (loop [] l)
+
+
+let rec map_simplify f = function
+  | (V x) as b -> begin match f x with None -> b | Some bb -> bb end
+    
+  | Not b -> begin match map_simplify f b with True -> False | False -> True | bb -> Not bb end
+               
+  | And l -> simplify_and f [] l        
+  | Or  l -> simplify_or f [] l
+        
+  | True -> True
+  | False -> False
+
+and simplify_and f acu = function
+  | [] ->
+    begin match acu with
+      | [] -> True
+      | [x] -> x
+      | l -> And l
+    end
+
+  | x :: xs -> 
+    begin match map_simplify f x with
+      | True -> simplify_and f acu xs
+      | False -> False
+      | y -> simplify_and f (y :: acu) xs
+    end
+
+and simplify_or f acu = function
+  | [] ->
+    begin match acu with
+      | [] -> False
+      | [x] -> x
+      | l -> Or l
+    end
+
+  | x :: xs -> 
+    begin match map_simplify f x with
+      | False -> simplify_or f acu xs
+      | True -> True
+      | y -> simplify_or f (y :: acu) xs
+    end
