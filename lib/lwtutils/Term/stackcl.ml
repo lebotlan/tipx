@@ -451,7 +451,7 @@ struct
       
   let show_entry len = function
     | Def def -> show_def len def
-    | Info s -> Styled.(b lorange ("   " ^ s) nl e)
+    | Info s -> Styled.(b lorange ("  " ^ s) nl e)
     | Title s ->
       let title_width = 45 + len.len1 + len.len2 + len.len3 in
       
@@ -482,7 +482,7 @@ struct
                          std "  The commands take their arguments from the stack and/or from the command-line." nl
                          nl
                          lgray "  p means 'pop' (stack argument), r means 'reads a command-line argument'" nl
-                         lgray "  1 means pushes one value, * means pushes multiple values" nl
+                         lgray "  1 means pushes one value, * means pushes multiple values" nl nl
                          st (Term2.sep (show_entry len) !^"\n" machine)
                          nl nl
                          e)

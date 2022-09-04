@@ -78,8 +78,9 @@ let read_form _f = assert false
 let machine =
   [
 
-    info "A global environment consists in bindings of the form" ;
-    info "   name => element where element is formula, or a bundle (a Petri net, an initial marking, and possibly a tfg)." ;
+    info ("A global environment consists in bindings of the form\n\n" ^
+          "    name => formula\n" ^
+          "    name => bundle (that is: a Petri net, an initial marking, and possibly a tfg).") ;
     
     title "Environment" ;
 
