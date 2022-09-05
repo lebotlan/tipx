@@ -63,3 +63,5 @@ val get_nodeid: tfg -> node_name -> node_id
 
 val nb_nodes: tfg -> int
 
+val is_empty: tfg -> bool
+  

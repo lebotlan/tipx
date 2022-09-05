@@ -42,6 +42,10 @@ open St
 
 let cl_string x = Ok x
 
+let cl_filename x = if Sys.file_exists x then Ok x else Failed "This is not a file."
+
+let cl_env_name env x = if List.mem_assoc x env.map then Ok x else Failed "Not bound in the environment."
+
 let id d = d
 
 let ids x = Ok x
@@ -58,16 +62,24 @@ let get_bundle env =
   loop env.map
 
 let load ~safe env filename =
+
+  (* Read net *)
   let%lwt (net, marking) = Parse.read_net ~safe filename in
-  Lwt.return (bind env "net" (Bundle { net ; marking ; tfg = None }))
 
-let load_tfg env filename =
+  (* Read may-be-here TFG *)
+  let%lwt tfg =
+    try%lwt
+      let%lwt tfg = Parse.read_tfg net filename in
 
-  let (name, b) = get_bundle env in  
-  let%lwt tfg = Parse.read_tfg b.net filename in
-
-  let b2 = { b with tfg = Some tfg } in  
-  Lwt.return ((), add_env name (Bundle b2) env)
+      if Tfg.is_empty tfg then Lwt.return_none
+      else Lwt.return (Some tfg)
+        
+    with _ -> Lwt.return_none
+  in
+  
+  let bundle = Bundle { net ; marking ; tfg } in    
+  Lwt.return (bind env "net" bundle)
+      
 
 let get env name =
   try List.assoc name env.map
@@ -84,15 +96,13 @@ let machine =
     
     title "Environment" ;
 
-    def "load"      get_info !=> cl_string nop !=%+ (load ~safe:false)   "Load the given Petri net, put it as a bundle in the environment with the name 'net'" ;
+    def "load"      implicit get_info !=> cl_filename nop !=%+ (load ~safe:false)   "Load the given Petri net, put it as a bundle in the environment with the name 'net'" ;
     def "load-safe" get_info !=> cl_string nop !=%+ (load ~safe:true)    "Like 'load', assuming a safe net." ;
-
-    def "load-tfg"  get_info !=> cl_string nop !=%+ load_tfg             "Load the given tfg. It is inserted in the last bundle put in the environment (fails if there is none)." ;
 
     def "bind" get_info !=> cl_string !-> ids nop !==+ bind "Binds the element on the stack to the given name." ;
     def "set"  get_info !=> cl_string !-> ids nop !==+ bind "Synonym to bind." ;
 
-    def "get" implicit get_info !=> cl_string !-> id !== get "Gets the element associated to the given identifier in the environment. Pushes it." ;
+    def "get" implicit get_info !==> cl_env_name !-> id !== get "Gets the element associated to the given identifier in the environment. Pushes it." ;
     
     title "Formulas" ;
 

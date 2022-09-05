@@ -106,7 +106,11 @@ sig
 
   (* Like !->, but the argument comes from the command line, not from the stack. *)
   val ( !=> ) : (string -> 'a) -> ((('b,'g -> 'h) wrapper, elt -> 'g result) acu,
-                                   ((('b,'h) wrapper, 'i -> 'a) acu, 'j) kont -> 'j) kont                 
+                                   ((('b,'h) wrapper, 'i -> 'a) acu, 'j) kont -> 'j) kont
+
+  (* Like !=>, but the reader also receives the info argument *)
+  val ( !==> ) : (info -> string -> 'a) -> ((('b,'g -> 'h) wrapper, elt -> 'g result) acu,
+                                            ((('b,'h) wrapper, 'i -> 'a) acu, 'j) kont -> 'j) kont                 
 
   (* Can only be used for the last type (the return type of the function): the function returns a couple (a,b) which pushes two elements on the stack (push a ; push b) *)
   val ( !->> ): ('a -> elt) -> ((('c,'h -> 'i) wrapper, elt -> 'h result) acu,

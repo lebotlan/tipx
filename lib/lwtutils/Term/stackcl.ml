@@ -72,16 +72,6 @@ struct
         | Failed s -> myerror s
       end
 
-  (* Generic get_arg from the command-line *)
-  let get_cmd_arg reader state = match state.cmd_line with
-    | [] ->  myerror "No more command-line arguments."
-        
-    | x :: xs ->
-      begin match reader x with
-        | Ok v -> v, { state with cmd_line = xs }
-        | Failed s -> myerror s
-      end
-
   (* Value stored in the 'last' slot. 
    *   'a acuoption : 'a  is not necessarily the type of a value, it is a conventional type.
   *)
@@ -100,6 +90,7 @@ struct
 
     (* Command-line argument arrow. *)
     | Cmd_arrow: (string -> 'b) -> ('a -> 'b) acuoption
+    | Cmd_info_arrow: (info -> string -> 'b) -> ('a -> 'b) acuoption
 
     | With_info: ('a -> info result) acuoption
     | With_machine: ('a -> machine result) acuoption
@@ -119,6 +110,24 @@ struct
     last: 'b acuoption ;
     atype: string ;
   }
+
+    (* Generic get_arg from the command-line *)
+  let get_cmd_arg reader state = match state.cmd_line with
+    | [] ->  myerror "No more command-line arguments."
+        
+    | x :: xs ->
+
+      let fread = match reader with
+        | Cmd_arrow f -> (fun _ x -> f x)
+        | Cmd_info_arrow f -> f
+        | _ -> assert false
+      in
+      
+      begin match fread state.info x with
+        | Ok v -> v, { state with cmd_line = xs }
+        | Failed s -> myerror s
+      end
+
 
   let def a_name =
     mk_start { a_name ;
@@ -214,7 +223,7 @@ struct
         atype = acu.atype ^ "p" ;
         last = new_last ; }
 
-    | Cmd_arrow reader ->
+    | (Cmd_arrow _ | Cmd_info_arrow _) as reader ->
       { a_name = acu.a_name ;
         a_implicit = acu.a_implicit ;
         wrapper =
@@ -272,6 +281,8 @@ struct
 
   let (!=>) arg = mk_op0 (fun acu -> insert (Cmd_arrow arg) acu)
 
+  let (!==>) arg = mk_op0 (fun acu -> insert (Cmd_info_arrow arg) acu)
+
   let get_info () acu k = k () (insert With_info acu)
 
   let get_machine () acu k = k () (insert With_machine acu)
@@ -283,7 +294,7 @@ struct
     let f2 = final_wrap (acu.wrapper (fun () -> f)) in
 
     match acu.last with
-    | Unit_arg | Cmd_arrow _ -> assert false
+    | Unit_arg | Cmd_arrow _ | Cmd_info_arrow _ -> assert false
     | With_info | With_machine (*| Get_list _ *) -> assert false (* You are not supposed to finish a function without a return type. *)
 
     | Std_arrow last ->

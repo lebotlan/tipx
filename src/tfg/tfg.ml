@@ -52,6 +52,8 @@ let register_node tfg name node =
   
   ()
 
+let is_empty tfg = tfg.node_count = List.length tfg.roots
+
 
 let get_node tfg name =
   if Hashtbl.mem tfg.name_map name then X.get tfg.node_map (Hashtbl.find tfg.name_map name)
