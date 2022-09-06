@@ -3,6 +3,7 @@ open Parsers
 open Logic
 open Libtfg
 open Term2
+open Parse
 
 type bundle =
   { net: Net.t ;
@@ -11,7 +12,7 @@ type bundle =
 
 type element =
   | Bundle of bundle
-  | Form of Formula.t
+  | Forms of Formula.t list
 
 (* Global environment: maps ids to elements. *)
 type env =
@@ -29,7 +30,7 @@ module St = Stackcl.Mk
       type info = env
 
       let elt2s = function
-        | Form _f -> Styled.(b lgray "formula" e)
+        | Forms l -> let n = List.length l in Styled.(b lgray (if n = 1 then "a formula" else "a list of " ^ string_of_int n ^ " formulas") e)
                          
         | Bundle b ->
           let extra = if Net.is_safe b.net then "safe" else "" in
@@ -56,7 +57,7 @@ let set = bind
 let get_bundle env =
   let rec loop = function
     | [] -> failwith "No bundle in current environment."
-    | (_, Form _) :: rest -> loop rest
+    | (_, Forms _) :: rest -> loop rest
     | (name, Bundle b) :: _ -> (name, b)
   in
   loop env.map
@@ -85,7 +86,32 @@ let get env name =
   try List.assoc name env.map
   with Not_found -> failwith (name ^ " is not defined in the environment.")
 
-let read_form _f = assert false 
+let get_source env =
+  let (_,b) = get_bundle env in
+  match b.tfg with
+  | None -> Net b.net
+  | Some tfg -> Tfg tfg
+
+let get_tfg env = match get_source env with
+  | Tfg tfg -> tfg
+  | Net _ -> failwith "This bundle has no tfg."  
+
+let mkform l = Forms l
+
+let get_forms = function
+  | Forms l -> Ok l
+  | _ -> Failed "Not a list of formulas"
+
+let read_forms env f = Parse.sread_goals (get_source env) f
+let load_forms env f = Parse.read_goals (get_source env) f
+
+let project env l = List.map (Projector.project (get_tfg env)) l
+
+let fprint env elt = match elt with
+  | Bundle _ -> Term2.fprints (elt2s elt)
+  | Forms l ->
+    let forms = Common.sep (Printformula.goal2s (Tfg.get_nodename (get_tfg env))) "\n" l in
+    Lwt_io.printf "%s\n" forms 
 
 let machine =
   [
@@ -106,11 +132,18 @@ let machine =
     
     title "Formulas" ;
 
-    def "form" !=> cl_string !-> id !=% read_form            "Parses and pushes the given formula on the stack." ;
+    def "form" get_info !=> cl_string !-> mkform !=% read_forms            "Parse and push the given formula(s) on the stack (as a list). The reference bundle is the last found in the environment." ;
+    def "load-forms" get_info !=> cl_string !-> mkform !=% load_forms      "Read formulas from the given file and push them on the stack (as a list). The reference bundle is the last found in the environment." ;
+
+    def "project" get_info !-> get_forms !-> mkform !== project "Projects a list of formulas (popped from the stack). The reference bundle must have a tfg. Pushes the resulting list of formulas." ;
 
     title "Others" ;
 
+    def "fprint" get_info !-> ids nop !=% fprint "Full print: print the topmost stack element, with details." ;
+
     print () ;
+    dup () ;
+    help () ;
   ]
 
 

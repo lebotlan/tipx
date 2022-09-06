@@ -3,7 +3,8 @@ open Angstrom
 open Bool
 open Formula
     
-let ws = skip_while (function '\x20' | '\x09' | '\x0A' -> true | _ -> false)
+let ws = skip_while (function '\x20' | '\x09' -> true | _ -> false)
+let wsnl = skip_while (function '\x20' | '\x09' | '\x0a' -> true | _ -> false)
 
 let op_land = ws *> string "/\\" <* ws
 let op_lor  = ws *> string "\\/" <* ws
@@ -86,6 +87,7 @@ let rel_ops = List.map string [ ">=" ; "ge" ; "gt" ; "<=" ; "lt" ; "le" ; "eq" ;
 
 let rel = ws *> choice ~failure_msg:"Bad operator. Should be <, <=, >, >=, =, !=, ge, gt, lt, le, eq, ne" rel_ops <* ws
 
+
 let parse_goal get_plid =
 
   let aname_or_qname = Names.aname_or_qname () in
@@ -115,5 +117,8 @@ let parse_goal get_plid =
   | "<>" -> let* form = formula in return { form ; negates = false }
   | _ -> fail ("The formula should begin with <> or [], not " ^ op)
 
+let nl = ws *> end_of_line <* ws
 
-
+let parse_goals get_plid =
+  let goal = parse_goal get_plid in
+  sep_by1 nl goal <* wsnl

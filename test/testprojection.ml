@@ -7,15 +7,18 @@ open Libtfg
 let explore_selt_formula_file net_file formula_file =
   let%lwt (net,_) = Parse.read_net net_file in 
   let%lwt tfg = Parse.read_tfg net net_file in
-  let%lwt goal = Parse.read_goal_to_project tfg formula_file in
+  let%lwt goals = Parse.read_goals (Tfg tfg) formula_file in
 
-  Lwt_io.printf "Initial Formula: %s\n" (goal2s (Tfg.get_nodename tfg) goal) ;%lwt
-  let goal = Formula.dnf goal in
-  Lwt_io.printf "DNF formula: %s\n" (goal2s (Tfg.get_nodename tfg) goal) ;%lwt
-  let projected_goal = Projector.project tfg goal in
-  Lwt_io.printf "Projected formula: %s\n" (goal2s (Tfg.get_nodename tfg) projected_goal) ;%lwt
+  Lwt_list.iter_s (fun goal ->  
+      Lwt_io.printf "Initial Formula: %s\n" (goal2s (Tfg.get_nodename tfg) goal) ;%lwt
+      let goal = Formula.dnf goal in
+      Lwt_io.printf "DNF formula: %s\n" (goal2s (Tfg.get_nodename tfg) goal) ;%lwt
+      let projected_goal = Projector.project tfg goal in
+      Lwt_io.printf "Projected formula: %s\n" (goal2s (Tfg.get_nodename tfg) projected_goal) ;%lwt
 
-  Lwt.return_unit
+      Lwt.return_unit)
+
+    goals
 
 
 let run () =
