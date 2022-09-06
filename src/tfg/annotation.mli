@@ -28,5 +28,6 @@ val propagate_agg: annotation -> node_id list -> node_id -> unit
 
 val get_labels: annotation -> node_id -> label Seq.t
 
+val is_complete: annotation -> bool
+
 val annotation2s: tfg -> annotation -> string
-  
