@@ -13,12 +13,25 @@ type annotation = ((lit_id,coef) Hashtbl.t) array
 (* Incomplete projection exception (still sound) *)
 (* exception Incomplete_projection *)
 
+(* Dummy hash table *)
+let dummy_table = Hashtbl.create 0
+
 (* Initialize a TFG annotation *)
-let init nb_nodes = Array.init nb_nodes (fun _ -> Hashtbl.create 1) (* Expensive? *)
+let init nb_nodes = Array.init nb_nodes (fun _ -> dummy_table) (* Expensive? *)
+
+(* Get the hashtbl associated to the given node_id in the annotation *)
+let get_labels annotation node_id =
+  let current_table = Array.get annotation node_id in
+  if current_table == dummy_table then
+    let new_table = Hashtbl.create 1 in
+    Array.set annotation node_id new_table ;
+    new_table
+  else
+    current_table
 
 (* Get the coef associated to a node for a given literal *)
 let get_coef annotation lit_id node_id =
-  match Hashtbl.find_opt (Array.get annotation node_id) lit_id with
+  match Hashtbl.find_opt (get_labels annotation node_id) lit_id with
   | Some k -> k
   | None -> 0
 
@@ -26,7 +39,7 @@ let get_coef annotation lit_id node_id =
  * If the node_id is already associated to the lit_id then it sums the coefficients. *)
 let add_label_to_node annotation (lit_id,coef) node_id =
 
-  let labels = Array.get annotation node_id in 
+  let labels = get_labels annotation node_id in 
 
   match Hashtbl.find_opt labels lit_id with
   | Some k -> Hashtbl.replace labels lit_id (coef + k)
