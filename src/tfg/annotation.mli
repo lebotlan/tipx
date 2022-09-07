@@ -28,6 +28,8 @@ val propagate_agg: annotation -> node_id list -> node_id -> unit
 
 val get_labels: annotation -> node_id -> label Seq.t
 
+(* The annotation is complete (or shadow-complete) if the projected formula is equivalent to the initial formula. 
+ * If uncomplete, then the initial formula can be SAT whereas the projected one is not. *)
 val is_complete: annotation -> bool
 
 val annotation2s: tfg -> annotation -> string

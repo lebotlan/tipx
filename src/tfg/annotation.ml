@@ -82,8 +82,8 @@ let propagate_agg annotation children parent =
 
     match SetId.choose_opt candidates with
     | Some node -> (* Propagate red or add label ?*) propagate_red annotation node [parent]
-    | None -> List.iter propagate_min literals ;
-              annotation.complete <- false ;
+    | None -> (List.iter propagate_min literals ;
+               annotation.complete <- false)
 
   else ()
 

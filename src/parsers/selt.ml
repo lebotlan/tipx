@@ -99,11 +99,13 @@ let parse_goal get_plid =
                | None -> return (P (1, get_plid id))
   in
   
-  let rec expr acu = ws *>
-                     let* s = simple <* ws in
-                     ((char '+' *> expr (s :: acu))
-                       <|>
-                      return (List.rev (s :: acu)))
+  let rec core_expr acu = ws *>
+                          let* s = simple <* ws in
+                          ((char '+' *> core_expr (s :: acu))
+                           <|>
+                           return (List.rev (s :: acu)))
+
+  and expr acu = ws *> ( (char '(' *> core_expr acu <* char ')') <|> core_expr acu )
   in
   
   (* expr REL expr *)
@@ -111,11 +113,13 @@ let parse_goal get_plid =
   
   let formula = bool_expr atom in
   
-  let* op = ws *> take 2 in
+  let* op = ws *> peek_string 2 in
   match op with
-  | "[]" -> let* form = formula in return { form ; negates = true }
-  | "<>" -> let* form = formula in return { form ; negates = false }
-  | _ -> fail ("The formula should begin with <> or [], not " ^ op)
+  | "[]" -> advance 2 *> let* form = formula in return { form ; negates = true }
+  | "<>" -> advance 2 *> let* form = formula in return { form ; negates = false }
+
+  (* By default, we assume an implicit BOX *)
+  | _ -> let* form = formula in return { form ; negates = true }
 
 let nl = ws *> end_of_line <* ws
 

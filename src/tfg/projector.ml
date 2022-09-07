@@ -5,6 +5,7 @@ open Tfg
 open Annotation
 open Petrinet
 
+
 (* 
  * Clean the printfformula (print node functions)
  * Really usfeull DNF to list ? Code is simpler I hope   
@@ -59,6 +60,15 @@ let roots2list tfg annotation nb_lit =
   Array.to_list (Array.map (fun l -> {left = [K 0] ; rel = LE ; right = l}) literals)
 
 
+type 'a projected =
+  { content: 'a ;
+    complete: bool }
+   
+type projected_goal = {
+  p_goal: Formula.t ;
+  complete: bool }
+
+
 (* Project a given cube on a TFG *)
 let project_cube tfg c = 
   let annotation = populate_annotation tfg c in
@@ -84,14 +94,29 @@ let project_cube tfg c =
         | R l -> propagate_red annotation node_id (List.map Tfg.node_id l) ;
         | _ -> () ;
       end
-    in
+  in
 
   List.iter visit (Tfg.roots tfg) ;
-  roots2list tfg annotation (List.length c)
+
+  (* Build the final formula. *)
+  { content = roots2list tfg annotation (List.length c) ;
+    complete = is_complete annotation }
+
+let all l f = List.for_all f l
+
+let cubes_to_dnf cubelist =
+  { content = list_to_dnf (List.map (fun c -> c.content) cubelist) ;
+    complete = all cubelist (fun c -> c.complete) }
 
 (* Project a formula on a TFG *)
-let project_formula tfg formula = list_to_dnf (List.rev_map (project_cube tfg) (dnf_to_list formula))
+let project_formula tfg formula = cubes_to_dnf (List.rev_map (project_cube tfg) (dnf_to_list formula))
 
 (* Project a goal on a TFG *)
 (* TODO: fix the use of the negates flag! *)
-let project tfg goal = { form = project_formula tfg goal.form ; negates=goal.negates }
+let project tfg goal =
+  let p_form = project_formula tfg goal.form in
+  
+  { p_goal = { form = p_form.content ; negates=goal.negates } ;
+    complete = p_form.complete }
+  
+    

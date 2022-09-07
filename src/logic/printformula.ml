@@ -23,4 +23,4 @@ let atom2s plid2s atom =
     (match goal.negates with
     | true -> "[] "
     | false -> "<> ")
-    ^ formula2s plid2s goal.form ^ "\n"
+    ^ formula2s plid2s goal.form

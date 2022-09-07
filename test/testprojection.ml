@@ -14,7 +14,7 @@ let explore_selt_formula_file net_file formula_file =
       let goal = Formula.dnf goal in
       Lwt_io.printf "DNF formula: %s\n" (goal2s (Tfg.get_nodename tfg) goal) ;%lwt
       let projected_goal = Projector.project tfg goal in
-      Lwt_io.printf "Projected formula: %s\n" (goal2s (Tfg.get_nodename tfg) projected_goal) ;%lwt
+      Lwt_io.printf "Projected formula: %s\n" (goal2s (Tfg.get_nodename tfg) projected_goal.p_goal) ;%lwt
 
       Lwt.return_unit)
 

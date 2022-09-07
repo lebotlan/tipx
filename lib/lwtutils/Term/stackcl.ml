@@ -355,7 +355,7 @@ struct
 
   let get_explicit machine =
     let table = Assoc.create ~init:(fun _ -> []) () in
-    List.iter (function Title _ | Info _ -> () | Def def -> if not def.implicit then Assoc.update table def.name (fun l -> def :: l)) (List.rev machine) ;
+    List.iter (function Title _ | Info _ -> () | Def def -> (* if not def.implicit then *) Assoc.update table def.name (fun l -> def :: l)) (List.rev machine) ;
     table
 
   let check_empty state =
