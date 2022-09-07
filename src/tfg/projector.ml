@@ -114,9 +114,9 @@ let project_formula tfg formula = cubes_to_dnf (List.rev_map (project_cube tfg) 
 (* Project a goal on a TFG *)
 (* TODO: fix the use of the negates flag! *)
 let project tfg goal =
-  let p_form = project_formula tfg goal.form in
+  let p_form = project_formula tfg (Formula.dnf goal).form in
   
-  { p_goal = { form = p_form.content ; negates=goal.negates } ;
+  { p_goal = (Formula.simplify { form = p_form.content ; negates=goal.negates }) ;
     complete = p_form.complete }
   
     
