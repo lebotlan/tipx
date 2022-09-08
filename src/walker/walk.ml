@@ -97,7 +97,7 @@ let sprinter ?(seed=0) ?timeout ?(max_steps=0) ?(stats=Pipe.null ()) net init_ma
               let () = upd marking fireables tr in
               
               (* Update seed *)
-              let seed = abs (seed * seed - 13 * seed) in
+              let seed = abs (seed * seed - 13 * seed) in  (* TODO : use linear function *)
               
               if msteps land 0xfffff <> 0 || check_timeout msteps then loop seed (msteps-1) marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
       in
@@ -111,4 +111,7 @@ let sprinter ?(seed=0) ?timeout ?(max_steps=0) ?(stats=Pipe.null ()) net init_ma
 let stat_stdout = Pipe.new_cb (fun st -> Printf.printf " ⏲  %s\n%!" (stat2s st))
 
 
-(* TODO : how to check that our walker takes DIFFERENT paths ? *)
+(* TODO : how to check that our walker takes DIFFERENT paths => record visited markings. *)
+
+(* TODO:  lwt-ize p => perf ? *)
+    
