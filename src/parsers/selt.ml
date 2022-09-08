@@ -115,11 +115,11 @@ let parse_goal get_plid =
   
   let* op = ws *> peek_string 2 in
   match op with
-  | "[]" -> advance 2 *> let* form = formula in return { form ; negates = true }
+  | "[]" -> advance 2 *> let* form = formula in return { form = (Not form) ; negates = true }
   | "<>" -> advance 2 *> let* form = formula in return { form ; negates = false }
 
   (* By default, we assume an implicit BOX *)
-  | _ -> let* form = formula in return { form ; negates = true }
+  | _ -> let* form = formula in return { form = (Not form) ; negates = true }
 
 let nl = ws *> end_of_line <* ws
 

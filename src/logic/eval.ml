@@ -21,7 +21,7 @@ let eval_atom m atom = Formula.get_rel atom.rel (eval_expr m atom.left) (eval_ex
 
 let eval_formula m f = Bool.eval_bexpr (eval_atom m) f
 
-let eval_goal goal m = goal.negates <> (eval_formula m goal.form)
+let eval_goal goal m = eval_formula m goal.form
 
 let verdict goal res = goal.negates <> res
 
