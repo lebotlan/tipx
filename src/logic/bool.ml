@@ -11,9 +11,9 @@ let rec bexpr2s fu = function
   | V x -> fu x
   | And l -> Common.sep (fun x -> "(" ^ bexpr2s fu x ^ ")") " /\\ " l
   | Or  l  -> Common.sep (fun x -> "(" ^ bexpr2s fu x ^ ")") " \\/ " l
-  | Not e  -> "-(" ^ bexpr2s fu e ^ ")"
-  | True -> "True"
-  | False -> "False"
+  | Not e  -> "- (" ^ bexpr2s fu e ^ ")"
+  | True -> "T"
+  | False -> "F"
 
 let rec eval_bexpr fu = function
   | V x -> fu x
