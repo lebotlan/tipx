@@ -104,8 +104,8 @@ let load ~safe ~tfg env filename =
 let get_pl_reader env =
   let (_,b) = get_bundle env in
   match b.tfg with
-  | None -> Net.get_plname b.net
-  | Some tfg -> Tfg.get_nodename tfg
+  | None -> Net.get_plnamebrace b.net
+  | Some tfg -> Tfg.get_nodenamebrace tfg
 
 let form2s env f =
 
