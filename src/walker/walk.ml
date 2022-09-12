@@ -36,11 +36,11 @@ let foi = float_of_int
 
 let time = Unix.gettimeofday 
 
-let sprinter ?(seed=0) ?timeout ?(max_steps=0) ?(stats=Pipe.null ()) net init_marking p =
+let sprinter ?(seed=0) ?timeout ?(max_steps= -1) ?(stats=Pipe.null ()) net init_marking p =
 
   (* Yes, it happens. *)
   if Net.nb_tr net = 0 then
-
+    
     if p init_marking then Bingo { marking = init_marking ; steps = 0 ; seed }
     else Deadlock { marking = init_marking ; steps = 0 ; seed }
 
@@ -88,6 +88,7 @@ let sprinter ?(seed=0) ?timeout ?(max_steps=0) ?(stats=Pipe.null ()) net init_ma
         if p marking then Bingo { marking ; steps = max_steps + 1 - msteps ; seed }
         else
           let msteps = msteps - 1 in
+          
           if msteps = 0 then Maxstep { marking ; steps = max_steps + 1 - msteps ; seed }
           else                            
             let tr = Trset.pick net fireables ~start:seed in
@@ -98,8 +99,8 @@ let sprinter ?(seed=0) ?timeout ?(max_steps=0) ?(stats=Pipe.null ()) net init_ma
               
               (* Update seed *)
               let seed = abs (seed * seed - 13 * seed) in  (* TODO : use linear function *)
-              
-              if msteps land 0xfffff <> 0 || check_timeout msteps then loop seed (msteps-1) marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
+
+              if msteps land 0xfffff <> 0 || check_timeout msteps then loop seed msteps marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
       in
 
       (* let () = Gc.print_stat stdout in *)

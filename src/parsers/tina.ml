@@ -143,12 +143,12 @@ let parse_net ?(safe=false) name =
 
 
 (* 
- * TODO : qname ne pas utiliser de buffer. Avoir un flag pour savoir s'il y a des escape et garder la chaîne telle quelle.
+ * Optimisation : qname ne pas utiliser de buffer. Avoir un flag pour savoir s'il y a des escape et garder la chaîne telle quelle.
  * 
  * let* x = bla in next    <- next est situé dans la fonction. Il ne faudrait pas que next construise un parser (pas d'application d'opérateur).
  *
- * TODO : refléchir à l'allocation de parser : tinput buf   doit fabriquer un nouveau parser. C'est trop bête ! 
- *   => Foncteur ou grosse closure avec buf. ?   Voir fichier TODO.
+ * Refléchir à l'allocation de parser : tinput buf   doit fabriquer un nouveau parser. C'est trop bête ! 
+ *   => Foncteur ou grosse closure avec buf. ? 
  *
  *   Pour éviter de passer l'acu : faire un parseur qui renvoie une fonction qui attend l'acu ? Peut-être mieux. Chaque fonction est allouée autant de fois que de tokens. 
  *  Réfléchir à l'allocation mémoire... *)

@@ -464,7 +464,7 @@ struct
     | Def def -> show_def len def
     | Info s -> Styled.(b lorange ("  " ^ s) nl e)
     | Title s ->
-      let title_width = 45 + len.len1 + len.len2 + len.len3 in
+      let title_width = len.len1 + len.len2 + len.len3 in
       
       let line = " -~-~- " ^ s ^ " " in
       let len = String.length line in

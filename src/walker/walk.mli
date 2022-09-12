@@ -28,8 +28,8 @@ type stat =
 val stat2s: stat -> string
 
 (* timeout in seconds 
- * max_steps n:  if n <= 0, max_steps is ignored.
- *               if n > 0, the walker stops with result Maxstep after n steps. *)
+ * max_steps n:  if n < 0, max_steps is ignored.
+ *               if n >= 0, the walker stops with result Maxstep after n steps. *)
 val sprinter: ?seed:int -> ?timeout:int -> ?max_steps:int -> ?stats:stat ws -> Net.t -> Marking.t -> (Marking.t -> bool) -> walk_result
     
 val stat_stdout: stat ws
