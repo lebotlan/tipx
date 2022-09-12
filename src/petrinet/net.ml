@@ -189,6 +189,11 @@ let get_pl net pl_id = net.places.(pl_id)
 
 let get_plname net pl_id = (get_pl net pl_id).pl_name
 
+let get_plnamebrace net pl_id =
+  let name = get_plname net pl_id in
+  if String.contains name '-' || String.contains name '.' then "{" ^ name ^ "}"
+  else name
+
 let get_plid net pl_name = Hashtbl.find net.pl_map pl_name
 
 let get_name net = net.name

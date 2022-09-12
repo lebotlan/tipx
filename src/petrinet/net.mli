@@ -95,6 +95,9 @@ val get_pl: net -> pl_id -> pl
 
 val get_plname: net -> pl_id -> pl_name
 
+(* Same as get_plname but add braces if contains '-' or '.' (compliant with Walk from the Tina toolbox) *)
+val get_plnamebrace: net -> pl_id -> pl_name
+
 val get_plid: net -> pl_name -> pl_id
 
 (* Argument is the number of places. Used for testing markings only (no transition). *)
