@@ -13,7 +13,7 @@ let expr2s plid2s expr =
       | x when x = 1  -> aux plid2s ((plid2s pl_id) :: pos_acu) neg_acu rest
       | x when x = -1 -> aux plid2s pos_acu ((plid2s pl_id) :: neg_acu) rest 
       | x when x > 0  -> aux plid2s (((string_of_int x) ^ "*" ^ (plid2s pl_id)) :: pos_acu) neg_acu rest
-      | x when x < 0  -> aux plid2s (((string_of_int x) ^ "*" ^ (plid2s pl_id)) :: pos_acu) neg_acu rest
+      | x when x < 0  -> aux plid2s pos_acu (((string_of_int (-x)) ^ "*" ^ (plid2s pl_id)) :: neg_acu) rest
       | _ -> aux plid2s pos_acu neg_acu rest)
   in
   let pos, neg = aux plid2s [] [] expr in
