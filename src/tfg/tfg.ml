@@ -169,6 +169,11 @@ let get_nodename tfg node_id =
   | Intv (a,b) when a = b -> string_of_int a
   | Intv (a,b) -> Printf.sprintf "[%d ; %d]" a b
 
+let get_nodenamebrace tfg node_id =
+  let name = get_nodename tfg node_id in
+  if String.contains name '-' || String.contains name '.' then "{" ^ name ^ "}"
+  else name
+
 let get_nodeid tfg node_name = (X.get tfg.node_map (Hashtbl.find tfg.name_map node_name)).node_id
 
 let nb_nodes tfg = tfg.node_count
