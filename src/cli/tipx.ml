@@ -221,6 +221,16 @@ let machine =
     (* def "init" *)  (* push initial state of the reference bundle. *) 
     
     (*   def "loop" *)   (* loop timeout1 timeout2  .... reset after each deadlock. *)
+
+(* Idée :
+ *
+ *  mettre une formule dans l'environnement ('phi')
+ *  steps : pop state -> walk -> push state
+ *  steps fonctionne avec une ou plusieurs formules ?
+ *
+ *
+*)
+    
     
     title "Display" ;
 

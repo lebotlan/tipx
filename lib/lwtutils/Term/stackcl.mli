@@ -198,3 +198,15 @@ val (!-<>): ('a -> 'b result) -> (('c -> 'd -> 'e state * ('f -> 'g), 'e -> 'f r
   val help: predef
   
 end
+
+
+(* TODO - FUTURE
+ *
+ *
+ *  La pile n'est pas suffisante pour une appli plus complexe (fonctions manipulant plusieurs arguments non homogènes)
+ *
+ *  Pourquoi pas un dictionnaire (clefs => piles de data)   == environnement ou soupe  : on peut faire pop ou peek sur un nom / push sur un nom
+ *
+ *  
+ * 
+ *)

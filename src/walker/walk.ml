@@ -100,7 +100,7 @@ let sprinter ?(seed=0) ?timeout ?(max_steps= -1) ?(stats=Pipe.null ()) net init_
               (* Update seed *)
               let seed = abs (seed * seed - 13 * seed) in  (* TODO : use linear function *)
 
-              if msteps land 0x3fffff <> 0 || check_timeout msteps then loop seed msteps marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
+              if msteps land 0x7fffff <> 0 || check_timeout msteps then loop seed msteps marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
       in
 
       (* let () = Gc.print_stat stdout in *)

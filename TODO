@@ -5,6 +5,7 @@
   - Si besoin, remplacer les ar.(i)  par des unsafe_get  (option de compilation ?)
   
 
+ Fichu benchmark : nice + realtime process + au boot, spécifier un seul coeur. ++ retirer tout appel système (timeofday)
 
 
 
