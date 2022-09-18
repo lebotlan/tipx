@@ -50,7 +50,7 @@ let roots2list tfg annotation nb_lit =
   let explore_node node =
     let create_simple = 
       match Tfg.node_type node with
-        | Var _ -> fun coef -> P (coef,(Tfg.node_id node))
+        | Var _ -> fun coef -> if coef = 0 then K 0 else P (coef,(Tfg.node_id node))
         | Intv (lb,ub) -> fun coef -> if coef < 0 then K (lb * coef) else K (ub * coef)
     in
     Seq.iter (fun (lit_id,coef) -> literals.(lit_id) <- ((create_simple coef) :: literals.(lit_id))) (get_labels annotation (Tfg.node_id node))
