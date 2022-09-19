@@ -181,6 +181,8 @@ let loop_walk env t1 t2 l =
     begin fun form ->
       if env.verb then Styled.(p fmt yellow "\n ## Loop-walking for %d s, testing goal %s\n%!" t2 (form2s env form) e) else Lwt.return_unit ;%lwt
 
+      let%lwt () = Lwtplus.yield () in
+      
       let predicate = Eval.eval_goal (form2goal form) in
 
       let glob_timeout = Unix.gettimeofday () +. float_of_int t2 in
@@ -193,7 +195,7 @@ let loop_walk env t1 t2 l =
         | Deadlock st | Timeout st | Maxstep st ->
           let now = Unix.gettimeofday () in
           if now > glob_timeout then Lwt_io.printf "\n <+> Walk result : Global timeout\n%!"
-          else loop st.seed (int_of_float (glob_timeout -. now))
+          else loop (st.seed+1) (int_of_float (glob_timeout -. now))
       in
 
       loop 0 t2
