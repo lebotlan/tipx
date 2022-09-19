@@ -14,6 +14,6 @@ type projected_goal =
   }
 
 (* Maps a formula expressed on the initial net to a formula expressed on the reduced net. *)
-val project: Tfg.t -> Formula.t -> projected_goal
+val project: timeout:int -> Tfg.t -> Formula.t -> projected_goal
   
                                      

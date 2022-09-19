@@ -113,7 +113,8 @@ let project_formula tfg formula = cubes_to_dnf (List.rev_map (project_cube tfg) 
 
 (* Project a goal on a TFG *)
 (* TODO: fix the use of the negates flag! *)
-let project tfg goal =
+let project ~timeout tfg goal =
+  let _ = timeout (* TODO FIXME *) in
   let p_form = project_formula tfg (Formula.dnf goal).form in
   
   { p_goal = (Formula.simplify { form = p_form.content ; negates=goal.negates }) ;

@@ -10,6 +10,8 @@ open Walker
 (* Default timeout for walkers, in s. *)
 let default_timeout = 10
 
+let default_project_timeout = 3600
+
 type bundle =
   { net: Net.t ;
     marking: Marking.t ;
@@ -140,12 +142,12 @@ let get_forms = function
 let read_forms env f = Parse.sread_goals (get_source env) f
 let load_forms env f = Parse.read_goals (get_source env) f
 
-let project env l =
+let project timeout env l =
   let tfg = get_tfg env in
   
   Common.mymap l
     begin function
-      | Formula f -> Projector.project tfg f
+      | Formula f -> Projector.project ~timeout tfg f
       | Projected _ -> failwith "Cannot project a formula that is already projected."
     end
 
@@ -171,6 +173,35 @@ let walk timeout env l =
     end
     l
 
+let loop_walk env t1 t2 l =
+
+  let (_,b) = get_bundle env in
+
+  Lwt_list.iter_s
+    begin fun form ->
+      if env.verb then Styled.(p fmt yellow "\n ## Loop-walking for %d s, testing goal %s\n%!" t2 (form2s env form) e) else Lwt.return_unit ;%lwt
+
+      let predicate = Eval.eval_goal (form2goal form) in
+
+      let glob_timeout = Unix.gettimeofday () +. float_of_int t2 in
+      
+      let rec loop seed t2 =
+        let result = Walk.(sprinter ~seed ~timeout:(min t1 t2) ~stats:(if env.verb then stat_stdout else Pipe.null ()) b.net b.marking predicate) in
+
+        match result with
+        | Bingo _ -> Lwt_io.printf "\n <+> Walk result : %s\n%!" (Walk.result2s result)
+        | Deadlock st | Timeout st | Maxstep st ->
+          let now = Unix.gettimeofday () in
+          if now > glob_timeout then Lwt_io.printf "\n <+> Walk result : Global timeout\n%!"
+          else loop st.seed (int_of_float (glob_timeout -. now))
+      in
+
+      loop 0 t2
+        
+    end
+    l
+  
+
 let to_quiet env = ((), { env with verb = false })
 
 let do_time env =
@@ -184,6 +215,8 @@ let do_time env =
 
   Lwt.return ((), { env with time = Some now })
 
+
+ 
 let machine =
   [
 
@@ -209,7 +242,8 @@ let machine =
     def "form" get_info !=> cl_string !-> mkform !=% read_forms            "Parse and push the given formula(s) on the stack (as a list). The reference bundle is the last found in the environment." ;
     def "load-forms" get_info !=> cl_string !-> mkform !=% load_forms      "Read formulas from the given file and push them on the stack (as a list). The reference bundle is the last found in the environment." ;
 
-    def "project" get_info !-> get_forms !-> mkproj !== project "Projects a list of formulas (popped from the stack). The reference bundle must have a tfg. Pushes the resulting list of formulas." ;
+    def "project"             get_info  !-> get_forms !-> mkproj !== (project default_project_timeout) "Projects a list of formulas (popped from the stack). The reference bundle must have a tfg. Pushes the resulting list of formulas." ;
+    def "tproject" !=> cl_int get_info  !-> get_forms !-> mkproj !== project                           "Projects with a time limit." ;
 
     title "Walker" ;
 
@@ -219,7 +253,10 @@ let machine =
     (*    def "steps"  *) (* steps n :  Sur la pile : marquage & seed & steps  (bref, le state) *)
 
     (* def "init" *)  (* push initial state of the reference bundle. *) 
-    
+
+    def "loop" get_info !=> cl_int !=> cl_int !-> get_forms nop !=% loop_walk ("loop t1 t2: pops a list of formulas. On each formula (taken sequentially), twalk t1. If it deadlocks or " ^
+                                                                               "timeouts, restart from init state with the current seed. t2 is a global timeout for each formula.") ;
+                                                                               
     (*   def "loop" *)   (* loop timeout1 timeout2  .... reset after each deadlock. *)
 
 (* Idée :
