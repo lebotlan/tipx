@@ -1,0 +1,73 @@
+# from 39 place(s), 64 transition(s), 185 arc(s)
+# R1c |- removed 3 redundant place(s)
+# R2c |- removed 11 redundant transition(s)
+# R4  |- agglomerated 8 place(s)
+# .   |- removed 8 identity transition(s)
+# R4l |- agglomerated 3 place(s)
+# .   |- removed 6 identity transition(s)
+# R2  |- removed 3 identity or duplicated transition(s)
+# left 25 place(s), 36 transition(s), 105 arc(s)
+# 0.006s
+
+# a-prefix = a
+
+# generated equations
+# R |- Enz = AktP3 + DAG + GP3 + GStarP3 + GStarP3kP3 + GStarPgP3 + KdStarGP3 + KdStarGStarP3 + KdStarGStarP3kP3 + KdStarGStarP3kStarP2 + KdStarGStarP3kStarP3 + 2.KdStarGStarP3kStarP3P2 + KdStarGStarPgP3 + KdStarGStarPgStarP2 + KdStarGStarPgStarP3 + 2.KdStarGStarPgStarP3P2 + KdStarPgStarP2 + Pip2 + Pip3 + PtP2 + PtP3 + 2.PtP3P2
+# R |- P3k = GP3 + GStarP3 + GStarPgP3 + Gab1 + KdStarG + KdStarGP3 + KdStarGStar + KdStarGStarP3 + KdStarGStarPg + KdStarGStarPgP3 + KdStarGStarPgStar + KdStarGStarPgStarP2 + KdStarGStarPgStarP3 + KdStarGStarPgStarP3P2
+# R |- Pten = AktP3 + DAG + DAGE + GP3 + GStarP3 + GStarP3kP3 + GStarPgP3 + KdStarGP3 + KdStarGStarP3 + KdStarGStarP3kP3 + KdStarGStarP3kStarP2 + KdStarGStarP3kStarP3 + 2.KdStarGStarP3kStarP3P2 + KdStarGStarPgP3 + KdStarGStarPgStarP2 + KdStarGStarPgStarP3 + 2.KdStarGStarPgStarP3P2 + KdStarPgStarP2 + Pip2 + Pip3 + PtP3P2
+# A |- a1 = DAGE + DAG
+# A |- a2 = GStarP3kP3 + GStarP3
+# A |- a3 = KdStarGStarP3kStar + KdStarGStarP3k
+# A |- a4 = KdStarGStarP3kStarP3 + KdStarGStarP3kP3
+# A |- a5 = KdStarGStarPgStar + KdStarGStarPg
+# A |- a6 = KdStarGStarPgStarP3 + KdStarGStarPgP3
+# A |- a7 = KdStarPgStar + KdStarPg
+# A |- a8 = PtP3 + Pip3
+# A |- a9 = KdStarGStar + a3
+# A |- a10 = KdStarGStarP3 + a4
+# A |- a11 = Pip2 + PtP2
+
+# net is bounded
+
+net {Angiogenesis-PT-01}
+tr k10 a9 a8  -> a10 
+tr k11 a10  -> a9 a8 
+tr k19 a9 a11  -> KdStarGStarP3kStarP2 
+tr k2 KdStarG  -> a9 
+tr k21 KdStarGStarP3kStarP2  -> a9 a8 
+tr k25 a10 a11  -> KdStarGStarP3kStarP3P2 
+tr k27 KdStarGStarP3kStarP3P2  -> a10 a8 
+tr k28 Akt a8  -> AktP3 
+tr k29 AktP3  -> Akt a8 
+tr k3 Gab1 a8  -> GP3 
+tr k30 AktP3  -> AktStar a8 
+tr k31 KdStar Pg  -> a7 
+tr k32 a7  -> KdStar Pg 
+tr k34 a7 a11  -> KdStarPgStarP2 
+tr k36 KdStarPgStarP2  -> a1 a7 
+tr k37 a9 Pg  -> a5 
+tr k38 a5  -> a9 Pg 
+tr k4 GP3  -> Gab1 a8 
+tr k40 a5 a11  -> KdStarGStarPgStarP2 
+tr k42 KdStarGStarPgStarP2  -> a1 a5 
+tr k46 a6 a11  -> KdStarGStarPgStarP3P2 
+tr k48 KdStarGStarPgStarP3P2  -> a1 a6 
+tr k49 a2 Pg  -> GStarPgP3 
+tr k5 GP3 KdStar  -> KdStarGP3 
+tr k50 GStarPgP3  -> a2 Pg 
+tr k51 GStarPgP3 KdStar  -> a6 
+tr k52 a6  -> GStarPgP3 KdStar 
+tr k55 a8  -> a11 
+tr k58 a8 a11  -> PtP3P2 
+tr k59 PtP3P2  -> a8 a11 
+tr k6 KdStarGP3  -> GP3 KdStar 
+tr k63 a1  -> a11 
+tr k8 a10  -> a2 KdStar 
+tr k9 a2 KdStar  -> a10 
+tr t0 Gab1 KdStar  -> KdStarG 
+tr t1 KdStarG  -> Gab1 KdStar 
+pl Akt (1)
+pl Gab1 (1)
+pl KdStar (1)
+pl Pg (1)
+pl a11 (1)
