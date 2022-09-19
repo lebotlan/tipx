@@ -19,9 +19,9 @@ type node =
 
 type succ =
   { agg: node list ;
-    red: node list }
+    red: (int * node) list }
 
-type pred = Root | A of node | R of node list
+type pred = Root | A of node | R of (int * node) list
 
 
 type tfg =
@@ -124,12 +124,12 @@ let add_agg tfg a ll =
 let add_red tfg ll p =
 
   let node_p = get_node tfg p
-  and nodes_ll = List.rev_map (get_node tfg) ll in
+  and nodes_ll = List.rev_map ((fun (k,n) -> (k,get_node tfg n))) ll in
 
   assert (X.get tfg.pred node_p.node_id = Root) ;
   X.set tfg.pred node_p.node_id (R nodes_ll) ;
 
-  List.iter (fun n -> X.update tfg.succ n.node_id (fun succ -> { succ with red = node_p :: succ.red } ) ) nodes_ll ;
+  List.iter (fun (k,n) -> X.update tfg.succ n.node_id (fun succ -> { succ with red = (k,node_p) :: succ.red } ) ) nodes_ll ;
 
   ()
 
@@ -144,8 +144,8 @@ let add_leq tfg p k =
   tfg.roots <- node_k :: tfg.roots ;
 
   assert (X.get tfg.pred node_p.node_id = Root) ;
-  X.set tfg.pred node_p.node_id (R [node_k]) ;
-  X.set tfg.succ node_k.node_id { agg = [] ; red = [ node_p ] } ;
+  X.set tfg.pred node_p.node_id (R [ (1,node_k) ]) ;
+  X.set tfg.succ node_k.node_id { agg = [] ; red = [ (1, node_p) ] } ;
   
   ()
 
