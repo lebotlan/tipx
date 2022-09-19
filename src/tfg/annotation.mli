@@ -17,11 +17,14 @@ type annotation
 val init: int -> annotation
 
 (* Associate the label to the given node_id
- * If the node_id is already associated to the lit_id then it sums the coefficients. *)
-val add_label_to_node: annotation -> label -> node_id -> unit
+ * If the node_id is already associated to the lit_id then it sums the coefficients. 
+ * mult is 1 by default - it corresponds to the arc multiplicity
+ * The label is multiplied by mult before insertion into node.
+ * *)
+val add_label_to_node: annotation -> label -> ?mult:int -> node_id -> unit
 
 (* Propagate redundancy: child -> parents *)
-val propagate_red: annotation -> node_id -> node_id list -> unit
+val propagate_red: annotation -> node_id -> (int * node_id) list -> unit
 
 (* Propagate agg: children -> parent *)
 val propagate_agg: annotation -> node_id list -> node_id -> unit

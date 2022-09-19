@@ -22,7 +22,7 @@ val add_agg: tfg -> node_name -> node_name list -> unit
 
 (* Add redundancy: add_red tfg [ Y1 ; ... ; YN ] X    X = Y1 + ... + Yn  
  * If a node_name is numeric, it is a constant node. *)
-val add_red: tfg -> node_name list -> node_name -> unit
+val add_red: tfg -> (int * node_name) list -> node_name -> unit
 
 (* Add X <= k *)
 val add_leq: tfg -> node_name -> int -> unit
@@ -38,9 +38,9 @@ type node
 
 type succ =
   { agg: node list ;
-    red: node list }
+    red: (int * node) list }
 
-type pred = Root | A of node | R of node list
+type pred = Root | A of node | R of (int * node) list
 
 (* Roots include constant nodes *)
 val roots: tfg -> node list

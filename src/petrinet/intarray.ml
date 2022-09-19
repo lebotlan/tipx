@@ -99,7 +99,7 @@ let reformat ar =
     | M8  -> create M16 n
   in
 
-  Printf.printf "\n [Intarray] Note: reformating array from %s to %s (size %d)\n%!" (format2s ar.format) (format2s ar2.format) n ; 
+  (* Printf.printf "\n [Intarray] Note: reformating array from %s to %s (size %d)\n%!" (format2s ar.format) (format2s ar2.format) n ;  *) (* TODO LOG *)
   
   for i = 0 to n-1 do
     raw_set ar2 i (get ar i) ;

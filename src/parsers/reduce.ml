@@ -17,6 +17,10 @@ let mmatch p ~t ~e =
   | Some r -> t r
   | None -> e
 
+let is_digit = function '0'..'9' -> true | _ -> false
+
+let int = take_while1 is_digit >>| int_of_string <?> "int"
+
 let (!!) = Lazy.force
 
 (* Local fix. Should be included in Angstrom itself. *)
@@ -28,11 +32,26 @@ let parse_tfg net =
 
   let aname_or_qname = Names.aname_or_qname () in
 
+  let coef_name =
+    let* c = peek_char in match c with
+    | Some ('0'..'9') ->
+      let* k = int in
+
+      begin
+        let* c = peek_char in match c with
+        | Some '.' -> advance 1 *> lift (fun s -> (k,s)) aname_or_qname
+        | _ -> return (1,string_of_int k)
+      end
+      
+    | _ -> lift (fun n -> (1,n)) aname_or_qname
+    
+  in
+  
   let rec expr acu = ws *>
-                     let* s = aname_or_qname <* ws in
-                     ((char '+' *> expr (s :: acu))
+                     let* ks = coef_name <* ws in
+                     ((char '+' *> expr (ks :: acu))
                       <|>
-                      return (s :: acu))
+                      return (ks :: acu))
   in
 
   let equation = lift3 (fun left op right -> (left, op, right)) aname_or_qname ((string "=") <|> (string "<=")) (expr []) in
@@ -46,9 +65,11 @@ let parse_tfg net =
                   ( let* (left, op, right) = equation in
                     
                     match c,op,right with
-                    | 'A',"=",_    -> add_agg tfg left right ; !!line
                     | 'R',"=",_    -> add_red tfg right left ; !!line                                                
-                    | 'R',"<=",[k] -> add_leq tfg left (int_of_string k) ; !!line
+                    | 'R',"<=",[(k,x)] -> assert (k=1) ; add_leq tfg left (int_of_string x) ; !!line
+                    | 'A',"=",_    ->
+                      let right = List.map (fun (k,s) -> assert (k=1) ; s) right in (* AGGLOMERATION is X = P + Q  => there must be no coefs (coef must be 1). *)
+                      add_agg tfg left right ; !!line                                                
                         
                     | _ -> assert false) )
               

@@ -88,10 +88,10 @@ let project_cube tfg c =
           (List.iter visit succ.agg ; propagate_agg annotation (List.map Tfg.node_id succ.agg) node_id) ;
 
         if succ.red != [] then
-          List.iter visit succ.red ;
+          List.iter (fun (_,n) -> visit n) succ.red ;
 
         match pred with
-        | R l -> propagate_red annotation node_id (List.map Tfg.node_id l) ;
+        | R l -> propagate_red annotation node_id (List.map (fun (k,n) -> (k,Tfg.node_id n)) l) ;
         | _ -> () ;
       end
   in

@@ -41,15 +41,16 @@ let get_coef annotation lit_id node_id =
 
 (* Add the label to a given node_id
  * If the node_id is already associated to the lit_id then it sums the coefficients. *)
-let add_label_to_node annotation (lit_id,coef) node_id =
+let add_label_to_node annotation (lit_id,coef) ?(mult=1) node_id =
 
+  let coef = mult * coef in
   let labels = get_labels annotation node_id in 
 
   match Hashtbl.find_opt labels lit_id with
   | Some k -> Hashtbl.replace labels lit_id (coef + k)
   | None -> Hashtbl.add labels lit_id coef 
 
-let add_label_to_nodes annotation label nodes = List.iter (add_label_to_node annotation label) nodes
+let add_label_to_nodes annotation label knodes = List.iter (fun (mult,n) -> add_label_to_node annotation label ~mult n) knodes
 
 let propagate_red annotation child parents = Hashtbl.iter (fun lit coef -> (add_label_to_nodes annotation (lit,coef) parents)) (Array.get annotation.labels child)
 
@@ -81,7 +82,7 @@ let propagate_agg annotation children parent =
     let candidates = List.fold_left (update_candidates None SetId.empty children) (SetId.of_list children) literals in
 
     match SetId.choose_opt candidates with
-    | Some node -> (* Propagate red or add label ?*) propagate_red annotation node [parent]
+    | Some node -> (* Propagate red or add label ?*) propagate_red annotation node [ (1,parent) ]
     | None -> (List.iter propagate_min literals ;
                annotation.complete <- false)
 
