@@ -92,13 +92,15 @@ let sprinter ?(seed=0) ?timeout ?(max_steps= -1) ?(stats=Pipe.null ()) net init_
           if msteps = 0 then Maxstep { marking ; steps = max_steps + 1 - msteps ; seed }
           else                            
             let tr = Trset.pick net fireables ~start:seed in
+
             if tr == Net.null_tr then Deadlock { marking ; steps = max_steps - msteps ; seed }
             else
+              let () = Printf.printf "Firing %s\n%!" tr.tr_name in
               let marking = Stepper.quick_fire marking tr in
               let () = upd marking fireables tr in
               
               (* Update seed *)
-              let seed = abs (seed * seed - 13 * seed) in  (* TODO : use linear function *)
+              let seed = abs (seed + 1) in
 
               if msteps land 0x7fffff <> 0 || check_timeout msteps then loop seed msteps marking else Timeout { marking ; steps = max_steps + 1 - msteps ; seed }
       in

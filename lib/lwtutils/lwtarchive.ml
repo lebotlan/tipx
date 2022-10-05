@@ -94,15 +94,17 @@ let add_tgz arch tgz ~path_in_arch () =
 
 (* sources may contain empty patterns.
  * This stupid stupid stupid stupid stupid bash will keep the pattern as is when it maps to an empty set. That just totally sucks.
- * We cannot use noglob optino because this is not actually bash, this is dash.
+ * We cannot use noglob option because this is not actually bash, this is dash.
  *
  * Thus, we have to filter ourselves the files. Sigh. *)
-let filter_source source =
-  let command = "stat -c x " ^ source in
+let filter_source dir source =
+  let command = "cd \"" ^ dir ^ "\" && stat -c x " ^ source in
   let process = Lwt_process.open_process_none ~stdout:`Dev_null ~stderr:`Dev_null (Lwt_process.shell command) in
   match%lwt process#status with
   | Unix.WEXITED 0 -> Lwt.return_true
-  | _ -> Lwt.return_false
+  | _ ->
+    Lwt_io.printf "FYI: empty source %s has been discarded.\n" source ;%lwt
+    Lwt.return_false
 
   
 let make_tgz ?mtime ~dir ~sources () =
@@ -119,7 +121,7 @@ let make_tgz ?mtime ~dir ~sources () =
     | Unix.WSIGNALED _ | Unix.WSTOPPED _ -> Lwt.fail_with "Lwtarchive.make_tgz: tar process was unexpectedly stopped." 
   in
 
-  let%lwt sources = Lwt_list.filter_p filter_source sources in
+  let%lwt sources = Lwt_list.filter_p (filter_source dir) sources in
   
   (*   let command = Printf.sprintf "cd \"%s\" && /bin/tar jch %s" dir (String.concat " " sources) in *)
 

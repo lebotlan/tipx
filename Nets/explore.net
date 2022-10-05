@@ -1,0 +1,14 @@
+net explore
+tr t1 p0 -> p4 
+tr t10 p5 -> p14 
+tr t11 p6 -> p15 
+tr t12 p6 -> p16 
+tr t2 p0 -> p3 
+tr t3 p0 -> p5 
+tr t4 p0 -> p6 
+tr t5 p3 -> p10 
+tr t6 p3 -> p9 
+tr t7 p4 -> p11 
+tr t8 p4 -> p12 
+tr t9 p5 -> p13 
+pl p0 (1)
