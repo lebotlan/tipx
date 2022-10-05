@@ -66,7 +66,9 @@ type 'a projected =
    
 type projected_goal = {
   p_goal: Formula.t ;
-  complete: bool }
+  complete: bool ;
+  n_cubes: int ;
+  n_complete_cubes: int }
 
 
 (* Project a given cube on a TFG *)
@@ -104,9 +106,16 @@ let project_cube tfg c =
 
 let all l f = List.for_all f l
 
+let count l f = List.fold_left (fun i x -> if f x then i + 1 else i) 0 l
+
 let cubes_to_dnf cubelist =
-  { content = list_to_dnf (List.map (fun c -> c.content) cubelist) ;
-    complete = all cubelist (fun c -> c.complete) }
+
+  let n_cubes = List.length cubelist 
+  and n_complete_cubes = count cubelist (fun (c:_ projected) -> c.complete) in
+  
+  ( { content = list_to_dnf (List.map (fun c -> c.content) cubelist) ;
+      complete = all cubelist (fun c -> c.complete) },
+    n_cubes, n_complete_cubes )
 
 (* Project a formula on a TFG *)
 let project_formula tfg formula = cubes_to_dnf (List.rev_map (project_cube tfg) (dnf_to_list formula))
@@ -115,9 +124,11 @@ let project_formula tfg formula = cubes_to_dnf (List.rev_map (project_cube tfg) 
 (* TODO: fix the use of the negates flag! *)
 let project ~timeout tfg goal =
   let _ = timeout (* TODO FIXME *) in
-  let p_form = project_formula tfg (Formula.dnf goal).form in
+  let (p_form, n_cubes, n_complete_cubes) = project_formula tfg (Formula.dnf goal).form in
   
   { p_goal = (Formula.simplify { form = p_form.content ; negates=goal.negates }) ;
-    complete = p_form.complete }
+    complete = p_form.complete ;
+    n_cubes ;
+    n_complete_cubes }
   
     

@@ -9,6 +9,12 @@ type projected_goal =
      * If uncomplete, then the initial formula can be SAT whereas the projected one is not. *)
     complete: bool ;
 
+    (* Number of cubes in the final formula (before simplification). p_goal may contain less cubes. *)
+    n_cubes: int ;
+
+    (* Number of cubes in the final formula (before simplification) that are complete. *)
+    n_complete_cubes: int ;
+
     (* List of projected cubes... *)
     (* ... *)
   }

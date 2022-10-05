@@ -95,7 +95,7 @@ let sprinter ?(seed=0) ?timeout ?(max_steps= -1) ?(stats=Pipe.null ()) net init_
 
             if tr == Net.null_tr then Deadlock { marking ; steps = max_steps - msteps ; seed }
             else
-              let () = Printf.printf "Firing %s\n%!" tr.tr_name in
+              (* let () = Printf.printf "Firing %s\n%!" tr.tr_name in *)
               let marking = Stepper.quick_fire marking tr in
               let () = upd marking fireables tr in
               

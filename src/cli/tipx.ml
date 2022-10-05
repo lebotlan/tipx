@@ -115,7 +115,7 @@ let form2s env f =
   
   match f with
   | Formula f -> Printformula.goal2s reader f
-  | Projected pg -> Printformula.goal2s reader pg.p_goal ^ (if pg.complete then " # complete" else " # uncomplete")
+  | Projected pg -> Printformula.goal2s reader pg.p_goal ^ (if pg.complete then " # complete" else " # uncomplete") ^ Printf.sprintf " (%d / %d)" pg.n_complete_cubes pg.n_cubes
 
 
 let get env name =
