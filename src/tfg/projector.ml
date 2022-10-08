@@ -28,7 +28,7 @@ let populate_annotation tfg c =
 
     (match lit.rel with 
     | LE -> ()
-    | LT -> add_label_to_node annotation (lit_id,-1) (Tfg.get_nodeid tfg (string_of_int 1))
+    | LT -> add_label_to_node annotation (lit_id,1) (Tfg.get_nodeid tfg (string_of_int 1))
     | EQ | NE -> assert false)
   in
 
