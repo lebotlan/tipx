@@ -31,6 +31,8 @@ let read_gen ?(consume_all=true) path parser =
   
 let read_net ?safe  path = read_gen path (Tina.parse_net ?safe path)
 
+let read_net_places path = read_gen path (Tina.parse_net_places path)
+
 type source = Net of Net.t | Tfg of Tfg.t
 
 let get_plid = function

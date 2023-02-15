@@ -81,10 +81,14 @@ let get_bundle env =
   in
   loop env.map
 
-let load ~safe ~tfg env filename =
+(* only_places = true  =>  do not parse transitions *)
+let load ~safe ~only_places ~tfg env filename =
 
   (* Read net *)
-  let%lwt (net, marking) = Parse.read_net ~safe filename in
+  let%lwt (net, marking) =
+    if only_places then Parse.read_net_places filename
+    else Parse.read_net ~safe filename
+  in
 
   (* Read may-be-here TFG *)
   let%lwt tfg =
@@ -228,11 +232,17 @@ let machine =
     
     title "Environment" ;
 
-    def "load" implicit get_info !=> cl_filename nop !=%+ (load ~safe:false ~tfg:true)   "Load the given Petri net, put it as a bundle in the environment with the name 'net'. E.g.: load \"file.net\"" ;
-    def "rawload"       get_info !=> cl_filename nop !=%+ (load ~safe:false ~tfg:false)  "Loads the given Petri net and initial marking, but skips the TFG." ;
+    def "load" implicit get_info !=> cl_filename nop !=%+ (load ~safe:false ~tfg:true ~only_places:false)
+      "Load the given Petri net, put it as a bundle in the environment with the name 'net'. E.g.: load \"file.net\"" ;
+
+    def "tfgload"       get_info !=> cl_filename nop !=%+ (load ~safe:false ~tfg:true ~only_places:true)
+      "Load only the places of the given Petri net, and its TFG. Put is as a bundle in the environment." ;
     
-    def "load-safe"     get_info !=> cl_string nop !=%+ (load ~safe:true ~tfg:true)      "Like 'load', assuming a safe net." ;
-    def "rawload-safe"  get_info !=> cl_string nop !=%+ (load ~safe:true ~tfg:false)     "Like 'rawload', assuming a safe net." ;
+    def "rawload"       get_info !=> cl_filename nop !=%+ (load ~safe:false ~tfg:false ~only_places:false)
+      "Loads the given Petri net and initial marking, but skips the TFG." ;
+    
+    def "load-safe"     get_info !=> cl_string nop !=%+ (load ~safe:true ~tfg:true ~only_places:false)      "Like 'load', assuming a safe net." ;
+    def "rawload-safe"  get_info !=> cl_string nop !=%+ (load ~safe:true ~tfg:false ~only_places:false)     "Like 'rawload', assuming a safe net." ;
 
     def "bind" get_info !=> cl_string !-> ids nop !==+ bind "Binds the element on the stack to the given name. E.g.: bind special-net" ;
     def "set"  get_info !=> cl_string !-> ids nop !==+ bind "Synonym to bind." ;
