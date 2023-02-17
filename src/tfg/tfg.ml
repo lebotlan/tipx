@@ -78,6 +78,7 @@ let get_node tfg name =
   
   
 let create roots =
+
   let name_map = Hashtbl.create init_size
   and node_map = X.create init_size dummy_node
   and succ = X.create init_size { agg = [] ; red = [] }

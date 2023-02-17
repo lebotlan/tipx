@@ -20,6 +20,8 @@ type itr = pl_name g_itr
 type inet =
   { mutable i_name: string ;
 
+    only_places: bool ;
+
     pl_map: (string,pl_id) Hashtbl.t ;
     tr_map: (string,tr_id) Hashtbl.t ;
 
@@ -40,8 +42,10 @@ let dummy_tr =
     itr_pre = [] ;
     itr_post = [] }
 
-let mk_empty ?(name="") () =
+let mk_empty ?(only_places=false) ?(name="") () =
   { i_name = name ;
+
+    only_places ;
     
     pl_map = Hashtbl.create init_size ;
     tr_map = Hashtbl.create init_size ;
@@ -101,42 +105,50 @@ let insert_arc_in_list inet l (w,pl_name) =
 
 let add_tr inet itr =
 
-  let tr_id =
-    match Hashtbl.find_opt inet.tr_map itr.itr_name with
-    | Some i -> i
-    | None ->
-      let tr_id = inet.tr_count in
-      inet.tr_count <- inet.tr_count + 1 ;
-      Hashtbl.add inet.tr_map itr.itr_name tr_id ;
+  if inet.only_places then
+    begin
+      List.iter (fun (_,pl_name) -> ignore(add_pl inet pl_name)) itr.itr_pre ;
+      List.iter (fun (_,pl_name) -> ignore(add_pl inet pl_name)) itr.itr_post ;
+      0
+    end
+  else
+    begin
+      let tr_id =
+        match Hashtbl.find_opt inet.tr_map itr.itr_name with
+        | Some i -> i
+        | None ->
+          let tr_id = inet.tr_count in
+          inet.tr_count <- inet.tr_count + 1 ;
+          Hashtbl.add inet.tr_map itr.itr_name tr_id ;
+          tr_id
+      in
+
+      insert_in_pl_tbl inet tr_id inet.pl_post_tbl itr.itr_pre ;
+      insert_in_pl_tbl inet tr_id inet.pl_pre_tbl itr.itr_post ;
+
+      let prev_itr = ExtArray.get inet.tr_def tr_id in
+
+      let new_itr =
+        if prev_itr == dummy_tr then
+          { itr_name = itr.itr_name ;
+            itr_pre  = List.rev_map (fun (w,pl_name) -> (w,add_pl inet pl_name)) itr.itr_pre ;
+            itr_post = List.rev_map (fun (w,pl_name) -> (w,add_pl inet pl_name)) itr.itr_post }
+        else
+          begin
+            assert (prev_itr.itr_name = itr.itr_name) ;
+            inet.duplicate_transitions <- true ;
+
+            { itr_name = itr.itr_name ;
+              itr_pre  = List.fold_left (insert_arc_in_list inet) prev_itr.itr_pre itr.itr_pre ;
+              itr_post = List.fold_left (insert_arc_in_list inet) prev_itr.itr_post itr.itr_post }
+          end
+
+      in
+
+      ExtArray.set inet.tr_def tr_id new_itr ;
+
       tr_id
-  in
-
-  insert_in_pl_tbl inet tr_id inet.pl_post_tbl itr.itr_pre ;
-  insert_in_pl_tbl inet tr_id inet.pl_pre_tbl itr.itr_post ;
-  
-  let prev_itr = ExtArray.get inet.tr_def tr_id in
-
-  let new_itr =
-    if prev_itr == dummy_tr then
-      { itr_name = itr.itr_name ;
-        itr_pre  = List.rev_map (fun (w,pl_name) -> (w,add_pl inet pl_name)) itr.itr_pre ;
-        itr_post = List.rev_map (fun (w,pl_name) -> (w,add_pl inet pl_name)) itr.itr_post }
-    else
-      begin
-        assert (prev_itr.itr_name = itr.itr_name) ;
-        inet.duplicate_transitions <- true ;
-
-        { itr_name = itr.itr_name ;
-          itr_pre  = List.fold_left (insert_arc_in_list inet) prev_itr.itr_pre itr.itr_pre ;
-          itr_post = List.fold_left (insert_arc_in_list inet) prev_itr.itr_post itr.itr_post }
-      end
-      
-  in
-
-  ExtArray.set inet.tr_def tr_id new_itr ;
-  
-  tr_id
-
+    end
 
 type pl =
   { pl_id: pl_id ;

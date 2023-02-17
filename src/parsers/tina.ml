@@ -38,26 +38,9 @@ let map_arc (w,nm) =
 
 type acu =
   { inet: Net.inet ;
-    mutable marking: (int * Net.pl_id) list }
+    mutable marking: (int * Net.pl_id) list }    
 
-(* 'pl' <place> {(<marking>)} *)
-let pl aname_or_qname net_loop acu =
-  let* name = aname_or_qname in
-  let* c = peek_char in
-
-  let* m = match c with
-    | Some '(' -> advance 1 *> marking <* char ')' <* nl
-    | _ -> nl *> return 0
-  in
-
-  let pl_id = Net.add_pl acu.inet name in
-
-  if m <> 0 then acu.marking <- (m,pl_id) :: acu.marking ;
-
-  net_loop acu
-    
-
-let parse_net ?(safe=false) name =
+let raw_parse_net ~only_places ~safe name =
 
   let aname_or_qname = Names.aname_or_qname () in
 
@@ -93,7 +76,7 @@ let parse_net ?(safe=false) name =
 
           | "net" -> netname acu
           | "tr" -> tr acu
-          | "pl" -> pl aname_or_qname net_loop acu
+          | "pl" -> pl acu
           | "nt" -> nt acu
 
           | _ -> fail ("Unknown keyword " ^ id)
@@ -117,6 +100,21 @@ let parse_net ?(safe=false) name =
 
       net_loop acu
 
+  (* 'pl' <place> {(<marking>)} *)
+  and pl acu =
+    let* name = aname_or_qname in
+    let* c = peek_char in
+    
+    let* m = match c with
+      | Some '(' -> advance 1 *> marking <* char ')' <* nl
+      | _ -> nl *> return 0
+    in
+    
+    let pl_id = Net.add_pl acu.inet name in
+    
+    if m <> 0 then acu.marking <- (m,pl_id) :: acu.marking ;
+    
+    net_loop acu      
 
   (* 'net' <net> *)
   and netname acu =
@@ -132,7 +130,7 @@ let parse_net ?(safe=false) name =
 
   in
 
-  let init_acu = { inet = Net.mk_empty ~name () ; marking = [] } in
+  let init_acu = { inet = Net.mk_empty ~only_places ~name () ; marking = [] } in
   net_loop init_acu
   >>|
   begin fun acu ->
@@ -143,39 +141,9 @@ let parse_net ?(safe=false) name =
   end
 
 
-let parse_net_places name =
+let parse_net ?(safe=false) name = raw_parse_net ~only_places:false ~safe name
 
-  let aname_or_qname = Names.aname_or_qname () in
-
-  let rec net_loop acu =
-    ws *>
-    let* eof = at_end_of_input in
-
-    if eof then return acu
-    else
-      let* c = peek_char in match c with
-      | Some ('\n' | '\r') -> nl *> net_loop acu
-      | Some '#' -> ignore_til_eol *> net_loop acu
-      | _ ->
-        begin
-          let* id = lowid in match id with
-
-          | "net" | "tr" | "nt" -> ignore_til_eol *> net_loop acu
-          | "pl" -> pl aname_or_qname net_loop acu
-
-          | _ -> fail ("Unknown keyword " ^ id)
-        end
-  in
-
-  let init_acu = { inet = Net.mk_empty ~name () ; marking = [] } in
-  net_loop init_acu
-  >>|
-  begin fun acu ->
-    let net = Net.close ~safe:false acu.inet in
-    let marking = Marking.init ~safe:false net in
-    (net, marking)
-  end
-
+let parse_net_places name = raw_parse_net ~only_places:true ~safe:false name
 
 (* 
  * Optimisation : qname ne pas utiliser de buffer. Avoir un flag pour savoir s'il y a des escape et garder la chaîne telle quelle.

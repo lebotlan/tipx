@@ -25,11 +25,14 @@ type itr = pl_name g_itr
 (* Incremental net (mutable) *)
 type inet
 
-(* Create empty net *)
-val mk_empty: ?name:string -> unit -> inet
+(* Create empty net 
+ * only_places: register only places - ignore transitions. *)
+val mk_empty: ?only_places:bool -> ?name:string -> unit -> inet
 
 val add_pl: inet -> pl_name -> pl_id
 
+(* If the inet is only-places, it records the places mentioned in the transition
+ * and returns 0. *)
 val add_tr: inet -> itr -> tr_id
 
 val set_name: inet -> string -> unit
