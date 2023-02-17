@@ -15,6 +15,20 @@ let rec bexpr2s fu = function
   | True -> "T"
   | False -> "F"
 
+let infix op f = function
+  | [] -> ""
+  | [x] -> f x
+  | l -> "(" ^ op ^ " " ^ (Common.sep f " " l) ^ ")"
+
+let rec bexpr2smt fu = function
+  | V x -> fu x
+  | And l -> infix "and" (bexpr2smt fu) l
+  | Or  l  -> infix "or" (bexpr2smt fu) l
+  | Not e  -> "(not " ^ bexpr2smt fu e ^ ")"
+  | True -> "true"
+  | False -> "false"
+    
+
 let rec eval_bexpr fu = function
   | V x -> fu x
   | And l -> List.for_all (eval_bexpr fu) l

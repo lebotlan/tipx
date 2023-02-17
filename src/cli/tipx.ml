@@ -28,12 +28,16 @@ type element =
 (* Global environment: maps ids to elements. *)
 type env =
   { map: (string * element) list ;
+
+    (* Print formulas in smt-lib format. *)
+    smt_format: bool ;
+    
     time: float option ;
     verb: bool }
 
 let add_env name elt env = { env with map = (name, elt) :: env.map }
 
-let init_env = { map = [] ; verb = true ; time = None }
+let init_env = { map = [] ; verb = true ; time = None ; smt_format = false }
 
 let comma s x = if s = "" then x else s ^ ", " ^ x
 
@@ -116,10 +120,12 @@ let get_pl_reader env =
 let form2s env f =
 
   let reader = get_pl_reader env in
+
+  let g2s = Printformula.(if env.smt_format then goal2smt else goal2s) in
   
   match f with
-  | Formula f -> Printformula.goal2s reader f
-  | Projected pg -> Printformula.goal2s reader pg.p_goal ^ (if pg.complete then " # complete" else " # uncomplete") ^ Printf.sprintf " (%d / %d)" pg.n_complete_cubes pg.n_cubes
+  | Formula f -> g2s reader f
+  | Projected pg -> g2s reader pg.p_goal ^ (if pg.complete then " # complete" else " # uncomplete") ^ Printf.sprintf " (%d / %d)" pg.n_complete_cubes pg.n_cubes
 
 
 let get env name =
@@ -210,6 +216,8 @@ let loop_walk env t1 t2 l =
 
 let to_quiet env = ((), { env with verb = false })
 
+let to_smt env = ((), { env with smt_format = true })
+
 let do_time env =
 
   let now = Unix.gettimeofday () in
@@ -283,7 +291,8 @@ let machine =
     
     title "Display" ;
 
-    def "quiet" get_info nop !==+ to_quiet "Quiet mode (prints only necessary information, e.g. verdicts)." ;
+    def "quiet"      get_info nop !==+ to_quiet "Quiet mode (prints only necessary information, e.g. verdicts)." ;
+    def "smt-format" get_info nop !==+ to_smt   "Use smt-lib format when printing formulas." ;
       
     print () ;
     def "fprint" get_info !-> ids nop !=% fprint "Full print: print the topmost stack element, with details." ;

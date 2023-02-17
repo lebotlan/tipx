@@ -12,6 +12,12 @@ val bool2b: bool -> 'a bexpr
 
 val bexpr2s: ('a -> string) -> 'a bexpr -> string
 
+(* Like bexpr2s in smt-lib format *)
+val bexpr2smt: ('a -> string) -> 'a bexpr -> string
+
+(* Prints an infix operator & arguments in smt-lib format *)
+val infix: string -> ('a -> string) -> 'a list -> string
+
 val eval_bexpr: ('a -> bool) -> 'a bexpr -> bool
 
 (* dnf  v-negation 
