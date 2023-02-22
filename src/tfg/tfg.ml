@@ -138,15 +138,20 @@ let add_leq tfg p k =
 
   let node_p = get_node tfg p in
 
-  let node_k = { node_id = tfg.node_count ; node_type = Intv (0,k) } in
+  let node_k = { node_id = tfg.node_count ; node_type = Intv (k,k) } in
   tfg.node_count <- tfg.node_count + 1 ;  
 
   X.set tfg.node_map node_k.node_id node_k ;
   tfg.roots <- node_k :: tfg.roots ;
 
-  assert (X.get tfg.pred node_p.node_id = Root) ;
-  X.set tfg.pred node_p.node_id (R [ (1,node_k) ]) ;
-  X.set tfg.succ node_k.node_id { agg = [] ; red = [ (1, node_p) ] } ;
+  let node_s = { node_id = tfg.node_count ; node_type = Var (string_of_int tfg.node_count) } in
+  tfg.node_count <- tfg.node_count + 1 ;  
+  X.set tfg.node_map node_s.node_id node_s ;
+
+  X.set tfg.pred node_p.node_id (A node_k) ;
+  X.set tfg.pred node_s.node_id (A node_k) ;
+  
+  X.set tfg.succ node_k.node_id { agg = [node_p ; node_s] ; red = [] } ;
   
   ()
 
